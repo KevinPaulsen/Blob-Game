@@ -20,4 +20,14 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,GameActivity.class);
         startActivity(intent);
     }
+
+    public void entershopbuttonclick(View v) {
+        Intent intent2 = new Intent(this,ShopActivity.class);
+        startActivity(intent2);
+    }
+
+    public void howtoplaybuttonclick(View v) {
+        Intent intent3 = new Intent(this,HelpActivity.class);
+        startActivity(intent3);
+    }
 }

@@ -1,16 +1,18 @@
 package jakemcdowell.blobsapplication;
 
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import java.lang.Math;
+import android.graphics.drawable.AnimationDrawable;
 
 
 public class GameActivity extends AppCompatActivity {
-
+    AnimationDrawable buganimation;
     private ProgressBar levelProgress;
     private ProgressBar hp;
     private double totalTaps;
@@ -20,6 +22,8 @@ public class GameActivity extends AppCompatActivity {
     private Bug bug;
     private Game game;
     private boolean flag = true;
+    private boolean activebutton = false;
+    private Button tapbutton;
 
 
     //Sets up game screen (progress bar)
@@ -32,11 +36,14 @@ public class GameActivity extends AppCompatActivity {
         hp = (ProgressBar)this.findViewById(R.id.progressBar);
         hp.setProgress(100);
         game = new Game(levelProgress, hp);
+        /*ImageView bugimage = (ImageView) findViewById(R.drawable.nidle);
+        bugimage.setBackgroundResource(R.drawable.animationxml);
+        buganimation = (AnimationDrawable) bugimage.getBackground();*/
+
     }
 
     //Button game mechanics
     public void buttonTestClick(View v){
-        View c = findViewById(R.id.button);
         if (flag) {
             bug = new Bug(v, health);
             flag = !flag;
@@ -59,7 +66,7 @@ public class GameActivity extends AppCompatActivity {
 
         if(game.getBugsKilled() == 5) {
 
-            c.setY(10000);
+            bug.getBug().setY(bug.getBug().getY() + 10000);
 
             //Activity Change (Backdrop Change,etc)
             game.nextLevel();
@@ -68,13 +75,14 @@ public class GameActivity extends AppCompatActivity {
             health += 2;
             View b = findViewById(R.id.button2);
             View g = findViewById(R.id.textView2);
+            View c = findViewById(R.id.button);
             View d = findViewById(R.id.progressBar);
             View e = findViewById(R.id.progressBar2);
             b.setVisibility(View.VISIBLE);
             g.setVisibility(View.VISIBLE);
+            c.setVisibility(View.GONE);
             d.setVisibility(View.GONE);
             e.setVisibility(View.GONE);
-            c.setVisibility(View.GONE);
             totalLevels++;
         }
     }
