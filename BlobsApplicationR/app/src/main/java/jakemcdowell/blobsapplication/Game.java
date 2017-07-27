@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ProgressBar;
 
+
 /**
  * Created by kevin on 7/25/17.
  */
@@ -21,11 +22,6 @@ public class Game extends AppCompatActivity {
         numBugs = 5;
         levelProgress = progressBar;
         this.hp = hp;
-    }
-
-    public void nextLevel() {
-        level++;
-        bugsKilled = 0;
     }
 
     public void pauseDeath(Bug bug) {
@@ -59,6 +55,11 @@ public class Game extends AppCompatActivity {
         }, 500);
     }
 
+    public void nextLevel() {
+        level++;
+        bugsKilled = 0;
+    }
+
     public void setProgressBar(Bug bug) {
         hp.setProgress((int)(((bug.getHealth() - bug.getTapsOnBug()) / bug.getHealth()) * 100));
     }
@@ -66,7 +67,7 @@ public class Game extends AppCompatActivity {
     public void deadBug() {
         bugsKilled++;
         levelProgress.setProgress((int)(20 * bugsKilled));
-        //hp.setProgress(0);
+        hp.setProgress(0);
     }
 
     public void fillHp() {

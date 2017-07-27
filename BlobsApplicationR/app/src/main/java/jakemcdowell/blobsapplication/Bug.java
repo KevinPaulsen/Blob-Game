@@ -8,6 +8,7 @@ import android.widget.Button;
  */
 
 public class Bug {
+
     private View bug;
     private int tapsOnBug;
     private double health;
@@ -26,9 +27,7 @@ public class Bug {
         return bug;
     }
 
-    public void newBug() {
-        tapsOnBug = 0;
-    }
+    public void newBug() { tapsOnBug = 0; }
 
     public void tapBug() {
         tapsOnBug++;
