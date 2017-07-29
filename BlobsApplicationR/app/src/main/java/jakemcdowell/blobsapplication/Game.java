@@ -5,77 +5,68 @@ import android.widget.ProgressBar;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakemcdowell.blobsapplication.bugs.Bug;
+
 
 /**
  * Created by kevin on 7/25/17.
  */
 public class Game extends AppCompatActivity {
-    private int level;
-    private int numBugs;
-    private ProgressBar levelProgress;
-    final private ArrayList<Bug> bugList;
-    private int bugsKilledInLevel = 0;
+    private ProgressBar levelProgressBar;
+    private List<Bug> bugList;
     private List<Bug> bugsInLevel;
+    private int level;
+    private int bugsKilledInLevel = 0;
+    private int totalKnockoutsRequiredInLevel;
 
-    public Game(ProgressBar progressBar, ArrayList<Bug> bugList) {
-        levelProgress = progressBar;
+    public Game(ProgressBar progressBar, List<Bug> bugList) {
+        levelProgressBar = progressBar;
         this.bugList = bugList;
         setupLevel(1);
     }
 
     public void setupLevel(int level) {
         this.level = level;
-        this.numBugs = 5;
-        levelProgress.setProgress(0);
-        int levelBugCount = level / 3 + 1;
+        levelProgressBar.setProgress(0);
+        int levelBugCount = getTotalBugsInLevel();
         this.bugsInLevel = new ArrayList<>(levelBugCount);
         this.bugsKilledInLevel = 0;
         for (int idx = 0; idx < levelBugCount; idx++) {
             bugsInLevel.add(getNewBug(idx));
         }
+        this.totalKnockoutsRequiredInLevel = levelBugCount * bugsInLevel.get(0).getTotalKnockOuts();
     }
 
     public void endLevel() {
         for (Bug bug : bugList) {
-            bug.reset();
+            bug.resetBugToInitialState();
         }
     }
 
     private Bug getNewBug(int bugNum) {
         Bug bug = bugList.get(bugNum);
-        bug.reset();
+        bug.resetBugToInitialState();
         bug.move();
         return bug;
-    }
-
-    public void pauseDeath(final Bug bug) {
-        bug.moveOffscreen();
-
-        if (bug.getKnockOuts() != 5) {
-            bug.getButton().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    bug.move();
-                }
-            }, 700);
-        }
     }
 
     public int getLevel() {
         return level;
     }
 
+    public boolean isAllDead() {
+        return getBugsLeftInLevel() == 0;
+    }
+
     public void nextLevel() {
-        Bug.addHealth(0);
+        for (Bug bug : bugList) {
+            bug.addHealth(1);
+        }
         setupLevel(getLevel() + 1);
     }
 
-    public void setProgressBar(Bug bug) {
-        bug.setHp((int)(((bug.getHealth() - bug.getDamageOnBug()) / bug.getHealth()) * 100));
-    }
-
-    public void progressBarAfterDeath(Bug bug) {
-        levelProgress.setProgress((int)(((double) getBugsKnockedOut() / ((double)(((level / 3) + 1) * 5))) * 100));
+    public void updateLevelKnockOutProgressBar() {
+        levelProgressBar.setProgress((int) ((((double) getBugsKnockedOut()) / totalKnockoutsRequiredInLevel) * 100));
     }
 
     public int getBugsKnockedOut() {
@@ -86,18 +77,16 @@ public class Game extends AppCompatActivity {
         return totalDeadBugs;
     }
 
-
     public void addBugKilledInLevel() {
         bugsKilledInLevel++;
     }
 
-
-    public void resetBugsKilledInLevel() {
-        bugsKilledInLevel = 0;
+    private int getTotalBugsInLevel() {
+        return level / 3 + 1;
     }
 
     //returns how many bugs will die this level
-    public int getBugDeathPerLevel() {
-        return (((level / 3) + 1) - bugsKilledInLevel);
+    public int getBugsLeftInLevel() {
+        return getTotalBugsInLevel() - bugsKilledInLevel;
     }
 }

@@ -10,6 +10,12 @@ import android.graphics.drawable.AnimationDrawable;
 
 import java.util.ArrayList;
 
+import jakemcdowell.blobsapplication.bugs.Bug;
+import jakemcdowell.blobsapplication.bugs.FireBug;
+import jakemcdowell.blobsapplication.bugs.MovingBug;
+import jakemcdowell.blobsapplication.bugs.SmallBug;
+import jakemcdowell.blobsapplication.bugs.TeleportingBug;
+
 
 public class GameActivity extends AppCompatActivity {
     AnimationDrawable buganimation;
@@ -24,7 +30,7 @@ public class GameActivity extends AppCompatActivity {
     AnimationDrawable buganimation13;
 
     private ProgressBar levelProgress;
-    private double health = 1;
+    private int health = 1;
     private Bug bug1;
     private Bug bug2;
     private Bug bug3;
@@ -37,9 +43,7 @@ public class GameActivity extends AppCompatActivity {
     private Bug bug10;
     private Game game;
     private ArrayList<Bug> bugList = new ArrayList<>();
-
-
-
+    private int kOsPerDeath = 2;
 
     //Sets up game screen (progress bar)
     @Override
@@ -68,30 +72,6 @@ public class GameActivity extends AppCompatActivity {
         putOffScreen(this.findViewById(R.id.button11));
         putOffScreen(this.findViewById(R.id.button12));
         putOffScreen(this.findViewById(R.id.button13));
-
-        //instantiantes every bug that will appear.
-        bug1 = new Bug(this.findViewById(R.id.button), health, (ProgressBar)this.findViewById(R.id.progressBar));
-        bug2 = new Bug(this.findViewById(R.id.button5), health, (ProgressBar)this.findViewById(R.id.progressBar3));
-        bug3 = new Bug(this.findViewById(R.id.button6), health, (ProgressBar)this.findViewById(R.id.progressBar4));
-        bug4 = new Bug(this.findViewById(R.id.button7), health, (ProgressBar)this.findViewById(R.id.progressBar5));
-        bug5 = new Bug(this.findViewById(R.id.button8), health, (ProgressBar)this.findViewById(R.id.progressBar6));
-        bug6 = new Bug(this.findViewById(R.id.button9), health, (ProgressBar)this.findViewById(R.id.progressBar7));
-        bug7 = new Bug(this.findViewById(R.id.button10), health, (ProgressBar)this.findViewById(R.id.progressBar8));
-        bug8 = new Bug(this.findViewById(R.id.button11), health, (ProgressBar)this.findViewById(R.id.progressBar9));
-        bug9 = new Bug(this.findViewById(R.id.button12), health, (ProgressBar)this.findViewById(R.id.progressBar10));
-        bug10 = new Bug(this.findViewById(R.id.button13), health, (ProgressBar)this.findViewById(R.id.progressBar11));
-
-        //Sets every bug to full heath on the progress bar.
-        bug1.setHp(100);
-        bug2.setHp(100);
-        bug3.setHp(100);
-        bug4.setHp(100);
-        bug5.setHp(100);
-        bug6.setHp(100);
-        bug7.setHp(100);
-        bug8.setHp(100);
-        bug9.setHp(100);
-        bug10.setHp(100);
 
         //adds every bug that will appear to a list.
         bugList.add(bug1);
@@ -140,6 +120,33 @@ public class GameActivity extends AppCompatActivity {
         buganimation11 = (AnimationDrawable)button11.getBackground();
         buganimation12 = (AnimationDrawable)button12.getBackground();
         buganimation13 = (AnimationDrawable)button13.getBackground();
+
+        //instantiantes every bug that will appear.
+        bug1 = new Bug(button, health, (ProgressBar)this.findViewById(R.id.progressBar), kOsPerDeath);
+        bug2 = new Bug(button5, health, (ProgressBar)this.findViewById(R.id.progressBar3), kOsPerDeath);
+        bug3 = new SmallBug(button6, health, (ProgressBar)this.findViewById(R.id.progressBar4), kOsPerDeath);
+        bug4 = new SmallBug(button7, health, (ProgressBar)this.findViewById(R.id.progressBar5), kOsPerDeath);
+        bug5 = new MovingBug(button8, health, (ProgressBar)this.findViewById(R.id.progressBar6), kOsPerDeath);
+        bug6 = new MovingBug(button9, health, (ProgressBar)this.findViewById(R.id.progressBar7), kOsPerDeath);
+        bug7 = new TeleportingBug(button10, health, (ProgressBar)this.findViewById(R.id.progressBar8), kOsPerDeath);
+        bug8 = new TeleportingBug(button11, health, (ProgressBar)this.findViewById(R.id.progressBar9), kOsPerDeath);
+        bug9 = new FireBug(button12, health, (ProgressBar)this.findViewById(R.id.progressBar10), kOsPerDeath);
+        bug10 = new FireBug(button13, health, (ProgressBar)this.findViewById(R.id.progressBar11), kOsPerDeath);
+        /*
+        new Thread(new Runnable() {
+            public void run() {
+                while (true) {
+                    //move the bug
+                    try{
+                        Thread.sleep(1000);
+                    }
+                    catch(Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+        */
     }
 
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -161,55 +168,17 @@ public class GameActivity extends AppCompatActivity {
     //Button game mechanics
     public void buttonTestClick(View v) {
 
-        //finds bug associated with View v
-        Bug clickedBug = findBug(v);
-
-        // Sets bugsLeft to how mant bugs should die in this level
-        int bugsLeft = game.getBugDeathPerLevel();
-
-        //Moves bug randomly
-        clickedBug.move();
-
         //sets +1 tap on the bug
-        clickedBug.damageBug();
-
-        //sets progress bar of the level
-        game.setProgressBar(clickedBug);
-
-        //checks to see if the bug is dead, and resets bug if true
-        if (clickedBug.getDamageOnBug() == clickedBug.getHealth()) {
-            clickedBug.resetDamage();
-            clickedBug.setHp(100);
-            clickedBug.died();
-            game.pauseDeath(clickedBug);
-            game.progressBarAfterDeath(clickedBug);
-        }
-
-
-        if(clickedBug.getKnockOuts() == 5) {
-            clickedBug.moveOffscreen();
-            bugsLeft--;
-            game.addBugKilledInLevel();
-        }
+        findBug(v).damageBug(game);
 
         //Activity Change (Backdrop Change,etc)
-        if (bugsLeft == 0) {
-            game.endLevel();
-
-            //adds health to bug, and
-            clickedBug.addHealth(0);
-
+        if (game.isAllDead()) {
             //makes buttons and textViews appear, to make nextLevel screen.
-            View b = findViewById(R.id.button2);
-            View g = findViewById(R.id.textView2);
-            View c = findViewById(R.id.button);
-            View d = findViewById(R.id.progressBar);
-            View e = findViewById(R.id.progressBar2);
-            b.setVisibility(View.VISIBLE);
-            g.setVisibility(View.VISIBLE);
-            c.setVisibility(View.GONE);
-            d.setVisibility(View.GONE);
-            e.setVisibility(View.GONE);
+            findViewById(R.id.button2).setVisibility(View.VISIBLE);
+            findViewById(R.id.textView2).setVisibility(View.VISIBLE);
+            findViewById(R.id.button).setVisibility(View.GONE);
+            findViewById(R.id.progressBar).setVisibility(View.GONE);
+            findViewById(R.id.progressBar2).setVisibility(View.GONE);
         }
     }
 
