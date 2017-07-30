@@ -18,120 +18,75 @@ import jakemcdowell.blobsapplication.bugs.TeleportingBug;
 
 
 public class GameActivity extends AppCompatActivity {
-    AnimationDrawable buganimation;
-    AnimationDrawable buganimation5;
-    AnimationDrawable buganimation6;
-    AnimationDrawable buganimation7;
-    AnimationDrawable buganimation8;
-    AnimationDrawable buganimation9;
-    AnimationDrawable buganimation10;
-    AnimationDrawable buganimation11;
-    AnimationDrawable buganimation12;
-    AnimationDrawable buganimation13;
+    AnimationDrawable buganimations[] = new AnimationDrawable[10];
 
-    private ProgressBar levelProgress;
-    private int health = 1;
-    private Bug bug1;
-    private Bug bug2;
-    private Bug bug3;
-    private Bug bug4;
-    private Bug bug5;
-    private Bug bug6;
-    private Bug bug7;
-    private Bug bug8;
-    private Bug bug9;
-    private Bug bug10;
     private Game game;
     private ArrayList<Bug> bugList = new ArrayList<>();
-    private int kOsPerDeath = 2;
+    private boolean isInitialized = false;
 
     //Sets up game screen (progress bar)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Button buttons[] = new Button[10];
+        ProgressBar progressBar[] = new ProgressBar[10];
+        int buttonIds[] = new int[10];
+        int progressBarIds[] = new int[10];
+        int health = 1;
+        int kOsPerDeath = 2;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_activity);
 
-        //Instantiates all progresssBars, and  puts them offscreen
-        levelProgress = (ProgressBar)this.findViewById(R.id.progressBar2);
+        buttonIds[0] = R.id.button;
+        buttonIds[1] = R.id.button5;
+        buttonIds[2] = R.id.button6;
+        buttonIds[3] = R.id.button7;
+        buttonIds[4] = R.id.button8;
+        buttonIds[5] = R.id.button9;
+        buttonIds[6] = R.id.button10;
+        buttonIds[7] = R.id.button11;
+        buttonIds[8] = R.id.button12;
+        buttonIds[9] = R.id.button13;
 
-        putOffScreen((ProgressBar)this.findViewById(R.id.progressBar3));
-        putOffScreen((ProgressBar)this.findViewById(R.id.progressBar4));
-        putOffScreen((ProgressBar)this.findViewById(R.id.progressBar5));
-        putOffScreen((ProgressBar)this.findViewById(R.id.progressBar6));
-        putOffScreen((ProgressBar)this.findViewById(R.id.progressBar7));
-        putOffScreen((ProgressBar)this.findViewById(R.id.progressBar8));
-        putOffScreen((ProgressBar)this.findViewById(R.id.progressBar9));
-        putOffScreen((ProgressBar)this.findViewById(R.id.progressBar10));
-        putOffScreen((ProgressBar)this.findViewById(R.id.progressBar11));
-        putOffScreen(this.findViewById(R.id.button5));
-        putOffScreen(this.findViewById(R.id.button6));
-        putOffScreen(this.findViewById(R.id.button7));
-        putOffScreen(this.findViewById(R.id.button8));
-        putOffScreen(this.findViewById(R.id.button9));
-        putOffScreen(this.findViewById(R.id.button10));
-        putOffScreen(this.findViewById(R.id.button11));
-        putOffScreen(this.findViewById(R.id.button12));
-        putOffScreen(this.findViewById(R.id.button13));
+        progressBarIds[0] = R.id.progressBar;
+        progressBarIds[1] = R.id.progressBar3;
+        progressBarIds[2] = R.id.progressBar4;
+        progressBarIds[3] = R.id.progressBar5;
+        progressBarIds[4] = R.id.progressBar6;
+        progressBarIds[5] = R.id.progressBar7;
+        progressBarIds[6] = R.id.progressBar8;
+        progressBarIds[7] = R.id.progressBar9;
+        progressBarIds[8] = R.id.progressBar10;
+        progressBarIds[9] = R.id.progressBar11;
 
-        //adds every bug that will appear to a list.
-        bugList.add(bug1);
-        bugList.add(bug2);
-        bugList.add(bug3);
-        bugList.add(bug4);
-        bugList.add(bug5);
-        bugList.add(bug6);
-        bugList.add(bug7);
-        bugList.add(bug8);
-        bugList.add(bug9);
-        bugList.add(bug10);
-
-        //Creates new Game
-        game = new Game(levelProgress, bugList);
-
-        Button button = (Button)findViewById(R.id.button);
-        Button button5 = (Button)findViewById(R.id.button5);
-        Button button6 = (Button)findViewById(R.id.button6);
-        Button button7 = (Button)findViewById(R.id.button7);
-        Button button8 = (Button)findViewById(R.id.button8);
-        Button button9 = (Button)findViewById(R.id.button9);
-        Button button10 = (Button)findViewById(R.id.button10);
-        Button button11 = (Button)findViewById(R.id.button11);
-        Button button12 = (Button)findViewById(R.id.button12);
-        Button button13 = (Button)findViewById(R.id.button13);
-
-        button.setBackgroundResource(R.drawable.animationxml);
-        button5.setBackgroundResource(R.drawable.animationxml);
-        button6.setBackgroundResource(R.drawable.animationxml);
-        button7.setBackgroundResource(R.drawable.animationxml);
-        button8.setBackgroundResource(R.drawable.animationxml);
-        button9.setBackgroundResource(R.drawable.animationxml);
-        button10.setBackgroundResource(R.drawable.animationxml);
-        button11.setBackgroundResource(R.drawable.animationxml);
-        button12.setBackgroundResource(R.drawable.animationxml);
-        button13.setBackgroundResource(R.drawable.animationxml);
-
-        buganimation = (AnimationDrawable)button.getBackground();
-        buganimation5 = (AnimationDrawable)button5.getBackground();
-        buganimation6 = (AnimationDrawable)button6.getBackground();
-        buganimation7 = (AnimationDrawable)button7.getBackground();
-        buganimation8 = (AnimationDrawable)button8.getBackground();
-        buganimation9 = (AnimationDrawable)button9.getBackground();
-        buganimation10 = (AnimationDrawable)button10.getBackground();
-        buganimation11 = (AnimationDrawable)button11.getBackground();
-        buganimation12 = (AnimationDrawable)button12.getBackground();
-        buganimation13 = (AnimationDrawable)button13.getBackground();
+        for (int count = 0; count < 10; count++) {
+            //Instantiates all bug buttons, and  puts them offscreen
+            buttons[count] = (Button) findViewById(buttonIds[count]);
+            buttons[count].setBackgroundResource(R.drawable.animationxml);
+            putOffScreen(buttons[count]);
+            //Instantiates all progresssBars, and  puts them offscreen
+            progressBar[count] = (ProgressBar) findViewById(progressBarIds[count]);
+            putOffScreen(progressBar[count]);
+            // Get all the bug animation objects
+            buganimations[count] = (AnimationDrawable) buttons[count].getBackground();
+        }
 
         //instantiantes every bug that will appear.
-        bug1 = new Bug(button, health, (ProgressBar)this.findViewById(R.id.progressBar), kOsPerDeath);
-        bug2 = new Bug(button5, health, (ProgressBar)this.findViewById(R.id.progressBar3), kOsPerDeath);
-        bug3 = new SmallBug(button6, health, (ProgressBar)this.findViewById(R.id.progressBar4), kOsPerDeath);
-        bug4 = new SmallBug(button7, health, (ProgressBar)this.findViewById(R.id.progressBar5), kOsPerDeath);
-        bug5 = new MovingBug(button8, health, (ProgressBar)this.findViewById(R.id.progressBar6), kOsPerDeath);
-        bug6 = new MovingBug(button9, health, (ProgressBar)this.findViewById(R.id.progressBar7), kOsPerDeath);
-        bug7 = new TeleportingBug(button10, health, (ProgressBar)this.findViewById(R.id.progressBar8), kOsPerDeath);
-        bug8 = new TeleportingBug(button11, health, (ProgressBar)this.findViewById(R.id.progressBar9), kOsPerDeath);
-        bug9 = new FireBug(button12, health, (ProgressBar)this.findViewById(R.id.progressBar10), kOsPerDeath);
-        bug10 = new FireBug(button13, health, (ProgressBar)this.findViewById(R.id.progressBar11), kOsPerDeath);
+        bugList.add(new Bug(buttons[0], health, progressBar[0], kOsPerDeath));
+        bugList.add(new Bug(buttons[1], health, progressBar[1], kOsPerDeath));
+        bugList.add(new SmallBug(buttons[2], health, progressBar[2], kOsPerDeath));
+        bugList.add(new SmallBug(buttons[3], health, progressBar[3], kOsPerDeath));
+        bugList.add(new MovingBug(buttons[4], health, progressBar[4], kOsPerDeath));
+        bugList.add(new MovingBug(buttons[5], health, progressBar[5], kOsPerDeath));
+        bugList.add(new TeleportingBug(buttons[6], health, progressBar[6], kOsPerDeath));
+        bugList.add(new TeleportingBug(buttons[7], health, progressBar[7], kOsPerDeath));
+        bugList.add(new FireBug(buttons[8], health, progressBar[8], kOsPerDeath));
+        bugList.add(new FireBug(buttons[9], health, progressBar[9], kOsPerDeath));
+
+        //Creates new Game
+        ProgressBar levelProgress = (ProgressBar)this.findViewById(R.id.progressBar2);
+        game = new Game(levelProgress, bugList);
+
         /*
         new Thread(new Runnable() {
             public void run() {
@@ -150,20 +105,14 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void onWindowFocusChanged(boolean hasFocus) {
-        bug1.move();
-        buganimation.start();
-        buganimation5.start();
-        buganimation6.start();
-        buganimation7.start();
-        buganimation8.start();
-        buganimation9.start();
-        buganimation10.start();
-        buganimation11.start();
-        buganimation12.start();
-        buganimation13.start();
+        if (!isInitialized) {
+            bugList.get(0).move();
+            for (AnimationDrawable bugAnimation : buganimations) {
+                bugAnimation.start();
+            }
+            isInitialized = true;
+        }
     }
-
-
 
     //Button game mechanics
     public void buttonTestClick(View v) {
@@ -213,14 +162,12 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private Bug findBug(View view) {
-
+        Bug result = null;
         for (Bug bug : bugList) {
             if (bug.getButton() == view) {
-                return bug;
+                result = bug;
             }
         }
-        return bug1;
+        return result;
     }
 }
-
-
