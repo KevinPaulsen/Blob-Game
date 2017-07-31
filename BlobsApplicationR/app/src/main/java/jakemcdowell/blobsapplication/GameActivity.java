@@ -1,5 +1,9 @@
 package jakemcdowell.blobsapplication;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.CountDownTimer;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -23,6 +27,7 @@ public class GameActivity extends AppCompatActivity {
     private Game game;
     private ArrayList<Bug> bugList = new ArrayList<>();
     private boolean isInitialized = false;
+    private ProgressBar timeprogressbar;
 
     //Sets up game screen (progress bar)
     @Override
@@ -58,6 +63,7 @@ public class GameActivity extends AppCompatActivity {
         progressBarIds[7] = R.id.progressBar9;
         progressBarIds[8] = R.id.progressBar10;
         progressBarIds[9] = R.id.progressBar11;
+        timeprogressbar = (ProgressBar)this.findViewById(R.id.timeProgressBar);
 
         for (int count = 0; count < 10; count++) {
             //Instantiates all bug buttons, and  puts them offscreen
@@ -82,6 +88,8 @@ public class GameActivity extends AppCompatActivity {
         bugList.add(new TeleportingBug(buttons[7], health, progressBar[7], kOsPerDeath));
         bugList.add(new FireBug(buttons[8], health, progressBar[8], kOsPerDeath));
         bugList.add(new FireBug(buttons[9], health, progressBar[9], kOsPerDeath));
+
+        Activity gameActivity = new GameActivity();
 
         //Creates new Game
         ProgressBar levelProgress = (ProgressBar)this.findViewById(R.id.progressBar2);
@@ -111,7 +119,41 @@ public class GameActivity extends AppCompatActivity {
                 bugAnimation.start();
             }
             isInitialized = true;
+            startCountDownTimer();
         }
+    }
+
+    public void startCountDownTimer() {
+        new Thread(new Runnable() {
+            public void run() {
+                resetCountDownTimer();
+                while(timeprogressbar.getProgress() != 0){
+                    try {
+                        Thread.sleep(Constants.timeinlevel / 100);
+                        timeprogressbar.setProgress(timeprogressbar.getProgress() - 1);
+                    } catch(Exception ex) {
+                        ex.printStackTrace();
+                    }
+                    if (game.isAllDead()) {
+                        break;
+                    }
+                }
+                if (timeprogressbar.getProgress() == 0) {
+                    gameOver();
+                }
+            }
+
+        }).start();
+    }
+
+    public void resetCountDownTimer() {
+        timeprogressbar.setProgress(100);
+    }
+
+    public void gameOver() {
+        Intent intent = new Intent(this, GameOverActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
     //Button game mechanics
@@ -128,6 +170,7 @@ public class GameActivity extends AppCompatActivity {
             findViewById(R.id.button).setVisibility(View.GONE);
             findViewById(R.id.progressBar).setVisibility(View.GONE);
             findViewById(R.id.progressBar2).setVisibility(View.GONE);
+            findViewById(R.id.timeProgressBar).setVisibility(View.GONE);
         }
     }
 
@@ -135,6 +178,8 @@ public class GameActivity extends AppCompatActivity {
     public void nextLevelButtonClick(View v) {
         //checks to see if new bug on screen should be added
         game.nextLevel();
+
+        startCountDownTimer();
 
         //Updates level marker
         TextView f = (TextView) findViewById(R.id.textView1);
@@ -151,6 +196,7 @@ public class GameActivity extends AppCompatActivity {
         c.setVisibility(View.VISIBLE);
         d.setVisibility(View.VISIBLE);
         e.setVisibility(View.VISIBLE);
+        findViewById(R.id.timeProgressBar).setVisibility(View.VISIBLE);
     }
 
     private static void putOffScreen(View v) {

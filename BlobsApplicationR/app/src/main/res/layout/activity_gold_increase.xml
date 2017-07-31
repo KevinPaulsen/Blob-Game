@@ -19,23 +19,24 @@
         android:layout_width="388dp"
         android:layout_height="45dp"
         android:background="#103807"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintVertical_bias="0.164" />
+
 
     <ImageView
         android:id="@+id/imageView13"
         android:layout_width="175dp"
         android:layout_height="80dp"
         android:background="#3e2723"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.961"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.961"
         app:layout_constraintVertical_bias="0.012" />
 
     <ImageView
@@ -81,11 +82,11 @@
         android:layout_height="83dp"
         android:onClick="leavepurchasebutton"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.134"
+        app:layout_constraintHorizontal_bias="0.085"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.028" />
+        app:layout_constraintVertical_bias="0.027" />
 
     <TextView
         android:id="@+id/textView8"
@@ -99,7 +100,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.236"
+        app:layout_constraintHorizontal_bias="0.21"
         app:layout_constraintVertical_bias="0.025" />
 
     <ImageView
@@ -188,27 +189,19 @@
         tools:layout_editor_absoluteY="20dp"
         tools:layout_editor_absoluteX="0dp" />
 
-    <ImageView
-        android:id="@+id/imageView18"
-        android:layout_width="135dp"
-        android:layout_height="127dp"
-        app:srcCompat="@drawable/sword"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="181dp" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="105dp"
-        android:layout_height="46dp"
-        android:text="Level"
-        android:textColor="@android:color/holo_green_dark"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17000002" />
+]    <TextView
+    android:id="@+id/textView13"
+    android:layout_width="105dp"
+    android:layout_height="46dp"
+    android:text="Level"
+    android:textColor="@android:color/holo_green_dark"
+    android:textSize="32sp"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintHorizontal_bias="0.17"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.17000002" />
 
 </android.support.constraint.ConstraintLayout>

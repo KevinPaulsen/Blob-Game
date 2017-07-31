@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void playgamebuttonclick(View v) {
-        Intent intent = new Intent(this,GameActivity.class);
+        Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }

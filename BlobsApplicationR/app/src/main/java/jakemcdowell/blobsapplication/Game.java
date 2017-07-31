@@ -1,9 +1,15 @@
 package jakemcdowell.blobsapplication;
 
 import android.support.v7.app.AppCompatActivity;
+
+import android.view.View;
 import android.widget.ProgressBar;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import android.os.CountDownTimer;
+import android.content.Intent;
+import android.app.Activity;
 
 import jakemcdowell.blobsapplication.bugs.Bug;
 

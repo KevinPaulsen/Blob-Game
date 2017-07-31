@@ -8,7 +8,7 @@
 
     <Button
         android:id="@+id/button"
-        style="@style/Widget.AppCompat.Button"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="buttonTestClick"
@@ -135,73 +135,73 @@
 
     <Button
         android:id="@+id/button5"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="buttonTestClick"
-        android:text="Button"
         tools:layout_editor_absoluteX="180dp"
         tools:layout_editor_absoluteY="256dp" />
 
     <Button
         android:id="@+id/button6"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="buttonTestClick"
-        android:text="Button"
         tools:layout_editor_absoluteX="263dp"
         tools:layout_editor_absoluteY="181dp" />
 
     <Button
         android:id="@+id/button7"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="buttonTestClick"
-        android:text="Button"
         tools:layout_editor_absoluteX="238dp"
         tools:layout_editor_absoluteY="100dp" />
 
     <Button
         android:id="@+id/button8"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="buttonTestClick"
-        android:text="Button"
         tools:layout_editor_absoluteX="138dp"
         tools:layout_editor_absoluteY="100dp" />
 
     <Button
         android:id="@+id/button9"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="buttonTestClick"
-        android:text="Button"
         tools:layout_editor_absoluteX="30dp"
         tools:layout_editor_absoluteY="131dp" />
 
     <Button
         android:id="@+id/button10"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="buttonTestClick"
-        android:text="Button"
         tools:layout_editor_absoluteX="37dp"
         tools:layout_editor_absoluteY="287dp" />
 
     <Button
         android:id="@+id/button11"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="buttonTestClick"
-        android:text="Button"
         tools:layout_editor_absoluteX="48dp"
         tools:layout_editor_absoluteY="414dp" />
 
     <Button
         android:id="@+id/button12"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="buttonTestClick"
-        android:text="Button"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="204dp" />
 
@@ -215,10 +215,10 @@
 
     <Button
         android:id="@+id/button13"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="buttonTestClick"
-        android:text="Button"
         tools:layout_editor_absoluteX="193dp"
         tools:layout_editor_absoluteY="48dp" />
 
@@ -229,5 +229,18 @@
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="303dp"
         tools:layout_editor_absoluteY="60dp" />
+
+    <ProgressBar
+        android:id="@+id/timeProgressBar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="244dp"
+        android:layout_height="19dp"
+        android:layout_marginBottom="7dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.849"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteX="124dp"
+        tools:layout_editor_absoluteY="485dp" />
 
 </android.support.constraint.ConstraintLayout>
