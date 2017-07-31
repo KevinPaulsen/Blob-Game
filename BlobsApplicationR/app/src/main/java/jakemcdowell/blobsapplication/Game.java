@@ -1,83 +1,92 @@
 package jakemcdowell.blobsapplication;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.ProgressBar;
+import java.util.ArrayList;
+import java.util.List;
+
+import jakemcdowell.blobsapplication.bugs.Bug;
+
 
 /**
  * Created by kevin on 7/25/17.
  */
-
 public class Game extends AppCompatActivity {
+    private ProgressBar levelProgressBar;
+    private List<Bug> bugList;
+    private List<Bug> bugsInLevel;
     private int level;
-    private int numBugs;
-    private ProgressBar levelProgress;
-    private ProgressBar hp;
-    private int bugsKilled = 0;
+    private int bugsKilledInLevel = 0;
+    private int totalKnockoutsRequiredInLevel;
 
-    public Game(ProgressBar progressBar, ProgressBar hp) {
-        level = 1;
-        numBugs = 5;
-        levelProgress = progressBar;
-        this.hp = hp;
+    public Game(ProgressBar progressBar, List<Bug> bugList) {
+        levelProgressBar = progressBar;
+        this.bugList = bugList;
+        setupLevel(1);
+    }
+
+    public void setupLevel(int level) {
+        this.level = level;
+        levelProgressBar.setProgress(0);
+        int levelBugCount = getTotalBugsInLevel();
+        this.bugsInLevel = new ArrayList<>(levelBugCount);
+        this.bugsKilledInLevel = 0;
+        for (int idx = 0; idx < levelBugCount; idx++) {
+            bugsInLevel.add(getNewBug(idx));
+        }
+        this.totalKnockoutsRequiredInLevel = levelBugCount * bugsInLevel.get(0).getTotalKnockOuts();
+    }
+
+    public void endLevel() {
+        for (Bug bug : bugList) {
+            bug.resetBugToInitialState();
+        }
+    }
+
+    private Bug getNewBug(int bugNum) {
+        Bug bug = bugList.get(bugNum);
+        bug.resetBugToInitialState();
+        bug.move();
+        return bug;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public boolean isAllDead() {
+        return getBugsLeftInLevel() == 0;
     }
 
     public void nextLevel() {
-        level++;
-        bugsKilled = 0;
+        for (Bug bug : bugList) {
+            bug.addHealth(1);
+        }
+        setupLevel(getLevel() + 1);
     }
 
-    public void pauseDeath(Bug bug) {
-        final Bug B = bug;
-        bug.getBug().setVisibility(View.GONE);
-        new Thread(new Runnable() {
-            public void run() {
-                long startTime = System.currentTimeMillis();
-                while(System.currentTimeMillis()-startTime < 500){
-                    try {
-                        hp.setProgress(0);
-                        Thread.sleep(25);
-
-                    }
-                    catch(Exception ex){
-                        ex.printStackTrace();
-                    }
-                }
-                hp.setProgress(100);
-            }
-
-        }).start();
-        bug.getBug().setVisibility(View.GONE);
-        bug.getBug().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (bugsKilled != 5) {
-                    B.getBug().setVisibility(View.VISIBLE);
-                }
-            }
-        }, 500);
+    public void updateLevelKnockOutProgressBar() {
+        levelProgressBar.setProgress((int) ((((double) getBugsKnockedOut()) / totalKnockoutsRequiredInLevel) * 100));
     }
 
-    public void setProgressBar(Bug bug) {
-        hp.setProgress((int)(((bug.getHealth() - bug.getTapsOnBug()) / bug.getHealth()) * 100));
+    public int getBugsKnockedOut() {
+        int totalDeadBugs = 0;
+        for (Bug bug : bugsInLevel) {
+            totalDeadBugs += bug.getKnockOuts();
+        }
+        return totalDeadBugs;
     }
 
-    public void deadBug() {
-        bugsKilled++;
-        levelProgress.setProgress((int)(20 * bugsKilled));
-        //hp.setProgress(0);
+    public void addBugKilledInLevel() {
+        bugsKilledInLevel++;
     }
 
-    public void fillHp() {
-        hp.setProgress(100);
+    private int getTotalBugsInLevel() {
+        return level / 3 + 1;
     }
 
-    public void resetLevelProgress() {
-        levelProgress.setProgress(0);
-    }
-
-    public int getBugsKilled() {
-        return bugsKilled;
+    //returns how many bugs will die this level
+    public int getBugsLeftInLevel() {
+        return getTotalBugsInLevel() - bugsKilledInLevel;
     }
 }

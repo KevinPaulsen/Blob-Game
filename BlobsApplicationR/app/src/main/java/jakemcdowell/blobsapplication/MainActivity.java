@@ -19,5 +19,18 @@ public class MainActivity extends AppCompatActivity {
     public void playgamebuttonclick(View v) {
         Intent intent = new Intent(this,GameActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+
+    public void entershopbuttonclick(View v) {
+        Intent intent2 = new Intent(this,ShopActivity.class);
+        startActivity(intent2);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+
+    public void howtoplaybuttonclick(View v) {
+        Intent intent3 = new Intent(this,HelpActivity.class);
+        startActivity(intent3);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 }
