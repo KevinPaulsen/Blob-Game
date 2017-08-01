@@ -71,6 +71,7 @@
         android:layout_height="134dp"
         android:background="@android:color/darker_gray"
         android:fontFamily="sans-serif-condensed"
+        android:onClick="purchaseupgradebutton"
         android:text="Purchase"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.934"

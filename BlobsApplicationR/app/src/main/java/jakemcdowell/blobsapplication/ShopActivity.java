@@ -21,6 +21,9 @@ public class ShopActivity extends AppCompatActivity implements Runnable {
         Button leaveshopbutton = (Button) findViewById(R.id.LeaveShopButton);
         leaveshopbutton.setBackgroundResource(R.drawable.dooranimation);
         dooranimation = (AnimationDrawable) leaveshopbutton.getBackground();
+    }
+
+    public void onWindowFocusChanged(boolean hasFocus) {
         TextView golddisplay = (TextView) findViewById(R.id.textView10);
         golddisplay.setText("" + PlayerData.currentgold);
     }

@@ -16,6 +16,11 @@ public class DamageIncreaseActivity extends AppCompatActivity {
         golddisplay.setText("" + PlayerData.currentgold);
         if (PlayerData.damageincreaselevel == 0) {
             currentprice = Constants.damageincreasepricelevel1;
+            findViewById(R.id.imageView19).setBackgroundResource(R.drawable.emptycircle);
+            findViewById(R.id.imageView15).setBackgroundResource(R.drawable.emptycircle);
+            findViewById(R.id.imageView17).setBackgroundResource(R.drawable.emptycircle);
+            findViewById(R.id.imageView12).setBackgroundResource(R.drawable.emptycircle);
+            findViewById(R.id.imageView14).setBackgroundResource(R.drawable.emptycircle);
         }
         if (PlayerData.damageincreaselevel == 1) {
             currentprice = Constants.damageincreasepricelevel2;
@@ -55,6 +60,22 @@ public class DamageIncreaseActivity extends AppCompatActivity {
             findViewById(R.id.imageView17).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView12).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView14).setBackgroundResource(R.drawable.fullcircle);
+        }
+    }
+
+    public void purchaseupgradebutton(View v)  {
+        if (PlayerData.currentgold >= currentprice && PlayerData.damageincreaselevel < 5) {
+                PlayerData.damageincreaselevel = PlayerData.damageincreaselevel + 1;
+                PlayerData.currentgold = PlayerData.currentgold - currentprice;
+                finish();
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+        }
+        else if (PlayerData.damageincreaselevel == 5) {
+            finish();
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+        }
+        else {
+
         }
     }
 
