@@ -6,11 +6,15 @@ import android.view.View;
 import android.widget.ProgressBar;
 import java.util.ArrayList;
 import java.util.List;
+//<<<<<<< Updated upstream
 import java.util.concurrent.CountDownLatch;
 import android.os.CountDownTimer;
 import android.content.Intent;
 import android.app.Activity;
 
+//=======
+import java.lang.Math;
+//>>>>>>> Stashed changes
 import jakemcdowell.blobsapplication.bugs.Bug;
 
 
@@ -21,6 +25,7 @@ public class Game extends AppCompatActivity {
     private ProgressBar levelProgressBar;
     private List<Bug> bugList;
     private List<Bug> bugsInLevel;
+    private List<Bug> availableBugsInLevel = new ArrayList<>();
     private int level;
     private int bugsKilledInLevel = 0;
     private int totalKnockoutsRequiredInLevel;
@@ -31,14 +36,25 @@ public class Game extends AppCompatActivity {
         setupLevel(1);
     }
 
+    public void removeAllAvailableBugs() {
+        while (availableBugsInLevel.size() != 0) {
+            availableBugsInLevel.remove(0);
+        }
+    }
+
     public void setupLevel(int level) {
+        removeAllAvailableBugs();
         this.level = level;
-        levelProgressBar.setProgress(0);
+        this.levelProgressBar.setProgress(0);
         int levelBugCount = getTotalBugsInLevel();
         this.bugsInLevel = new ArrayList<>(levelBugCount);
         this.bugsKilledInLevel = 0;
-        for (int idx = 0; idx < levelBugCount; idx++) {
-            bugsInLevel.add(getNewBug(idx));
+        for (int idx = 0; idx != 2 + ((level / 5) * 2); idx += 2) {
+            availableBugsInLevel.add(bugList.get(idx));
+            availableBugsInLevel.add(bugList.get(idx + 1));
+        }
+        while (bugsInLevel.size() < getTotalBugsInLevel()) {
+            bugsInLevel.add(getNewBug((int)(Math.random() * availableBugsInLevel.size())));
         }
         this.totalKnockoutsRequiredInLevel = levelBugCount * bugsInLevel.get(0).getTotalKnockOuts();
     }
@@ -50,7 +66,8 @@ public class Game extends AppCompatActivity {
     }
 
     private Bug getNewBug(int bugNum) {
-        Bug bug = bugList.get(bugNum);
+        Bug bug = availableBugsInLevel.get(bugNum);
+        availableBugsInLevel.remove(bugNum);
         bug.resetBugToInitialState();
         bug.move();
         return bug;
@@ -66,7 +83,7 @@ public class Game extends AppCompatActivity {
 
     public void nextLevel() {
         for (Bug bug : bugList) {
-            bug.addHealth(1);
+            bug.addHealth(0);
         }
         setupLevel(getLevel() + 1);
     }
@@ -89,6 +106,10 @@ public class Game extends AppCompatActivity {
 
     private int getTotalBugsInLevel() {
         return level / 3 + 1;
+    }
+
+    public Bug getFirstBugInLevel() {
+        return bugsInLevel.get(0);
     }
 
     //returns how many bugs will die this level

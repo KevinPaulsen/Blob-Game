@@ -80,8 +80,8 @@ public class GameActivity extends AppCompatActivity {
         //instantiantes every bug that will appear.
         bugList.add(new Bug(buttons[0], health, progressBar[0], kOsPerDeath));
         bugList.add(new Bug(buttons[1], health, progressBar[1], kOsPerDeath));
-        bugList.add(new SmallBug(buttons[2], health, progressBar[2], kOsPerDeath));
-        bugList.add(new SmallBug(buttons[3], health, progressBar[3], kOsPerDeath));
+        bugList.add(new TeleportingBug(buttons[2], health, progressBar[2], kOsPerDeath));
+        bugList.add(new TeleportingBug(buttons[3], health, progressBar[3], kOsPerDeath));
         bugList.add(new MovingBug(buttons[4], health, progressBar[4], kOsPerDeath));
         bugList.add(new MovingBug(buttons[5], health, progressBar[5], kOsPerDeath));
         bugList.add(new TeleportingBug(buttons[6], health, progressBar[6], kOsPerDeath));
@@ -99,13 +99,7 @@ public class GameActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             public void run() {
                 while (true) {
-                    //move the bug
-                    try{
-                        Thread.sleep(1000);
-                    }
-                    catch(Exception ex) {
-                        ex.printStackTrace();
-                    }
+                    //
                 }
             }
         }).start();
@@ -114,7 +108,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void onWindowFocusChanged(boolean hasFocus) {
         if (!isInitialized) {
-            bugList.get(0).move();
+            game.getFirstBugInLevel().move();
             for (AnimationDrawable bugAnimation : buganimations) {
                 bugAnimation.start();
             }

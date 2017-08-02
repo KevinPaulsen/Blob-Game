@@ -107,7 +107,7 @@ public class Bug {
                 public void run() {
                     move();
                 }
-            }, 700);
+            }, 500);
         }
     }
 
@@ -145,5 +145,13 @@ public class Bug {
 
     public int getTotalKnockOuts() {
         return totalKnockOuts;
+    }
+
+    public boolean isOnScreen() {
+        return button.getY() < 1420 && button.getY() > 220 && button.getX() < 775 && button.getX() > 50;
+    }
+
+    public void addDamage(int damage) {
+        this.damage += damage;
     }
 }
