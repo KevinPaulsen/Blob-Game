@@ -5,8 +5,8 @@ package jakemcdowell.blobsapplication;
  */
 
 public class PlayerData {
-    public static int currentgold = 999999;
-    public int currentlevel = 0;
+    public static int currentgold = 0;
+    public static int currentlevel = 0;
 
     public static int damageincreaselevel = 0;
     public static int radiusincreaselevel = 0;

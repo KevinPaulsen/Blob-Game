@@ -2,8 +2,6 @@ package jakemcdowell.blobsapplication;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.CountDownTimer;
-import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -28,6 +26,7 @@ public class GameActivity extends AppCompatActivity {
     private ArrayList<Bug> bugList = new ArrayList<>();
     private boolean isInitialized = false;
     private ProgressBar timeprogressbar;
+    private int goldearnedbylevel = 0;
 
     //Sets up game screen (progress bar)
     @Override
@@ -68,7 +67,7 @@ public class GameActivity extends AppCompatActivity {
         for (int count = 0; count < 10; count++) {
             //Instantiates all bug buttons, and  puts them offscreen
             buttons[count] = (Button) findViewById(buttonIds[count]);
-            buttons[count].setBackgroundResource(R.drawable.animationxml);
+            buttons[count].setBackgroundResource(R.drawable.normalbuganimation);
             putOffScreen(buttons[count]);
             //Instantiates all progresssBars, and  puts them offscreen
             progressBar[count] = (ProgressBar) findViewById(progressBarIds[count]);
@@ -165,6 +164,8 @@ public class GameActivity extends AppCompatActivity {
             findViewById(R.id.progressBar).setVisibility(View.GONE);
             findViewById(R.id.progressBar2).setVisibility(View.GONE);
             findViewById(R.id.timeProgressBar).setVisibility(View.GONE);
+            goldearnedbylevel = goldearnedbylevel + Constants.goldaddedperlevel;
+            PlayerData.currentgold = PlayerData.currentgold + goldearnedbylevel;
         }
     }
 

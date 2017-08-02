@@ -6,7 +6,6 @@ package jakemcdowell.blobsapplication;
 
 public class Constants {
 
-    //30 times 1000 milliseconds = 30 seconds
     public static long timeinlevel = 30 * 1000;
 
     public static int damageincreasepricelevel1 = 30;
@@ -32,4 +31,6 @@ public class Constants {
     public static int goldincreasepricelevel3 = 7696;
     public static int goldincreasepricelevel4 = 46080;
     public static int goldincreasepricelevel5 = 394652;
+
+    public static int goldaddedperlevel = 2;
 }
