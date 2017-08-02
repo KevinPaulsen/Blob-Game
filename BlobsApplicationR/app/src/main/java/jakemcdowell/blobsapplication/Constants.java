@@ -6,31 +6,41 @@ package jakemcdowell.blobsapplication;
 
 public class Constants {
 
-    public static long timeinlevel = 30 * 1000;
+    public static long timeInLevel = 30 * 1000;
 
-    public static int damageincreasepricelevel1 = 30;
-    public static int damageincreasepricelevel2 = 60;
-    public static int damageincreasepricelevel3 = 136;
-    public static int damageincreasepricelevel4 = 364;
-    public static int damageincreasepricelevel5 = 1184;
+//This is the price of the damage increase upgrade by level
+    public static int damageIncreasePriceLevel1 = 30;
+    public static int damageIncreasePriceLevel2 = 60;
+    public static int damageIncreasePriceLevel3 = 136;
+    public static int damageIncreasePriceLevel4 = 364;
+    public static int damageIncreasePriceLevel5 = 1184;
+//This is how much damage is increased by per tap
+    public static int damageIncreaseLevel1 = 3;
+    public static int damageIncreaseLevel2 = 6;
+    public static int damageIncreaseLevel3 = 9;
+    public static int damageIncreaseLevel4 = 12;
+    public static int damageIncreaseLevel5 = 15;
 
-    public static int radiusincreasepricelevel1 = 50;
-    public static int radiusincreasepricelevel2 = 110;
-    public static int radiusincreasepricelevel3 = 282;
-    public static int radiusincreasepricelevel4 = 872;
-    public static int radiusincreasepricelevel5 = 3378;
+//This is the price of the radius increase upgrade by level
+    public static int radiusIncreasePriceLevel1 = 50;
+    public static int radiusIncreasePriceLevel2 = 110;
+    public static int radiusIncreasePriceLevel3 = 282;
+    public static int radiusIncreasePriceLevel4 = 872;
+    public static int radiusIncreasePriceLevel5 = 3378;
 
-    public static int pesticidepricelevel1 = 100;
-    public static int pesticidepricelevel2 = 252;
-    public static int pesticidepricelevel3 = 762;
-    public static int pesticidepricelevel4 = 2874;
-    public static int pesticidepricelevel5 = 14132;
+//This is the price of pesticide powerup based on level
+    public static int pesticidePriceLevel1 = 100;
+    public static int pesticidePriceLevel2 = 252;
+    public static int pesticidePriceLevel3 = 762;
+    public static int pesticidePriceLevel4 = 2874;
+    public static int pesticidePriceLevel5 = 14132;
 
-    public static int goldincreasepricelevel1 = 500;
-    public static int goldincreasepricelevel2 = 1732;
-    public static int goldincreasepricelevel3 = 7696;
-    public static int goldincreasepricelevel4 = 46080;
-    public static int goldincreasepricelevel5 = 394652;
+//This is the price of gold increase upgrade based on level
+    public static int goldIncreasePriceLevel1 = 500;
+    public static int goldIncreasePriceLevel2 = 1732;
+    public static int goldIncreasePriceLevel3 = 7696;
+    public static int goldIncreasePriceLevel4 = 46080;
+    public static int goldIncreasePriceLevel5 = 394652;
 
-    public static int goldaddedperlevel = 2;
+    public static int goldAddedPerLevel = 2;
 }

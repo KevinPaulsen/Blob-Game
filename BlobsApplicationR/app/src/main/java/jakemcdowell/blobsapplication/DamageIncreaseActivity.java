@@ -13,48 +13,48 @@ public class DamageIncreaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_damage_increase);
         TextView golddisplay = (TextView) findViewById(R.id.textView12);
-        golddisplay.setText("" + PlayerData.currentgold);
-        if (PlayerData.damageincreaselevel == 0) {
-            currentprice = Constants.damageincreasepricelevel1;
+        golddisplay.setText("" + PlayerData.currentGold);
+        if (PlayerData.damageIncreaseLevel == 0) {
+            currentprice = Constants.damageIncreasePriceLevel1;
             findViewById(R.id.imageView19).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView15).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView17).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView12).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView14).setBackgroundResource(R.drawable.emptycircle);
         }
-        if (PlayerData.damageincreaselevel == 1) {
-            currentprice = Constants.damageincreasepricelevel2;
+        if (PlayerData.damageIncreaseLevel == 1) {
+            currentprice = Constants.damageIncreasePriceLevel2;
             findViewById(R.id.imageView19).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView15).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView17).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView12).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView14).setBackgroundResource(R.drawable.emptycircle);
         }
-        if (PlayerData.damageincreaselevel == 2) {
-            currentprice = Constants.damageincreasepricelevel3;
+        if (PlayerData.damageIncreaseLevel == 2) {
+            currentprice = Constants.damageIncreasePriceLevel3;
             findViewById(R.id.imageView19).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView15).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView17).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView12).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView14).setBackgroundResource(R.drawable.emptycircle);
         }
-        if (PlayerData.damageincreaselevel == 3) {
-            currentprice = Constants.damageincreasepricelevel4;
+        if (PlayerData.damageIncreaseLevel == 3) {
+            currentprice = Constants.damageIncreasePriceLevel4;
             findViewById(R.id.imageView19).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView15).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView17).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView12).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView14).setBackgroundResource(R.drawable.emptycircle);
         }
-        if (PlayerData.damageincreaselevel == 4) {
-            currentprice = Constants.damageincreasepricelevel5;
+        if (PlayerData.damageIncreaseLevel == 4) {
+            currentprice = Constants.damageIncreasePriceLevel5;
             findViewById(R.id.imageView19).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView15).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView17).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView12).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView14).setBackgroundResource(R.drawable.emptycircle);
         }
-        if (PlayerData.damageincreaselevel == 5) {
+        if (PlayerData.damageIncreaseLevel == 5) {
             findViewById(R.id.imageView19).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView15).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView17).setBackgroundResource(R.drawable.fullcircle);
@@ -64,13 +64,13 @@ public class DamageIncreaseActivity extends AppCompatActivity {
     }
 
     public void purchaseupgradebutton(View v)  {
-        if (PlayerData.currentgold >= currentprice && PlayerData.damageincreaselevel < 5) {
-                PlayerData.damageincreaselevel = PlayerData.damageincreaselevel + 1;
-                PlayerData.currentgold = PlayerData.currentgold - currentprice;
+        if (PlayerData.currentGold >= currentprice && PlayerData.damageIncreaseLevel < 5) {
+                PlayerData.damageIncreaseLevel = PlayerData.damageIncreaseLevel + 1;
+                PlayerData.currentGold = PlayerData.currentGold - currentprice;
                 finish();
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }
-        else if (PlayerData.damageincreaselevel == 5) {
+        else if (PlayerData.damageIncreaseLevel == 5) {
             finish();
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }

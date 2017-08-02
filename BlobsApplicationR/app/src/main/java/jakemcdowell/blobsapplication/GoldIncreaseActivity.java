@@ -13,48 +13,48 @@ public class GoldIncreaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gold_increase);
         TextView golddisplay = (TextView) findViewById(R.id.textView12);
-        golddisplay.setText("" + PlayerData.currentgold);
-        if (PlayerData.goldincreaselevel == 0) {
-            currentprice = Constants.goldincreasepricelevel1;
+        golddisplay.setText("" + PlayerData.currentGold);
+        if (PlayerData.goldIncreaseLevel == 0) {
+            currentprice = Constants.goldIncreasePriceLevel1;
             findViewById(R.id.imageView19).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView15).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView17).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView12).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView14).setBackgroundResource(R.drawable.emptycircle);
         }
-        if (PlayerData.goldincreaselevel == 1) {
-            currentprice = Constants.goldincreasepricelevel2;
+        if (PlayerData.goldIncreaseLevel == 1) {
+            currentprice = Constants.goldIncreasePriceLevel2;
             findViewById(R.id.imageView19).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView15).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView17).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView12).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView14).setBackgroundResource(R.drawable.emptycircle);
         }
-        if (PlayerData.goldincreaselevel == 2) {
-            currentprice = Constants.goldincreasepricelevel3;
+        if (PlayerData.goldIncreaseLevel == 2) {
+            currentprice = Constants.goldIncreasePriceLevel3;
             findViewById(R.id.imageView19).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView15).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView17).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView12).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView14).setBackgroundResource(R.drawable.emptycircle);
         }
-        if (PlayerData.goldincreaselevel == 3) {
-            currentprice = Constants.goldincreasepricelevel4;
+        if (PlayerData.goldIncreaseLevel == 3) {
+            currentprice = Constants.goldIncreasePriceLevel4;
             findViewById(R.id.imageView19).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView15).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView17).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView12).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView14).setBackgroundResource(R.drawable.emptycircle);
         }
-        if (PlayerData.goldincreaselevel == 4) {
-            currentprice = Constants.goldincreasepricelevel5;
+        if (PlayerData.goldIncreaseLevel == 4) {
+            currentprice = Constants.goldIncreasePriceLevel5;
             findViewById(R.id.imageView19).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView15).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView17).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView12).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView14).setBackgroundResource(R.drawable.emptycircle);
         }
-        if (PlayerData.goldincreaselevel == 5) {
+        if (PlayerData.goldIncreaseLevel == 5) {
             findViewById(R.id.imageView19).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView15).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView17).setBackgroundResource(R.drawable.fullcircle);
@@ -64,13 +64,13 @@ public class GoldIncreaseActivity extends AppCompatActivity {
     }
 
     public void purchaseupgradebutton(View v)  {
-        if (PlayerData.currentgold >= currentprice && PlayerData.goldincreaselevel < 5) {
-            PlayerData.goldincreaselevel = PlayerData.goldincreaselevel + 1;
-            PlayerData.currentgold = PlayerData.currentgold - currentprice;
+        if (PlayerData.currentGold >= currentprice && PlayerData.goldIncreaseLevel < 5) {
+            PlayerData.goldIncreaseLevel = PlayerData.goldIncreaseLevel + 1;
+            PlayerData.currentGold = PlayerData.currentGold - currentprice;
             finish();
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }
-        else if (PlayerData.goldincreaselevel == 5) {
+        else if (PlayerData.goldIncreaseLevel == 5) {
             finish();
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }

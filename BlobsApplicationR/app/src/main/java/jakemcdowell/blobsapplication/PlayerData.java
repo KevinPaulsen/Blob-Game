@@ -5,12 +5,12 @@ package jakemcdowell.blobsapplication;
  */
 
 public class PlayerData {
-    public static int currentgold = 0;
-    public static int currentlevel = 0;
+    public static int currentGold = 999999;
+    public static int currentLevel = 0;
 
-    public static int damageincreaselevel = 0;
-    public static int radiusincreaselevel = 0;
-    public static int goldincreaselevel = 0;
-    public static int numberofpesticide = 0;
+    public static int damageIncreaseLevel = 0;
+    public static int radiusIncreaseLevel = 0;
+    public static int goldIncreaseLevel = 0;
+    public static int numberOfPesticide = 0;
 
 }

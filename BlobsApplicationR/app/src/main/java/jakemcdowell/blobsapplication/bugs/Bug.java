@@ -3,7 +3,9 @@ package jakemcdowell.blobsapplication.bugs;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import jakemcdowell.blobsapplication.Constants;
 import jakemcdowell.blobsapplication.Game;
+import jakemcdowell.blobsapplication.PlayerData;
 import jakemcdowell.blobsapplication.R;
 
 /**
@@ -51,6 +53,9 @@ public class Bug {
     }
 
     public void decreaseHpProgressBar() {
+        if (damage > health) {
+            damage = health;
+        }
         int newProgressValue = (int)(((double)(getHealth() - getDamageOnBug()) / getHealth()) * 100);
         hp.setProgress(newProgressValue);
     }
@@ -65,7 +70,24 @@ public class Bug {
 
     public void damageBug(Game game) {
         move();
-        damage++;
+        if (PlayerData.damageIncreaseLevel == 0) {
+            damage++;
+        }
+        if (PlayerData.damageIncreaseLevel == 1) {
+            damage += Constants.damageIncreaseLevel1;
+        }
+        if (PlayerData.damageIncreaseLevel == 2) {
+            damage += Constants.damageIncreaseLevel2;
+        }
+        if (PlayerData.damageIncreaseLevel == 3) {
+            damage += Constants.damageIncreaseLevel3;
+        }
+        if (PlayerData.damageIncreaseLevel == 4) {
+            damage += Constants.damageIncreaseLevel4;
+        }
+        if (PlayerData.damageIncreaseLevel == 5) {
+            damage += Constants.damageIncreaseLevel5;
+        }
         decreaseHpProgressBar();
         if (isKnockedOut()) {
             resetAfterKnockedOut();

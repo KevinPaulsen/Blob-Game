@@ -8,15 +8,15 @@
 
     <ImageView
         android:id="@+id/imageView16"
-        android:layout_width="381dp"
-        android:layout_height="184dp"
+        android:layout_width="480dp"
+        android:layout_height="282dp"
         app:srcCompat="@drawable/gameover"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.151"
-        app:layout_constraintHorizontal_bias="0.0" />
+        app:layout_constraintVertical_bias="0.068"
+        app:layout_constraintHorizontal_bias="0.507" />
 
     <Button
         android:id="@+id/button15"
@@ -55,7 +55,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.657"
-        tools:layout_editor_absoluteY="416dp"
         app:layout_constraintHorizontal_bias="0.501" />
 
     <ImageView
@@ -83,4 +82,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.928" />
+
+    <ImageView
+        android:id="@+id/imageView24"
+        android:layout_width="123dp"
+        android:layout_height="103dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:srcCompat="@drawable/home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.854" />
+
 </android.support.constraint.ConstraintLayout>

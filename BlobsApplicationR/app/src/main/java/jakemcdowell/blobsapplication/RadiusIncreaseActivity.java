@@ -13,48 +13,48 @@ public class RadiusIncreaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_radius_increase);
         TextView golddisplay = (TextView) findViewById(R.id.textView12);
-        golddisplay.setText("" + PlayerData.currentgold);
-        if (PlayerData.radiusincreaselevel == 0) {
-            currentprice = Constants.radiusincreasepricelevel1;
+        golddisplay.setText("" + PlayerData.currentGold);
+        if (PlayerData.radiusIncreaseLevel == 0) {
+            currentprice = Constants.radiusIncreasePriceLevel1;
             findViewById(R.id.imageView19).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView15).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView17).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView12).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView14).setBackgroundResource(R.drawable.emptycircle);
         }
-        if (PlayerData.radiusincreaselevel == 1) {
-            currentprice = Constants.radiusincreasepricelevel2;
+        if (PlayerData.radiusIncreaseLevel == 1) {
+            currentprice = Constants.radiusIncreasePriceLevel2;
             findViewById(R.id.imageView19).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView15).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView17).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView12).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView14).setBackgroundResource(R.drawable.emptycircle);
         }
-        if (PlayerData.radiusincreaselevel == 2) {
-            currentprice = Constants.radiusincreasepricelevel3;
+        if (PlayerData.radiusIncreaseLevel == 2) {
+            currentprice = Constants.radiusIncreasePriceLevel3;
             findViewById(R.id.imageView19).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView15).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView17).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView12).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView14).setBackgroundResource(R.drawable.emptycircle);
         }
-        if (PlayerData.radiusincreaselevel == 3) {
-            currentprice = Constants.radiusincreasepricelevel4;
+        if (PlayerData.radiusIncreaseLevel == 3) {
+            currentprice = Constants.radiusIncreasePriceLevel4;
             findViewById(R.id.imageView19).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView15).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView17).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView12).setBackgroundResource(R.drawable.emptycircle);
             findViewById(R.id.imageView14).setBackgroundResource(R.drawable.emptycircle);
         }
-        if (PlayerData.radiusincreaselevel == 4) {
-            currentprice = Constants.radiusincreasepricelevel5;
+        if (PlayerData.radiusIncreaseLevel == 4) {
+            currentprice = Constants.radiusIncreasePriceLevel5;
             findViewById(R.id.imageView19).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView15).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView17).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView12).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView14).setBackgroundResource(R.drawable.emptycircle);
         }
-        if (PlayerData.radiusincreaselevel == 5) {
+        if (PlayerData.radiusIncreaseLevel == 5) {
             findViewById(R.id.imageView19).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView15).setBackgroundResource(R.drawable.fullcircle);
             findViewById(R.id.imageView17).setBackgroundResource(R.drawable.fullcircle);
@@ -64,13 +64,13 @@ public class RadiusIncreaseActivity extends AppCompatActivity {
     }
 
     public void purchaseupgradebutton(View v)  {
-        if (PlayerData.currentgold >= currentprice && PlayerData.radiusincreaselevel < 5) {
-            PlayerData.radiusincreaselevel = PlayerData.radiusincreaselevel + 1;
-            PlayerData.currentgold = PlayerData.currentgold - currentprice;
+        if (PlayerData.currentGold >= currentprice && PlayerData.radiusIncreaseLevel < 5) {
+            PlayerData.radiusIncreaseLevel = PlayerData.radiusIncreaseLevel + 1;
+            PlayerData.currentGold = PlayerData.currentGold - currentprice;
             finish();
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }
-        else if (PlayerData.radiusincreaselevel == 5) {
+        else if (PlayerData.radiusIncreaseLevel == 5) {
             finish();
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }

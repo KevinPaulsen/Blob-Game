@@ -7,7 +7,6 @@ import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.telecom.Call.Details;
 import android.widget.TextView;
 
 public class ShopActivity extends AppCompatActivity implements Runnable {
@@ -25,7 +24,7 @@ public class ShopActivity extends AppCompatActivity implements Runnable {
 
     public void onWindowFocusChanged(boolean hasFocus) {
         TextView golddisplay = (TextView) findViewById(R.id.textView10);
-        golddisplay.setText("" + PlayerData.currentgold);
+        golddisplay.setText("" + PlayerData.currentGold);
     }
 
     public void leaveshopbutton(View v) {

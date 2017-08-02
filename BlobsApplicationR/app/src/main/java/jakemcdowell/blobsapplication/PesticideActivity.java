@@ -12,7 +12,7 @@ public class PesticideActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pesticide);
         TextView golddisplay = (TextView) findViewById(R.id.textView12);
-        golddisplay.setText("" + PlayerData.currentgold);
+        golddisplay.setText("" + PlayerData.currentGold);
 
     }
 

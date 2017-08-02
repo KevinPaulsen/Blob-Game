@@ -2,6 +2,8 @@ package jakemcdowell.blobsapplication;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -15,7 +17,6 @@ import java.util.ArrayList;
 import jakemcdowell.blobsapplication.bugs.Bug;
 import jakemcdowell.blobsapplication.bugs.FireBug;
 import jakemcdowell.blobsapplication.bugs.MovingBug;
-import jakemcdowell.blobsapplication.bugs.SmallBug;
 import jakemcdowell.blobsapplication.bugs.TeleportingBug;
 
 
@@ -122,7 +123,7 @@ public class GameActivity extends AppCompatActivity {
                 resetCountDownTimer();
                 while(timeprogressbar.getProgress() != 0){
                     try {
-                        Thread.sleep(Constants.timeinlevel / 100);
+                        Thread.sleep(Constants.timeInLevel / 100);
                         timeprogressbar.setProgress(timeprogressbar.getProgress() - 1);
                     } catch(Exception ex) {
                         ex.printStackTrace();
@@ -164,8 +165,8 @@ public class GameActivity extends AppCompatActivity {
             findViewById(R.id.progressBar).setVisibility(View.GONE);
             findViewById(R.id.progressBar2).setVisibility(View.GONE);
             findViewById(R.id.timeProgressBar).setVisibility(View.GONE);
-            goldearnedbylevel = goldearnedbylevel + Constants.goldaddedperlevel;
-            PlayerData.currentgold = PlayerData.currentgold + goldearnedbylevel;
+            goldearnedbylevel = goldearnedbylevel + Constants.goldAddedPerLevel;
+            PlayerData.currentGold = PlayerData.currentGold + goldearnedbylevel;
         }
     }
 
@@ -179,6 +180,13 @@ public class GameActivity extends AppCompatActivity {
         //Updates level marker
         TextView f = (TextView) findViewById(R.id.textView1);
         f.setText("level: " + game.getLevel());
+        ConstraintLayout j = (ConstraintLayout)findViewById(R.id.Constraint);
+        Drawable k = getDrawable(R.drawable.sandy);
+        Drawable l = getDrawable(R.drawable.gravel);
+        Drawable m = getDrawable(R.drawable.leaf);
+        Drawable n = getDrawable(R.drawable.desert);
+        Drawable o = getDrawable(R.drawable.grassy);
+        Drawable p = getDrawable(R.drawable.snow);
 
         //sets up next level and removes nextLevel page.
         View b = findViewById(R.id.button2);
@@ -192,6 +200,22 @@ public class GameActivity extends AppCompatActivity {
         d.setVisibility(View.VISIBLE);
         e.setVisibility(View.VISIBLE);
         findViewById(R.id.timeProgressBar).setVisibility(View.VISIBLE);
+        j.setBackground(o);
+        if(game.getLevel()%26 > 4 && game.getLevel()%26 < 9){
+            j.setBackground(k);
+        }
+        if(game.getLevel()%26 > 8 && game.getLevel()%26 < 13){
+            j.setBackground(l);
+        }
+        if(game.getLevel()%26 > 12 && game.getLevel()%26 < 17){
+            j.setBackground(m);
+        }
+        if(game.getLevel()%26 > 16 && game.getLevel()%26 < 21){
+            j.setBackground(n);
+        }
+        if(game.getLevel()%26 > 20 && game.getLevel()%26 < 25){
+            j.setBackground(o);
+        }
     }
 
     private static void putOffScreen(View v) {
