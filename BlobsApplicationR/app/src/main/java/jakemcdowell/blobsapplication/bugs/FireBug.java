@@ -17,7 +17,7 @@ import static java.util.concurrent.TimeUnit.MILLISECONDS;
  */
 
 public class FireBug extends Bug {
-    private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(8);
+    private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(999);
     private ScheduledFuture beeperHandle = null;
 
     private boolean lowX = false;
