@@ -7,6 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
 
+import jakemcdowell.blobsapplication.GameActivity;
+import jakemcdowell.blobsapplication.HelpActivity;
+import jakemcdowell.blobsapplication.R;
+import jakemcdowell.blobsapplication.ShopActivity;
+
 
 public class MainActivity extends AppCompatActivity {
 
