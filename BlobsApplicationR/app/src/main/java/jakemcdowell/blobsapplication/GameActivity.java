@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import jakemcdowell.blobsapplication.bugs.Bug;
 import jakemcdowell.blobsapplication.bugs.FireBug;
 import jakemcdowell.blobsapplication.bugs.MovingBug;
+import jakemcdowell.blobsapplication.bugs.SmallBug;
 import jakemcdowell.blobsapplication.bugs.TeleportingBug;
 
 
@@ -80,8 +81,8 @@ public class GameActivity extends AppCompatActivity {
         //instantiantes every bug that will appear.
         bugList.add(new Bug(buttons[0], health, progressBar[0], kOsPerDeath));
         bugList.add(new Bug(buttons[1], health, progressBar[1], kOsPerDeath));
-        bugList.add(new MovingBug(buttons[2], health, progressBar[2], kOsPerDeath));
-        bugList.add(new MovingBug(buttons[3], health, progressBar[3], kOsPerDeath));
+        bugList.add(new SmallBug(buttons[2], health, progressBar[2], kOsPerDeath));
+        bugList.add(new SmallBug(buttons[3], health, progressBar[3], kOsPerDeath));
         bugList.add(new MovingBug(buttons[4], health, progressBar[4], kOsPerDeath));
         bugList.add(new MovingBug(buttons[5], health, progressBar[5], kOsPerDeath));
         bugList.add(new TeleportingBug(buttons[6], health, progressBar[6], kOsPerDeath));

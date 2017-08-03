@@ -18,7 +18,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class TeleportingBug extends Bug {
 
-    private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+    private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(6);
     private boolean beenThrough = false;
     private Runnable beeper;
     private ScheduledFuture beeperHandle;
@@ -65,7 +65,7 @@ public class TeleportingBug extends Bug {
 
             // Check and sets bugsLeftToKill to how many bugs should die in this level
             if (isDead()) {
-                moveOffscreen();
+                moveOffScreen();
                 game.addBugKilledInLevel();
             } else {
                 pauseDeath();

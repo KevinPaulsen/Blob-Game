@@ -6,6 +6,7 @@ package jakemcdowell.blobsapplication;
 
 public class Constants {
 
+//
     public static long timeInLevel = 30 * 1000;
 
 //This is the price of the damage increase upgrade by level

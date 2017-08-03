@@ -53,7 +53,7 @@ public class Game extends AppCompatActivity {
             availableBugsInLevel.add(bugList.get(idx));
             availableBugsInLevel.add(bugList.get(idx + 1));
         }
-        while (bugsInLevel.size() < getTotalBugsInLevel()) {
+        while (bugsInLevel.size() < getTotalBugsInLevel() && bugsInLevel.size() <= 8) {
             bugsInLevel.add(getNewBug((int)(Math.random() * availableBugsInLevel.size())));
         }
         this.totalKnockoutsRequiredInLevel = levelBugCount * bugsInLevel.get(0).getTotalKnockOuts();

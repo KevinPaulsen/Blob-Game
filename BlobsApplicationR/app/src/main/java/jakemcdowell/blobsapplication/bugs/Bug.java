@@ -6,7 +6,6 @@ import android.widget.ProgressBar;
 import jakemcdowell.blobsapplication.Constants;
 import jakemcdowell.blobsapplication.Game;
 import jakemcdowell.blobsapplication.PlayerData;
-import jakemcdowell.blobsapplication.R;
 
 /**
  * Created by kevin on 7/25/17.
@@ -34,7 +33,7 @@ public class Bug {
     }
 
     public void resetBugToInitialState() {
-        moveOffscreen();
+        moveOffScreen();
         resetHpProgressBar();
         this.timesKnockedOut = 0;
         this.damage = 0;
@@ -47,7 +46,7 @@ public class Bug {
         hp.setY(button.getY() - 40);
     }
 
-    public void moveOffscreen() {
+    public void moveOffScreen() {
         button.setY(70000);
         hp.setY(10000);
     }
@@ -99,7 +98,7 @@ public class Bug {
 
             // Check and sets bugsLeftToKill to how many bugs should die in this level
             if (isDead()) {
-                moveOffscreen();
+                moveOffScreen();
                 game.addBugKilledInLevel();
             } else {
                 pauseDeath();
@@ -125,7 +124,7 @@ public class Bug {
     }
 
     public void pauseDeath() {
-        moveOffscreen();
+        moveOffScreen();
 
         if (getKnockOuts() != 5) {
             getButton().postDelayed(new Runnable() {
@@ -139,10 +138,6 @@ public class Bug {
 
     public boolean isDead() {
         return timesKnockedOut == totalKnockOuts;
-    }
-
-    public void died() {
-        timesKnockedOut++;
     }
 
     public int getKnockOuts() {
@@ -161,20 +156,8 @@ public class Bug {
         health += moreHealth;
     }
 
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    public void setTotalKnockOuts(int totalKnockOuts) {
-        this.totalKnockOuts = totalKnockOuts;
-    }
-
     public int getTotalKnockOuts() {
         return totalKnockOuts;
-    }
-
-    public boolean isOnScreen() {
-        return button.getY() < 1420 && button.getY() > 220 && button.getX() < 775 && button.getX() > 50;
     }
 
     public void addDamage(int damage) {
