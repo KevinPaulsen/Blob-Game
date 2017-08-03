@@ -41,14 +41,14 @@ public class Bug {
     }
 
     public void move() {
-        button.setX((float) ((Math.random() * 725) + 50));
-        button.setY((float) ((Math.random() * 1200) + 220));
+        button.setX((float) ((int)((Math.random() * 725) + 50)));
+        button.setY((float) ((int)((Math.random() * 1200) + 220)));
         hp.setX(button.getX() + 40);
         hp.setY(button.getY() - 40);
     }
 
     public void moveOffscreen() {
-        button.setY(10000);
+        button.setY(70000);
         hp.setY(10000);
     }
 
@@ -58,6 +58,10 @@ public class Bug {
         }
         int newProgressValue = (int)(((double)(getHealth() - getDamageOnBug()) / getHealth()) * 100);
         hp.setProgress(newProgressValue);
+    }
+
+    public ProgressBar getHp() {
+        return hp;
     }
 
     public void resetHpProgressBar() {

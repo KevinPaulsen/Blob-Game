@@ -43,4 +43,7 @@ public class Constants {
     public static int goldIncreasePriceLevel5 = 394652;
 
     public static int goldAddedPerLevel = 2;
+
+//This is the speed(milliseconds) per 10 pixels a bug moves
+    public static final int speed = 50;
 }
