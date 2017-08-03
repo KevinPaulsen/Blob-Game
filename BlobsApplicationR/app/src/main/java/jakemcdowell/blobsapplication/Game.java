@@ -49,7 +49,7 @@ public class Game extends AppCompatActivity {
         int levelBugCount = getTotalBugsInLevel();
         this.bugsInLevel = new ArrayList<>(levelBugCount);
         this.bugsKilledInLevel = 0;
-        for (int idx = 0; idx != 2 + ((level / 3) * 2); idx += 2) {
+        for (int idx = 0; idx != 2 + ((level / 5) * 2) && idx <= 8; idx += 2) {
             availableBugsInLevel.add(bugList.get(idx));
             availableBugsInLevel.add(bugList.get(idx + 1));
         }

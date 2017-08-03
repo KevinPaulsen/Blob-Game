@@ -3,6 +3,9 @@ package jakemcdowell.blobsapplication.bugs;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+
 import jakemcdowell.blobsapplication.Constants;
 import jakemcdowell.blobsapplication.Game;
 import jakemcdowell.blobsapplication.PlayerData;
@@ -13,6 +16,7 @@ import jakemcdowell.blobsapplication.PlayerData;
 
 public class Bug {
 
+    public static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(10);
     private final View button;
     private final ProgressBar hp;
 

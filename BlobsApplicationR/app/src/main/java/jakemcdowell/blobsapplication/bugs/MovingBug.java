@@ -18,13 +18,13 @@ import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 public class MovingBug extends Bug {
 
-    private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(999);
     private ScheduledFuture beeperHandle = null;
 
     private boolean lowX = false;
     private boolean highX = false;
     private boolean lowY = false;
     private boolean highY = false;
+    private int steps = 0;
 
     public MovingBug(View view, int health, ProgressBar hp, int totalKnockOus) {
         super(view, health, hp, totalKnockOus);
@@ -55,17 +55,17 @@ public class MovingBug extends Bug {
 
     public int getDirectionX() {
         if (lowX) {
-            return 10;
+            return 20;
         } else {
-            return -10;
+            return -20;
         }
     }
 
     public int getDirectionY() {
         if (lowY) {
-            return 10;
+            return 20;
         } else {
-            return -10;
+            return -20;
         }
     }
 
@@ -73,23 +73,20 @@ public class MovingBug extends Bug {
         public void run() {
             if (getButton().getX() <= 50 || (lowX && getButton().getX() <= 600)) {
                 lowX = true;
-                highX = false;
             } else if (getButton().getX() >= 600 || (highX && getButton().getX() >= 50)) {
                 lowX = false;
-                highX = true;
             }
             if (getButton().getY() <= 220 || (lowY && getButton().getY() <= 1420)) {
                 lowY = true;
-                highY = false;
             } else if (getButton().getY() >= 1420 || (highY && getButton().getY() > 220)) {
                 lowY = false;
-                highY = true;
             }
 
             getButton().setX(getButton().getX() + getDirectionX());
             getButton().setY(getButton().getY() + getDirectionY());
             getHp().setX(getButton().getX() + 40);
             getHp().setY(getButton().getY() - 40);
+            steps++;
         }
     }
 }

@@ -18,7 +18,6 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class TeleportingBug extends Bug {
 
-    private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(999);
     private boolean beenThrough = false;
     private Runnable beeper;
     private ScheduledFuture beeperHandle;
@@ -52,6 +51,7 @@ public class TeleportingBug extends Bug {
     @Override
     public void damageBug(Game game) {
 
+
         if (beenThrough) {
             move();
         }
@@ -72,8 +72,19 @@ public class TeleportingBug extends Bug {
             }
         }
 
+        /*
         if (game.isAllDead()) {
             game.endLevel();
         }
+
+        super.damageBug(game);
+        if (beenThrough) {
+            move();
+        }
+        if (isKnockedOut()) {
+            beeperHandle.cancel(true);
+            beenThrough = false;
+        }
+        */
     }
 }

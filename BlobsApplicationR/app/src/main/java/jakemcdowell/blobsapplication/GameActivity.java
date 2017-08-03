@@ -54,7 +54,7 @@ public class GameActivity extends AppCompatActivity {
         int buttonIds[] = new int[10];
         int progressBarIds[] = new int[10];
         int health = 1;
-        int kOsPerDeath = 2;
+        int kOsPerDeath = 1;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_activity);
