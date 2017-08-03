@@ -6,7 +6,10 @@ package jakemcdowell.blobsapplication;
 
 public class Constants {
 
-//
+    public static String version = "0.1 Beta";
+
+//This is the amount of time in the level measured in seconds times 1000(milliseconds)
+
     public static long timeInLevel = 30 * 1000;
 
 //This is the price of the damage increase upgrade by level
@@ -45,6 +48,6 @@ public class Constants {
 
     public static int goldAddedPerLevel = 2;
 
-//This is the speed(milliseconds) per 10 pixels a bug moves
-    public static final int speed = 50;
+//This is the MOVINGBUGSPEED(milliseconds) per 10 pixels a bug moves
+    public static final int MOVINGBUGSPEED = 50;
 }

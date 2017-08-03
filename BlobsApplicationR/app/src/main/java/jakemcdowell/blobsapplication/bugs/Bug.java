@@ -40,8 +40,8 @@ public class Bug {
     }
 
     public void move() {
-        button.setX((float) ((int)((Math.random() * 725) + 50)));
-        button.setY((float) ((int)((Math.random() * 1200) + 220)));
+        button.setX((float) ((Math.random() * 600) + 50));
+        button.setY((float) ((Math.random() * 1200) + 220));
         hp.setX(button.getX() + 40);
         hp.setY(button.getY() - 40);
     }

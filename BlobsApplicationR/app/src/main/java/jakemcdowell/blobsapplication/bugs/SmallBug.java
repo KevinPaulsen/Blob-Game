@@ -13,7 +13,11 @@ public class SmallBug extends Bug {
         super(view, health, hp, totalKnockOuts);
     }
 
-    public void changeButtonsize() {
-
+    public void move() {
+        getButton().setX((float) ((Math.random() * 600) + 50));
+        getButton().setY((float) ((Math.random() * 1200) + 220));
+        getHp().setX(getButton().getX() - 5);
+        getHp().setY(getButton().getY() - 30);
     }
+
 }

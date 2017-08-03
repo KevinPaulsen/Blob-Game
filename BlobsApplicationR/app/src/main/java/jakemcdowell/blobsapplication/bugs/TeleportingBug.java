@@ -18,7 +18,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class TeleportingBug extends Bug {
 
-    private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(6);
+    private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(8);
     private boolean beenThrough = false;
     private Runnable beeper;
     private ScheduledFuture beeperHandle;

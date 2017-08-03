@@ -49,11 +49,11 @@ public class Game extends AppCompatActivity {
         int levelBugCount = getTotalBugsInLevel();
         this.bugsInLevel = new ArrayList<>(levelBugCount);
         this.bugsKilledInLevel = 0;
-        for (int idx = 0; idx != 2 + ((level / 5) * 2); idx += 2) {
+        for (int idx = 0; idx != 2 + ((level / 3) * 2); idx += 2) {
             availableBugsInLevel.add(bugList.get(idx));
             availableBugsInLevel.add(bugList.get(idx + 1));
         }
-        while (bugsInLevel.size() < getTotalBugsInLevel() && bugsInLevel.size() <= 8) {
+        while (bugsInLevel.size() < getTotalBugsInLevel()) {
             bugsInLevel.add(getNewBug((int)(Math.random() * availableBugsInLevel.size())));
         }
         this.totalKnockoutsRequiredInLevel = levelBugCount * bugsInLevel.get(0).getTotalKnockOuts();
@@ -105,7 +105,11 @@ public class Game extends AppCompatActivity {
     }
 
     private int getTotalBugsInLevel() {
-        return level / 3 + 1;
+        if (level / 3 + 1 <= 8) {
+            return level / 3 + 1;
+        } else {
+            return 8;
+        }
     }
 
     public Bug getFirstBugInLevel() {

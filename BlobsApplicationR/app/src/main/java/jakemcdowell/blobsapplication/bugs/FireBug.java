@@ -17,7 +17,7 @@ import static java.util.concurrent.TimeUnit.MILLISECONDS;
  */
 
 public class FireBug extends Bug {
-    private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(6);
+    private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(8);
     private ScheduledFuture beeperHandle = null;
 
     private boolean lowX = false;
@@ -34,7 +34,7 @@ public class FireBug extends Bug {
         if (beeperHandle == null) {
             super.move();
             final Runnable beeper = new FireBug.Beeper();
-            this.beeperHandle = scheduler.scheduleAtFixedRate(beeper, 0, Constants.speed, MILLISECONDS);
+            this.beeperHandle = scheduler.scheduleAtFixedRate(beeper, 0, Constants.MOVINGBUGSPEED, MILLISECONDS);
         }
     }
 
@@ -70,10 +70,10 @@ public class FireBug extends Bug {
 
     private class Beeper implements Runnable {
         public void run() {
-            if (getButton().getX() <= 50 || (lowX && getButton().getX() <= 775)) {
+            if (getButton().getX() <= 50 || (lowX && getButton().getX() <= 600)) {
                 lowX = true;
                 highX = false;
-            } else if (getButton().getX() >= 775 || (highX && getButton().getX() >= 50)) {
+            } else if (getButton().getX() >= 600 || (highX && getButton().getX() >= 50)) {
                 lowX = false;
                 highX = true;
             }
