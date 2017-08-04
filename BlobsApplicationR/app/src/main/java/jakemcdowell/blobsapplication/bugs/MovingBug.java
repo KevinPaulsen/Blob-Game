@@ -9,6 +9,7 @@ import java.util.concurrent.ScheduledFuture;
 
 import jakemcdowell.blobsapplication.Constants;
 import jakemcdowell.blobsapplication.Game;
+import jakemcdowell.blobsapplication.R;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
@@ -34,6 +35,7 @@ public class MovingBug extends Bug {
 
     public MovingBug(View view, int health, ProgressBar hp, int totalKnockOus) {
         super(view, health, hp, totalKnockOus);
+        view.setBackgroundResource(R.drawable.movingbuganimation);
         possibleDirections.add(0);
         possibleDirections.add(20);
         possibleDirections.add(-20);

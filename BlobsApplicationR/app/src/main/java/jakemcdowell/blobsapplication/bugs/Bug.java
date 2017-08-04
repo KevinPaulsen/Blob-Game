@@ -1,7 +1,8 @@
 package jakemcdowell.blobsapplication.bugs;
 
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ProgressBar;
 
 import java.util.concurrent.Executors;
@@ -10,6 +11,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import jakemcdowell.blobsapplication.Constants;
 import jakemcdowell.blobsapplication.Game;
 import jakemcdowell.blobsapplication.PlayerData;
+import jakemcdowell.blobsapplication.R;
 
 /**
  * Created by kevin on 7/25/17.
@@ -22,12 +24,13 @@ public class Bug {
     private final ProgressBar hp;
 
     private int timesKnockedOut;
-    private int damage;             // number of clicks
+    public int damage;             // number of clicks
     private int health;             // Number of times clicked till KO
     private int totalKnockOuts;     // number of KO's until death
 
 
     public Bug(View view, int health, ProgressBar hp, int kOsPerDeath) {
+        view.setBackgroundResource(R.drawable.normalbuganimation);
         this.button = view;
         this.health = health;
         this.hp = hp;
@@ -35,9 +38,11 @@ public class Bug {
         this.timesKnockedOut = 0;
         this.damage = 0;
         resetHpProgressBar();
+        view.setBackgroundResource(R.drawable.normalbuganimation);
+
     }
 
-    public void resetBugToInitialState() {
+    public void setBugToInitialState() {
         moveOffScreen();
         resetHpProgressBar();
         this.timesKnockedOut = 0;
@@ -85,26 +90,21 @@ public class Bug {
         return button;
     }
 
+    public void startAnimation() {
+
+        Drawable draw = button.getBackground();
+        System.out.println("DRAW: " + draw);
+        if (draw instanceof AnimationDrawable) {
+            AnimationDrawable ani = (AnimationDrawable) draw;
+            if (ani != null) {
+                ani.start();
+            }
+        }
+    }
+
     public void damageBug(Game game) {
         move();
-        if (PlayerData.damageIncreaseLevel == 0) {
-            damage++;
-        }
-        if (PlayerData.damageIncreaseLevel == 1) {
-            damage += Constants.damageIncreaseLevel1;
-        }
-        if (PlayerData.damageIncreaseLevel == 2) {
-            damage += Constants.damageIncreaseLevel2;
-        }
-        if (PlayerData.damageIncreaseLevel == 3) {
-            damage += Constants.damageIncreaseLevel3;
-        }
-        if (PlayerData.damageIncreaseLevel == 4) {
-            damage += Constants.damageIncreaseLevel4;
-        }
-        if (PlayerData.damageIncreaseLevel == 5) {
-            damage += Constants.damageIncreaseLevel5;
-        }
+        damage += PlayerData.damageIncreasePerLevel.get(1).get(PlayerData.damageIncreaseLevel);
         decreaseHpProgressBar();
         if (isKnockedOut()) {
             resetAfterKnockedOut();
@@ -120,7 +120,7 @@ public class Bug {
         }
 
         if (game.isAllDead()) {
-            game.endLevel();
+            game.resetBugsToInitialState();
         }
     }
 

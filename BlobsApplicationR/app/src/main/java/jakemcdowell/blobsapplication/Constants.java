@@ -1,5 +1,8 @@
 package jakemcdowell.blobsapplication;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by jakemcdowell on 7/28/17.
  */
@@ -9,8 +12,9 @@ public class Constants {
     public static String version = "0.1 Beta";
 
 //BASIC CONSTANTS
-    //This is the amount of time in the level measured in seconds times 1000(milliseconds)
-    public static long timeInLevel = 10000000 * 1000;
+
+//This is the amount of time in the level measured in seconds times 1000(milliseconds)
+    public static long timeInLevel = 10 * 60 * 1000;
 
 //UPGRADES
     //This is the price of the damage increase upgrade by level
@@ -26,6 +30,9 @@ public class Constants {
     public static int damageIncreaseLevel4 = 12;
     public static int damageIncreaseLevel5 = 15;
 
+    // This is the price of radius per upgrade
+    public static List<List<Integer>> radiusPricePerRadiusUpgrade = new ArrayList<>();
+
     //This is the price of the radius increase upgrade by level
     public static int radiusIncreasePriceLevel1 = 50;
     public static int radiusIncreasePriceLevel2 = 110;
@@ -40,7 +47,7 @@ public class Constants {
     public static int radiusIncreaseLevel4 = 650;
     public static int radiusIncreaseLevel5 = 750;
 
-    //This is the price of pesticide powerup based on level
+    //This is the price of pesticide powerUp based on level
     public static int pesticidePriceLevel1 = 100;
     public static int pesticidePriceLevel2 = 252;
     public static int pesticidePriceLevel3 = 762;
@@ -65,8 +72,10 @@ public class Constants {
 //BUG MECHANICS
     //This is the MOVINGBUGSPEED(milliseconds) per 20 pixels a bug moves
     public static final int MOVINGBUGSPEED = 100;
-    //Times knocked out per death
+// Initial Health
+    public static final int INITIAL_HEALTH = 1;
+//Times knocked out per death
     public static final int KOSPERDEATH = 2;
-    //Health added per next level
-    public static final int HEALTH_ADDED = 0;
+//Health added per next level
+    public static final int HEALTH_ADDED = 1;
 }

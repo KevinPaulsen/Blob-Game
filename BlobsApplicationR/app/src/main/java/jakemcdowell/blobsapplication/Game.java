@@ -1,15 +1,10 @@
 package jakemcdowell.blobsapplication;
 
 import android.support.v7.app.AppCompatActivity;
-
 import android.widget.ProgressBar;
 import java.util.ArrayList;
 import java.util.List;
-//<<<<<<< Updated upstream
-
-//=======
 import java.lang.Math;
-//>>>>>>> Stashed changes
 import jakemcdowell.blobsapplication.bugs.Bug;
 
 import static jakemcdowell.blobsapplication.Constants.radiusIncreaseLevel1;
@@ -17,6 +12,7 @@ import static jakemcdowell.blobsapplication.Constants.radiusIncreaseLevel2;
 import static jakemcdowell.blobsapplication.Constants.radiusIncreaseLevel3;
 import static jakemcdowell.blobsapplication.Constants.radiusIncreaseLevel4;
 import static jakemcdowell.blobsapplication.Constants.radiusIncreaseLevel5;
+import static jakemcdowell.blobsapplication.Constants.radiusPricePerRadiusUpgrade;
 
 
 /**
@@ -25,16 +21,35 @@ import static jakemcdowell.blobsapplication.Constants.radiusIncreaseLevel5;
 public class Game extends AppCompatActivity {
     private ProgressBar levelProgressBar;
     private List<Bug> bugList;
-    public List<Bug> bugsInLevel;
+    public List<Bug> bugsInLevel = new ArrayList<>();
     private List<Bug> availableBugsInLevel = new ArrayList<>();
-    public int level;
     private int bugsKilledInLevel = 0;
     private int totalKnockoutsRequiredInLevel;
 
     public Game(ProgressBar progressBar, List<Bug> bugList) {
         levelProgressBar = progressBar;
         this.bugList = bugList;
+        ArrayList<Integer> damageIncreaseLevel = new ArrayList<>();
+        ArrayList<Integer> damageIncrease = new ArrayList<>();
+        ArrayList<Integer> radiusIncreaseLevel = new ArrayList<>();
+        ArrayList<Integer> radiusIncrease = new ArrayList<>();
+        for (int idx = 0; idx < 6; idx++) {
+            damageIncreaseLevel.add(idx);
+            radiusIncreaseLevel.add(idx);
+        }
+        for (int idx = 0; idx < 6; idx++) {
+            damageIncrease.add(idx * 3);
+        }
+        for (int count = 250; count <= 750; count += 100) {
+            radiusIncrease.add(count);
+        }
+        damageIncrease.set(0, 1);
+
         setupLevel(PlayerData.currentLevel);
+        PlayerData.damageIncreasePerLevel.add(damageIncreaseLevel);
+        PlayerData.damageIncreasePerLevel.add(damageIncrease);
+        Constants.radiusPricePerRadiusUpgrade.add(radiusIncreaseLevel);
+        Constants.radiusPricePerRadiusUpgrade.add(radiusIncrease);
     }
 
     public void removeAllAvailableBugs() {
@@ -44,13 +59,14 @@ public class Game extends AppCompatActivity {
     }
 
     public void setupLevel(int level) {
+        resetBugsToInitialState();
         removeAllAvailableBugs();
-        this.level = level;
+        PlayerData.currentLevel = level;
         this.levelProgressBar.setProgress(0);
         int levelBugCount = getTotalBugsInLevel();
-        this.bugsInLevel = new ArrayList<>(levelBugCount);
+        this.bugsInLevel.clear();
         this.bugsKilledInLevel = 0;
-        for (int idx = 0; idx != 2 + ((level / 5) * 2) && idx <= 8; idx += 2) {
+        for (int idx = 0; idx / 2 < (level / 5) + 1 && idx <= 8; idx += 2) {
             availableBugsInLevel.add(bugList.get(idx));
             availableBugsInLevel.add(bugList.get(idx + 1));
         }
@@ -60,61 +76,33 @@ public class Game extends AppCompatActivity {
         this.totalKnockoutsRequiredInLevel = levelBugCount * bugsInLevel.get(0).getTotalKnockOuts();
     }
 
-
-    public void endLevel() {
+    public void resetBugsToInitialState() {
         for (Bug bug : bugList) {
-            bug.resetBugToInitialState();
-        }
-    }
-
-    public void radiusDamage(Bug bug1, Game game) {
-        bug1.damageBug(game);
-        for (Bug bug2 : bugsInLevel) {
-            if (PlayerData.radiusIncreaseLevel == 1 && bug1 != bug2) {
-                if (bug1.getDistance(bug2) <= radiusIncreaseLevel1) {
-                    bug2.damageBug(game);
-                }
-            } else if (PlayerData.radiusIncreaseLevel == 2 && bug1 != bug2) {
-                if (bug1.getDistance(bug2) <= radiusIncreaseLevel2) {
-                    bug2.damageBug(game);
-                }
-            } else if (PlayerData.radiusIncreaseLevel == 3 && bug1 != bug2) {
-                if (bug1.getDistance(bug2) <= radiusIncreaseLevel3) {
-                    bug2.damageBug(game);
-                }
-            } else if (PlayerData.radiusIncreaseLevel == 4 && bug1 != bug2) {
-                if (bug1.getDistance(bug2) <= radiusIncreaseLevel4) {
-                    bug2.damageBug(game);
-                }
-            } else if (PlayerData.radiusIncreaseLevel == 5 && bug1 != bug2) {
-                if (bug1.getDistance(bug2) <= radiusIncreaseLevel5) {
-                    bug2.damageBug(game);
-                }
-            }
+            bug.setBugToInitialState();
         }
     }
 
     private Bug getNewBug(int bugNum) {
         Bug bug = availableBugsInLevel.get(bugNum);
         availableBugsInLevel.remove(bugNum);
-        bug.resetBugToInitialState();
+        bug.setBugToInitialState();
         bug.move();
         return bug;
     }
 
     public int getLevel() {
-        return level;
+        return PlayerData.currentLevel;
     }
 
     public boolean isAllDead() {
         return getBugsLeftInLevel() == 0;
     }
 
-    public void nextLevel() {
-        for (Bug bug : bugList) {
+    public static void nextLevel(Game game) {
+        for (Bug bug : game.bugList) {
             bug.addHealth(Constants.HEALTH_ADDED);
         }
-        setupLevel(getLevel() + 1);
+        game.setupLevel(game.getLevel() + 1);
     }
 
     public void updateLevelKnockOutProgressBar() {
@@ -138,8 +126,8 @@ public class Game extends AppCompatActivity {
     }
 
     private int getTotalBugsInLevel() {
-        if (level / 3 + 1 <= 8) {
-            return level / 3 + 1;
+        if (PlayerData.currentLevel / 3 + 1 <= 8) {
+            return PlayerData.currentLevel / 3 + 1;
         } else {
             return 8;
         }
@@ -158,5 +146,18 @@ public class Game extends AppCompatActivity {
         for(Bug bug : bugsInLevel){
            bug.addDamage(bug.getHealth());
         }
+    }
+
+    public void damageNear(int x, int y) {
+        for (Bug bug : bugsInLevel) {
+            int distance = getDistance(x, y, (int) bug.getButton().getX(), (int) bug.getButton().getY());
+            if (distance <= radiusPricePerRadiusUpgrade.get(1).get(PlayerData.radiusIncreaseLevel)) {
+                bug.damageBug(this);
+            }
+        }
+    }
+
+    public int getDistance(int x1, int y1, int x2, int y2) {
+        return (int) (Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)));
     }
 }

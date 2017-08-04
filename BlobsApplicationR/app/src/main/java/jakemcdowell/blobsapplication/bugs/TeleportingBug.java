@@ -8,6 +8,8 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 
 import jakemcdowell.blobsapplication.Game;
+import jakemcdowell.blobsapplication.PlayerData;
+import jakemcdowell.blobsapplication.R;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
@@ -24,6 +26,7 @@ public class TeleportingBug extends Bug {
 
     public TeleportingBug(View view, int health, ProgressBar hp, int totalKnockOuts) {
         super(view, health, hp, totalKnockOuts);
+        view.setBackgroundResource(R.drawable.teleportingbuganimation);
     }
 
     @Override
@@ -50,11 +53,10 @@ public class TeleportingBug extends Bug {
 
     @Override
     public void damageBug(Game game) {
-
-
         if (beenThrough) {
             move();
         }
+        damage += PlayerData.damageIncreasePerLevel.get(1).get(PlayerData.damageIncreaseLevel);
         addDamage(1);
         decreaseHpProgressBar();
         if (isKnockedOut()) {
@@ -71,20 +73,5 @@ public class TeleportingBug extends Bug {
                 pauseDeath();
             }
         }
-
-        /*
-        if (game.isAllDead()) {
-            game.endLevel();
-        }
-
-        super.damageBug(game);
-        if (beenThrough) {
-            move();
-        }
-        if (isKnockedOut()) {
-            beeperHandle.cancel(true);
-            beenThrough = false;
-        }
-        */
     }
 }

@@ -27,6 +27,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="86dp"
         android:layout_height="86dp"
+        android:onClick="buttonTestClick"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.537"
@@ -167,6 +168,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="86dp"
         android:layout_height="86dp"
+        android:onClick="buttonTestClick"
         android:visibility="visible"
         tools:layout_editor_absoluteX="180dp"
         tools:layout_editor_absoluteY="256dp" />
