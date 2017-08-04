@@ -1,5 +1,6 @@
 package jakemcdowell.blobsapplication;
 
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
@@ -19,7 +20,10 @@ public class GameOverActivity extends AppCompatActivity implements View.OnClickL
         playgameagain.setOnClickListener(this);
         returntomenu = (Button)this.findViewById(R.id.button17);
         returntomenu.setOnClickListener(this);
+        MediaPlayer gameovertheme = MediaPlayer.create(this, R.raw.gameovertheme);
+        MusicPlayer.startSongOnce(gameovertheme);
     }
+
 
     public void onClick(View v) {
         if (v.equals(playgameagain)) {

@@ -2,8 +2,10 @@ package jakemcdowell.blobsapplication;
 
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +27,8 @@ public class ShopActivity extends AppCompatActivity implements Runnable {
     public void onWindowFocusChanged(boolean hasFocus) {
         TextView golddisplay = (TextView) findViewById(R.id.textView10);
         golddisplay.setText("" + PlayerData.currentGold);
+        MediaPlayer shoptheme = MediaPlayer.create(this,R.raw.shoptheme);
+        MusicPlayer.startSong(shoptheme);
     }
 
     public void leaveshopbutton(View v) {

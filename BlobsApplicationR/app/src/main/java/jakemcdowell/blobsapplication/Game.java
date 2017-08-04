@@ -21,14 +21,14 @@ public class Game extends AppCompatActivity {
     private List<Bug> bugList;
     private List<Bug> bugsInLevel;
     private List<Bug> availableBugsInLevel = new ArrayList<>();
-    private int level;
+    public int level;
     private int bugsKilledInLevel = 0;
     private int totalKnockoutsRequiredInLevel;
 
     public Game(ProgressBar progressBar, List<Bug> bugList) {
         levelProgressBar = progressBar;
         this.bugList = bugList;
-        setupLevel(1);
+        setupLevel(PlayerData.currentLevel);
     }
 
     public void removeAllAvailableBugs() {
@@ -53,6 +53,7 @@ public class Game extends AppCompatActivity {
         }
         this.totalKnockoutsRequiredInLevel = levelBugCount * bugsInLevel.get(0).getTotalKnockOuts();
     }
+
 
     public void endLevel() {
         for (Bug bug : bugList) {

@@ -1,5 +1,6 @@
 package jakemcdowell.blobsapplication;
 
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -21,15 +22,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         TextView a = (TextView) findViewById(R.id.textView20);
         a.setText("Version: " + Constants.version);
+        TextView b = (TextView) findViewById(R.id.textView32);
+        b.setText("High Score: Level " + PlayerData.highestLevel);
+    }
+
+    public void onWindowFocusChanged(boolean hasFocus) {
+        MediaPlayer maintheme = MediaPlayer.create(this, R.raw.maintheme);
+        MusicPlayer.startSong(maintheme);
     }
 
     public void playgamebuttonclick(View v) {
+        MediaPlayer maintheme = MediaPlayer.create(this, R.raw.maintheme);
+        MusicPlayer.resetMusic(maintheme);
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
     public void entershopbuttonclick(View v) {
+        MediaPlayer maintheme = MediaPlayer.create(this, R.raw.maintheme);
+        MusicPlayer.resetMusic(maintheme);
         Intent intent2 = new Intent(this,ShopActivity.class);
         startActivity(intent2);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);

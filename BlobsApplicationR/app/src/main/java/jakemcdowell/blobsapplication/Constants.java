@@ -9,8 +9,7 @@ public class Constants {
     public static String version = "0.1 Beta";
 
 //This is the amount of time in the level measured in seconds times 1000(milliseconds)
-
-    public static long timeInLevel = 30 * 1000;
+    public static long timeInLevel = 10 * 1000;
 
 //This is the price of the damage increase upgrade by level
     public static int damageIncreasePriceLevel1 = 30;

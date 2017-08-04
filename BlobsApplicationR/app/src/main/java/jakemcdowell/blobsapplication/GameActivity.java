@@ -22,6 +22,8 @@ import jakemcdowell.blobsapplication.bugs.MovingBug;
 import jakemcdowell.blobsapplication.bugs.SmallBug;
 import jakemcdowell.blobsapplication.bugs.TeleportingBug;
 
+import static jakemcdowell.blobsapplication.Constants.goldAddedPerLevel;
+
 
 public class GameActivity extends AppCompatActivity {
     ArrayList<AnimationDrawable> normalbuganimations = new ArrayList<>();
@@ -45,6 +47,7 @@ public class GameActivity extends AppCompatActivity {
     boolean leaffirstrun = true;
     boolean desertfirstrun = true;
     boolean snowfirstrun = true;
+    boolean grassyfirstrun = true;
 
     //Sets up game screen (progress bar)
     @Override
@@ -229,9 +232,12 @@ public class GameActivity extends AppCompatActivity {
             TextView goldleveldisplay = (TextView) findViewById(R.id.textView29);
             goldleveldisplay.setText("Level 5");
         }
+        TextView f = (TextView) findViewById(R.id.textView1);
+        f.setText("Level: " + game.getLevel());
     }
 
     public void onWindowFocusChanged(boolean hasFocus) {
+
         if (!isInitialized) {
             game.getFirstBugInLevel().move();
             for (AnimationDrawable normalBugAnimation : normalbuganimations) {
@@ -251,6 +257,8 @@ public class GameActivity extends AppCompatActivity {
             }
             isInitialized = true;
             startCountDownTimer();
+            MediaPlayer grassymain = MediaPlayer.create(this, R.raw.grassymain);
+            MusicPlayer.startSong(grassymain);
         }
     }
     public void onPause() {
@@ -284,6 +292,10 @@ public class GameActivity extends AppCompatActivity {
                     }
                 }
                 if (timeprogressbar.getProgress() == 0) {
+                    if (game.getLevel() > PlayerData.highestLevel) {
+                        PlayerData.highestLevel = game.getLevel();
+                    }
+                    PlayerData.currentLevel = 1;
                     gameOver();
                 }
             }
@@ -303,6 +315,7 @@ public class GameActivity extends AppCompatActivity {
 
     //Button game mechanics
     public void buttonTestClick(View v) {
+
 
         //sets +1 tap on the bug
         findBug(v).damageBug(game);
@@ -324,7 +337,25 @@ public class GameActivity extends AppCompatActivity {
             findViewById(R.id.timeProgressBar).setVisibility(View.GONE);
             findViewById(R.id.textView21).setVisibility(View.GONE);
             findViewById(R.id.textView17).setVisibility(View.GONE);
-            goldearnedbylevel = goldearnedbylevel + Constants.goldAddedPerLevel;
+            if (PlayerData.goldIncreaseLevel == 0) {
+
+            }
+            if (PlayerData.goldIncreaseLevel == 1) {
+                goldAddedPerLevel = (int) (goldAddedPerLevel * 1.25);
+            }
+            if (PlayerData.goldIncreaseLevel == 2) {
+                goldAddedPerLevel = (int) (goldAddedPerLevel * 1.5);
+            }
+            if (PlayerData.goldIncreaseLevel == 3) {
+                goldAddedPerLevel =  goldAddedPerLevel * 2;
+            }
+            if (PlayerData.goldIncreaseLevel == 4) {
+                goldAddedPerLevel = (int) (goldAddedPerLevel * 2.5);
+            }
+            if (PlayerData.goldIncreaseLevel == 5) {
+                goldAddedPerLevel = goldAddedPerLevel * 3;
+            }
+            goldearnedbylevel = goldearnedbylevel + goldAddedPerLevel;
             PlayerData.currentGold = PlayerData.currentGold + goldearnedbylevel;
             TextView goldEarnedDisplay = (TextView) findViewById(R.id.textView23);
             TextView currentGoldDisplay = (TextView) findViewById(R.id.textView25);
@@ -334,6 +365,10 @@ public class GameActivity extends AppCompatActivity {
     }
     //
     public void returnToMenuClick(View v) {
+        if (game.getLevel() > PlayerData.highestLevel) {
+            PlayerData.highestLevel = game.getLevel();
+        }
+        PlayerData.currentLevel = game.getLevel();
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
@@ -372,37 +407,58 @@ public class GameActivity extends AppCompatActivity {
         findViewById(R.id.textView21).setVisibility(View.VISIBLE);
         findViewById(R.id.textView17).setVisibility(View.VISIBLE);
         findViewById(R.id.timeProgressBar).setVisibility(View.VISIBLE);
-        if(game.getLevel()%25 == 0 && game.getLevel()%25 < 5){
+
+        if(game.getLevel()%25 == 0 && game.getLevel()%25 < 5) {
+            snowfirstrun = true;
             j.setBackground(o);
+            MediaPlayer grassymain = MediaPlayer.create(this, R.raw.grassymain);
+            if (grassyfirstrun == true) {
+                MusicPlayer.startSong(grassymain);
+                grassyfirstrun = false;
+            }
         }
-        if(game.getLevel()%25 > 4 && game.getLevel()%25 < 9){
+        if(game.getLevel()%25 > 4 && game.getLevel()%25 < 9) {
+            grassyfirstrun = true;
             j.setBackground(k);
+            MediaPlayer sandymain = MediaPlayer.create(this, R.raw.sandymain);
+            if (sandyfirstrun == true) {
+                MusicPlayer.startSong(sandymain);
+                sandyfirstrun = false;
+            }
         }
         if(game.getLevel()%25 > 8 && game.getLevel()%25 < 13){
+            sandyfirstrun = true;
             j.setBackground(l);
             MediaPlayer gravelmain = MediaPlayer.create(this, R.raw.gravelmain);
             if (gravelfirstrun == true) {
-                gravelmain.start();
+                MusicPlayer.startSong(gravelmain);
                 gravelfirstrun = false;
             }
         }
         if(game.getLevel()%25 > 12 && game.getLevel()%25 < 17){
+            gravelfirstrun = true;
             j.setBackground(m);
             MediaPlayer leafmain = MediaPlayer.create(this, R.raw.leafmain);
             if (leaffirstrun == true) {
-                leafmain.start();
+                MusicPlayer.startSong(leafmain);
                 leaffirstrun = false;
             }
         }
         if(game.getLevel()%25 > 16 && game.getLevel()%25 < 21){
+            leaffirstrun = true;
             j.setBackground(n);
+            MediaPlayer desertmain = MediaPlayer.create(this, R.raw.desertmain);
+            if (desertfirstrun == true) {
+                MusicPlayer.startSong(desertmain);
+                desertfirstrun = false;
+            }
         }
-
         if(game.getLevel()%25 > 20 && game.getLevel()%25 < 24){
+            desertfirstrun = true;
             j.setBackground(p);
             MediaPlayer snowmain = MediaPlayer.create(this, R.raw.snowmain);
             if (snowfirstrun == true) {
-                snowmain.start();
+                MusicPlayer.startSong(snowmain);
                 snowfirstrun = false;
             }
         }
