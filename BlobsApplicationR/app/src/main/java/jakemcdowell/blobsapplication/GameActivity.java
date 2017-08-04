@@ -372,11 +372,13 @@ public class GameActivity extends AppCompatActivity {
         findViewById(R.id.textView21).setVisibility(View.VISIBLE);
         findViewById(R.id.textView17).setVisibility(View.VISIBLE);
         findViewById(R.id.timeProgressBar).setVisibility(View.VISIBLE);
-        j.setBackground(o);
-        if(game.getLevel()%30 > 4 && game.getLevel()%30 < 9){
+        if(game.getLevel()%25 == 0 && game.getLevel()%25 < 5){
+            j.setBackground(o);
+        }
+        if(game.getLevel()%25 > 4 && game.getLevel()%25 < 9){
             j.setBackground(k);
         }
-        if(game.getLevel()%30 > 8 && game.getLevel()%30 < 13){
+        if(game.getLevel()%25 > 8 && game.getLevel()%25 < 13){
             j.setBackground(l);
             MediaPlayer gravelmain = MediaPlayer.create(this, R.raw.gravelmain);
             if (gravelfirstrun == true) {
@@ -384,7 +386,7 @@ public class GameActivity extends AppCompatActivity {
                 gravelfirstrun = false;
             }
         }
-        if(game.getLevel()%30 > 12 && game.getLevel()%30 < 17){
+        if(game.getLevel()%25 > 12 && game.getLevel()%25 < 17){
             j.setBackground(m);
             MediaPlayer leafmain = MediaPlayer.create(this, R.raw.leafmain);
             if (leaffirstrun == true) {
@@ -392,13 +394,11 @@ public class GameActivity extends AppCompatActivity {
                 leaffirstrun = false;
             }
         }
-        if(game.getLevel()%30 > 16 && game.getLevel()%30 < 21){
+        if(game.getLevel()%25 > 16 && game.getLevel()%25 < 21){
             j.setBackground(n);
         }
-        if(game.getLevel()%30 > 20 && game.getLevel()%30 < 25){
-            j.setBackground(o);
-        }
-        if(game.getLevel()%30 > 24 && game.getLevel()%30 < 29){
+
+        if(game.getLevel()%25 > 20 && game.getLevel()%25 < 24){
             j.setBackground(p);
             MediaPlayer snowmain = MediaPlayer.create(this, R.raw.snowmain);
             if (snowfirstrun == true) {

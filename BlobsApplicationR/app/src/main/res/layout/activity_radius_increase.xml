@@ -7,6 +7,18 @@
     tools:context="jakemcdowell.blobsapplication.DamageIncreaseActivity">
 
     <ImageView
+        android:id="@+id/soldout"
+        android:layout_width="100dp"
+        android:layout_height="26dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.89"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.312"
+        app:srcCompat="@drawable/soldout" />
+
+    <ImageView
         android:id="@+id/imageView11"
         android:layout_width="402dp"
         android:layout_height="657dp"
@@ -250,13 +262,13 @@
         android:id="@+id/imageView22"
         android:layout_width="78dp"
         android:layout_height="70dp"
-        app:srcCompat="@drawable/plus"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHorizontal_bias="0.396"
-        app:layout_constraintVertical_bias="0.444" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.444"
+        app:srcCompat="@drawable/plus" />
 
     <ImageView
         android:id="@+id/imageView23"
@@ -269,18 +281,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHorizontal_bias="0.093"
         app:layout_constraintVertical_bias="0.425" />
-
-    <ImageView
-        android:id="@+id/imageView25"
-        android:layout_width="100dp"
-        android:layout_height="26dp"
-        app:srcCompat="@drawable/soldout"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.89"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.312" />
 
 
 </android.support.constraint.ConstraintLayout>

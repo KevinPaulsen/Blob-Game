@@ -8,26 +8,27 @@
 
     <ImageView
         android:id="@+id/imageView26"
-        android:layout_width="402dp"
-        android:layout_height="658dp"
+        android:layout_width="471dp"
+        android:layout_height="659dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:srcCompat="@drawable/howtoactivity"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/howtoactivity" />
 
     <Button
         android:id="@+id/button19"
-        android:layout_width="75dp"
-        android:layout_height="43dp"
+        android:layout_width="71dp"
+        android:layout_height="44dp"
         android:onClick="leave"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499"
+        tools:layout_editor_absoluteX="178dp" />
 
 </android.support.constraint.ConstraintLayout>
