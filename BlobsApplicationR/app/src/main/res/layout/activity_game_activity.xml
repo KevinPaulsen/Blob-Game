@@ -192,8 +192,8 @@
     <Button
         android:id="@+id/button8"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="86dp"
-        android:layout_height="86dp"
+        android:layout_width="43dp"
+        android:layout_height="43dp"
         android:onClick="buttonTestClick"
         tools:layout_editor_absoluteX="138dp"
         tools:layout_editor_absoluteY="100dp" />
@@ -201,8 +201,8 @@
     <Button
         android:id="@+id/button9"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="86dp"
-        android:layout_height="86dp"
+        android:layout_width="39dp"
+        android:layout_height="43dp"
         android:onClick="buttonTestClick"
         tools:layout_editor_absoluteX="30dp"
         tools:layout_editor_absoluteY="130dp" />

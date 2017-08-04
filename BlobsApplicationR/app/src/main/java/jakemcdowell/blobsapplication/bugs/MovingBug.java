@@ -3,8 +3,8 @@ package jakemcdowell.blobsapplication.bugs;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ScheduledFuture;
 
 import jakemcdowell.blobsapplication.Constants;
@@ -19,15 +19,24 @@ import static java.util.concurrent.TimeUnit.MILLISECONDS;
 public class MovingBug extends Bug {
 
     private ScheduledFuture beeperHandle = null;
-
-    private boolean lowX = false;
-    private boolean highX = false;
-    private boolean lowY = false;
-    private boolean highY = false;
+    private boolean isAtLowEdgeX = false;
+    private boolean isAtHighEdgeX = false;
+    private boolean isAtLowEdgeY = false;
+    private boolean isAtHighEdgeY = false;
     private int steps = 0;
+    private int directionX = 20;
+    private int directionY = 20;
+
+    // 0th element = 0
+    // 1st element = 20
+    // 2nd element = -20
+    private List<Integer> possibleDirections = new ArrayList<>();
 
     public MovingBug(View view, int health, ProgressBar hp, int totalKnockOus) {
         super(view, health, hp, totalKnockOus);
+        possibleDirections.add(0);
+        possibleDirections.add(20);
+        possibleDirections.add(-20);
     }
 
     @Override
@@ -40,11 +49,6 @@ public class MovingBug extends Bug {
     }
 
     @Override
-    public void damageBug(Game game) {
-        super.damageBug(game);
-    }
-
-    @Override
     public void moveOffScreen() {
         super.moveOffScreen();
         if (beeperHandle != null) {
@@ -53,40 +57,65 @@ public class MovingBug extends Bug {
         }
     }
 
-    public int getDirectionX() {
-        if (lowX) {
-            return 20;
-        } else {
-            return -20;
-        }
-    }
-
-    public int getDirectionY() {
-        if (lowY) {
-            return 20;
-        } else {
-            return -20;
-        }
-    }
-
     private class Beeper implements Runnable {
         public void run() {
-            if (getButton().getX() <= 50 || (lowX && getButton().getX() <= 600)) {
-                lowX = true;
-            } else if (getButton().getX() >= 600 || (highX && getButton().getX() >= 50)) {
-                lowX = false;
+            if (getButton().getX() <= 30) {
+                isAtLowEdgeX = true;
+                isAtHighEdgeX = false;
+
+                directionX = possibleDirections.get(1);
+            } else if (getButton().getX() >= 600) {
+                isAtLowEdgeX = false;
+                isAtHighEdgeX = true;
+
+                directionX = possibleDirections.get(2);
             }
-            if (getButton().getY() <= 220 || (lowY && getButton().getY() <= 1420)) {
-                lowY = true;
-            } else if (getButton().getY() >= 1420 || (highY && getButton().getY() > 220)) {
-                lowY = false;
+            if (getButton().getY() <= 220) {
+                isAtLowEdgeY = true;
+                isAtHighEdgeY = false;
+
+                directionY = possibleDirections.get(1);
+            } else if (getButton().getY() >= 1420) {
+                isAtLowEdgeY = false;
+                isAtHighEdgeY = true;
+
+                directionY = possibleDirections.get(2);
             }
 
-            getButton().setX(getButton().getX() + getDirectionX());
-            getButton().setY(getButton().getY() + getDirectionY());
-            getHp().setX(getButton().getX() + 40);
-            getHp().setY(getButton().getY() - 40);
+            if (steps % 20 == 0 && !isAtEdge()) {
+                changeDirectionRandomX();
+                changeDirectionRandomY();
+                if (directionY == 0 && directionX == 0) {
+                    directionY = possibleDirections.get((int) ((Math.random() * 2) + 1));
+                }
+
+                setIsAtEdge(false);
+            }
+
+            getButton().setX(getButton().getX() + directionX);
+            getButton().setY(getButton().getY() + directionY);
+            getHp().setX(getButton().getX() - 5);
+            getHp().setY(getButton().getY() - 30);
             steps++;
         }
+    }
+
+    public void changeDirectionRandomX() {
+        directionX = possibleDirections.get((int) (Math.random() * 3));
+    }
+
+    public void changeDirectionRandomY() {
+        directionY = possibleDirections.get((int) (Math.random() * 3));
+    }
+
+    public boolean isAtEdge() {
+        return isAtLowEdgeX && isAtLowEdgeY && isAtHighEdgeX && isAtHighEdgeY;
+    }
+
+    public void setIsAtEdge(boolean temp) {
+        isAtHighEdgeX = temp;
+        isAtLowEdgeX = temp;
+        isAtHighEdgeY = temp;
+        isAtLowEdgeY = temp;
     }
 }

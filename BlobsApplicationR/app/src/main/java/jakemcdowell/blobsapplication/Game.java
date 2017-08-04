@@ -2,15 +2,10 @@ package jakemcdowell.blobsapplication;
 
 import android.support.v7.app.AppCompatActivity;
 
-import android.view.View;
 import android.widget.ProgressBar;
 import java.util.ArrayList;
 import java.util.List;
 //<<<<<<< Updated upstream
-import java.util.concurrent.CountDownLatch;
-import android.os.CountDownTimer;
-import android.content.Intent;
-import android.app.Activity;
 
 //=======
 import java.lang.Math;
@@ -83,7 +78,7 @@ public class Game extends AppCompatActivity {
 
     public void nextLevel() {
         for (Bug bug : bugList) {
-            bug.addHealth(0);
+            bug.addHealth(Constants.HEALTH_ADDED);
         }
         setupLevel(getLevel() + 1);
     }
