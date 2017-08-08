@@ -102,24 +102,20 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         progressBarIds[7] = R.id.progressBar9;
         progressBarIds[8] = R.id.progressBar10;
         progressBarIds[9] = R.id.progressBar11;
-        timeprogressbar = (ProgressBar)this.findViewById(R.id.timeProgressBar);
+        timeprogressbar = (ProgressBar) this.findViewById(R.id.timeProgressBar);
 
         for (int count = 0; count < 10; count++) {
             //Instantiates all bug buttons, and  puts them offscreen
             buttons[count] = (Button) findViewById(buttonIds[count]);
             if (count < 2) {
                 buttons[count].setBackgroundResource(R.drawable.normalbuganimation);
-            }
-            else if (count < 4) {
+            } else if (count < 4) {
                 buttons[count].setBackgroundResource(R.drawable.smallbuganimation);
-            }
-            else if (count < 6) {
+            } else if (count < 6) {
                 buttons[count].setBackgroundResource(R.drawable.movingbuganimation);
-            }
-            else if (count < 8) {
+            } else if (count < 8) {
                 buttons[count].setBackgroundResource(R.drawable.teleportingbuganimation);
-            }
-            else if (count < 10) {
+            } else if (count < 10) {
                 buttons[count].setBackgroundResource(R.drawable.armedfirebuganimation);
             }
             putOffScreen(buttons[count]);
@@ -129,17 +125,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             // Get all the bug animation objects
             if (count < 2) {
                 normalbuganimations.add((AnimationDrawable) buttons[count].getBackground());
-            }
-            else if (count < 4) {
+            } else if (count < 4) {
                 smallbuganimations.add((AnimationDrawable) buttons[count].getBackground());
-            }
-            else if (count < 6) {
+            } else if (count < 6) {
                 movingbuganimations.add((AnimationDrawable) buttons[count].getBackground());
-            }
-            else if (count < 8) {
+            } else if (count < 8) {
                 teleportingbuganimations.add((AnimationDrawable) buttons[count].getBackground());
-            }
-            else if (count < 10) {
+            } else if (count < 10) {
                 armedfirebuganimations.add((AnimationDrawable) buttons[count].getBackground());
             }
         }
@@ -159,7 +151,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         Activity gameActivity = new GameActivity();
 
         //Creates new Game
-        ProgressBar levelProgress = (ProgressBar)this.findViewById(R.id.progressBar2);
+        ProgressBar levelProgress = (ProgressBar) this.findViewById(R.id.progressBar2);
         game = new Game(levelProgress, bugList);
 
         /*
@@ -251,8 +243,107 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             TextView goldleveldisplay = (TextView) findViewById(R.id.textView29);
             goldleveldisplay.setText("Level 5");
         }
+        if (PlayerData.numberOfPesticide == 0) {
+            findViewById(R.id.pesticide).setVisibility(View.GONE);
+        }
+        if (PlayerData.continueLevel == true) {
+            PlayerData.continueLevel = false;
+            PlayerData.continueLevel1 = false;
+            //NEXTLEVELBUTTONCLICKCALLED
+            //checks to see if new bug on screen should be added
+
+
+            //Updates level marker
+            TextView f = (TextView) findViewById(R.id.textView1);
+            game.nextLevel();
+            startCountDownTimer();
+            f.setText("Level: " + game.getLevel());
+            ConstraintLayout j = (ConstraintLayout) findViewById(R.id.Constraint);
+            Drawable k = getDrawable(R.drawable.sandy);
+            Drawable l = getDrawable(R.drawable.gravel);
+            Drawable m = getDrawable(R.drawable.leaf);
+            Drawable n = getDrawable(R.drawable.desert);
+            Drawable o = getDrawable(R.drawable.grassy);
+            Drawable p = getDrawable(R.drawable.snow);
+
+            //sets up next level and removes nextLevel page.
+            findViewById(R.id.button2).setVisibility(View.GONE);
+            findViewById(R.id.textView2).setVisibility(View.GONE);
+            findViewById(R.id.textView22).setVisibility(View.GONE);
+            findViewById(R.id.textView23).setVisibility(View.GONE);
+            findViewById(R.id.textView24).setVisibility(View.GONE);
+            findViewById(R.id.textView25).setVisibility(View.GONE);
+            findViewById(R.id.imageView25).setVisibility(View.GONE);
+            findViewById(R.id.imageView26).setVisibility(View.GONE);
+            findViewById(R.id.button).setVisibility(View.VISIBLE);
+            findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
+            findViewById(R.id.progressBar2).setVisibility(View.VISIBLE);
+            findViewById(R.id.textView21).setVisibility(View.VISIBLE);
+            findViewById(R.id.textView17).setVisibility(View.VISIBLE);
+            findViewById(R.id.timeProgressBar).setVisibility(View.VISIBLE);
+            if (PlayerData.numberOfPesticide != 0) {
+                findViewById(R.id.pesticide).setVisibility(View.VISIBLE);
+            }
+            if (game.getLevel() % 25 == 0 && game.getLevel() % 25 < 5) {
+                snowfirstrun = true;
+                j.setBackground(o);
+                MediaPlayer grassymain = MediaPlayer.create(this, R.raw.grassymain);
+                if (grassyfirstrun == true) {
+                    MusicPlayer.startSong(grassymain);
+                    grassyfirstrun = false;
+                }
+            }
+            if (game.getLevel() % 25 > 4 && game.getLevel() % 25 < 9) {
+                grassyfirstrun = true;
+                j.setBackground(k);
+                MediaPlayer sandymain = MediaPlayer.create(this, R.raw.sandymain);
+                if (sandyfirstrun == true) {
+                    MusicPlayer.startSong(sandymain);
+                    sandyfirstrun = false;
+                }
+            }
+            if (game.getLevel() % 25 > 8 && game.getLevel() % 25 < 13) {
+                sandyfirstrun = true;
+                j.setBackground(l);
+                MediaPlayer gravelmain = MediaPlayer.create(this, R.raw.gravelmain);
+                if (gravelfirstrun == true) {
+                    MusicPlayer.startSong(gravelmain);
+                    gravelfirstrun = false;
+                }
+            }
+            if (game.getLevel() % 25 > 12 && game.getLevel() % 25 < 17) {
+                gravelfirstrun = true;
+                j.setBackground(m);
+                MediaPlayer leafmain = MediaPlayer.create(this, R.raw.leafmain);
+                if (leaffirstrun == true) {
+                    MusicPlayer.startSong(leafmain);
+                    leaffirstrun = false;
+                }
+            }
+            if (game.getLevel() % 25 > 16 && game.getLevel() % 25 < 21) {
+                leaffirstrun = true;
+
+                MediaPlayer desertmain = MediaPlayer.create(this, R.raw.desertmain);
+                if (desertfirstrun == true) {
+                    MusicPlayer.startSong(desertmain);
+                    desertfirstrun = false;
+                }
+            }
+            if (game.getLevel() % 25 > 20 && game.getLevel() % 25 < 24) {
+                desertfirstrun = true;
+                j.setBackground(p);
+                MediaPlayer snowmain = MediaPlayer.create(this, R.raw.snowmain);
+                if (snowfirstrun == true) {
+                    MusicPlayer.startSong(snowmain);
+                    snowfirstrun = false;
+                }
+            }
+        }
         TextView f = (TextView) findViewById(R.id.textView1);
         f.setText("Level: " + game.getLevel());
+        TextView g = (TextView) findViewById(R.id.textView31);
+        g.setText("Remaining: " + PlayerData.numberOfPesticide);
+
     }
 
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -1101,19 +1192,70 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         if(game.getLevel()%25 == 24) {
             MediaPlayer snowend = MediaPlayer.create(this, R.raw.snowend);
             MusicPlayer.playEndingMusic(snowend);
+            //makes buttons and textViews appear, to make nextLevel screen.
+            findViewById(R.id.button2).setVisibility(View.VISIBLE);
+            findViewById(R.id.textView2).setVisibility(View.VISIBLE);
+            findViewById(R.id.textView22).setVisibility(View.VISIBLE);
+            findViewById(R.id.textView23).setVisibility(View.VISIBLE);
+            findViewById(R.id.textView24).setVisibility(View.VISIBLE);
+            findViewById(R.id.textView25).setVisibility(View.VISIBLE);
+            findViewById(R.id.imageView25).setVisibility(View.VISIBLE);
+            findViewById(R.id.imageView26).setVisibility(View.VISIBLE);
+            findViewById(R.id.button).setVisibility(View.GONE);
+            findViewById(R.id.progressBar).setVisibility(View.GONE);
+            findViewById(R.id.progressBar2).setVisibility(View.GONE);
+            findViewById(R.id.timeProgressBar).setVisibility(View.GONE);
+            findViewById(R.id.textView21).setVisibility(View.GONE);
+            findViewById(R.id.textView17).setVisibility(View.GONE);
+            if(PlayerData.numberOfPesticide != 0){
+                findViewById(R.id.pesticide).setVisibility(View.VISIBLE);
+            }
+            if (PlayerData.goldIncreaseLevel == 0) {
+
+            }
+            if (PlayerData.goldIncreaseLevel == 1) {
+                goldAddedPerLevel = (int) (goldAddedPerLevel * 1.25);
+            }
+            if (PlayerData.goldIncreaseLevel == 2) {
+                goldAddedPerLevel = (int) (goldAddedPerLevel * 1.5);
+            }
+            if (PlayerData.goldIncreaseLevel == 3) {
+                goldAddedPerLevel =  goldAddedPerLevel * 2;
+            }
+            if (PlayerData.goldIncreaseLevel == 4) {
+                goldAddedPerLevel = (int) (goldAddedPerLevel * 2.5);
+            }
+            if (PlayerData.goldIncreaseLevel == 5) {
+                goldAddedPerLevel = goldAddedPerLevel * 3;
+            }
+            goldearnedbylevel = goldearnedbylevel + goldAddedPerLevel;
+            PlayerData.currentGold = PlayerData.currentGold + goldearnedbylevel;
+            goldEarnedDisplay.setText("" + goldearnedbylevel);
+            currentGoldDisplay.setText("" + PlayerData.currentGold);
         }
     }
     public void returnToMenuClick(View v) {
-        if (game.getLevel() > PlayerData.highestLevel) {
-            PlayerData.highestLevel = game.getLevel();
+            if (game.getLevel() > PlayerData.highestLevel) {
+                PlayerData.highestLevel = game.getLevel();
+            }
+        if(game.getLevel() != 1) {
+
+            PlayerData.currentLevel = game.getLevel() - 1;
+
+            PlayerData.continueLevel = true;
+            for (Bug bug : game.bugsInLevel) {
+                bug.resetBugToInitialState();
+            }
+            game.resetKOBar();
         }
-        PlayerData.currentLevel = game.getLevel();
+        else{
+            PlayerData.continueLevel1 = true;
+        }
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
-
     @Override
     public void onBackPressed() {
         if (game.getLevel() > PlayerData.highestLevel) {
@@ -1125,11 +1267,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
-
     //code rand for nextLevelButtonClick
     public void nextLevelButtonClick(View v) {
 
         //checks to see if new bug on screen should be added
+
         game.nextLevel();
 
         startCountDownTimer();
@@ -1137,7 +1279,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         //Updates level marker
         TextView f = (TextView) findViewById(R.id.textView1);
         f.setText("Level: " + game.getLevel());
-        ConstraintLayout j = (ConstraintLayout)findViewById(R.id.Constraint);
+        ConstraintLayout j = (ConstraintLayout) findViewById(R.id.Constraint);
         Drawable k = getDrawable(R.drawable.sandy);
         Drawable l = getDrawable(R.drawable.gravel);
         Drawable m = getDrawable(R.drawable.leaf);
@@ -1161,60 +1303,132 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.textView17).setVisibility(View.VISIBLE);
         findViewById(R.id.timeProgressBar).setVisibility(View.VISIBLE);
         findViewById(R.id.goldRandomButton).setVisibility(View.VISIBLE);
-        if(game.getLevel()%25 == 0 || game.getLevel()%25 < 5) {
-            snowfirstrun = true;
-            j.setBackground(o);
-            MediaPlayer grassymain = MediaPlayer.create(this, R.raw.grassymain);
-            if (grassyfirstrun == true) {
-                MusicPlayer.startSong(grassymain);
-                grassyfirstrun = false;
+        if (game.getLevel() % 25 == 0 || game.getLevel() % 25 < 5) {
+            if (PlayerData.numberOfPesticide != 0) {
+                findViewById(R.id.pesticide).setVisibility(View.VISIBLE);
+            }
+
+            if (game.getLevel() % 25 == 0 && game.getLevel() % 25 < 5) {
+                snowfirstrun = true;
+                j.setBackground(o);
+                MediaPlayer grassymain = MediaPlayer.create(this, R.raw.grassymain);
+                if (grassyfirstrun == true) {
+                    MusicPlayer.startSong(grassymain);
+                    grassyfirstrun = false;
+                }
+            }
+            if (game.getLevel() % 25 > 4 && game.getLevel() % 25 < 9) {
+                grassyfirstrun = true;
+                j.setBackground(k);
+                MediaPlayer sandymain = MediaPlayer.create(this, R.raw.sandymain);
+                if (sandyfirstrun == true) {
+                    MusicPlayer.startSong(sandymain);
+                    sandyfirstrun = false;
+                }
+            }
+            if (game.getLevel() % 25 > 8 && game.getLevel() % 25 < 13) {
+                sandyfirstrun = true;
+                j.setBackground(l);
+                MediaPlayer gravelmain = MediaPlayer.create(this, R.raw.gravelmain);
+                if (gravelfirstrun == true) {
+                    MusicPlayer.startSong(gravelmain);
+                    gravelfirstrun = false;
+                }
+            }
+            if (game.getLevel() % 25 > 12 && game.getLevel() % 25 < 17) {
+                gravelfirstrun = true;
+                j.setBackground(m);
+                MediaPlayer leafmain = MediaPlayer.create(this, R.raw.leafmain);
+                if (leaffirstrun == true) {
+                    MusicPlayer.startSong(leafmain);
+                    leaffirstrun = false;
+                }
+            }
+            if (game.getLevel() % 25 > 16 && game.getLevel() % 25 < 21) {
+                leaffirstrun = true;
+
+                MediaPlayer desertmain = MediaPlayer.create(this, R.raw.desertmain);
+                if (desertfirstrun == true) {
+                    MusicPlayer.startSong(desertmain);
+                    desertfirstrun = false;
+                }
+            }
+            if (game.getLevel() % 25 > 20 && game.getLevel() % 25 < 24) {
+                desertfirstrun = true;
+                j.setBackground(p);
+                MediaPlayer snowmain = MediaPlayer.create(this, R.raw.snowmain);
+                if (snowfirstrun == true) {
+                    MusicPlayer.startSong(snowmain);
+                    snowfirstrun = false;
+                }
             }
         }
-        if(game.getLevel()%25 > 4 && game.getLevel()%25 < 9) {
-            grassyfirstrun = true;
-            j.setBackground(k);
-            MediaPlayer sandymain = MediaPlayer.create(this, R.raw.sandymain);
-            if (sandyfirstrun == true) {
-                MusicPlayer.startSong(sandymain);
-                sandyfirstrun = false;
-            }
+    }
+
+    public void pesticideUse(View v) {
+        game.pesticide();
+        for (Bug bug : game.bugsInLevel) {
+            bug.damageBug(game);
         }
-        if(game.getLevel()%25 > 8 && game.getLevel()%25 < 13){
-            sandyfirstrun = true;
-            j.setBackground(l);
-            MediaPlayer gravelmain = MediaPlayer.create(this, R.raw.gravelmain);
-            if (gravelfirstrun == true) {
-                MusicPlayer.startSong(gravelmain);
-                gravelfirstrun = false;
-            }
+        PlayerData.numberOfPesticide = PlayerData.numberOfPesticide - 1;
+        TextView g = (TextView) findViewById(R.id.textView31);
+        g.setText("Remaining: " + PlayerData.numberOfPesticide);
+        if (PlayerData.numberOfPesticide == 0) {
+            findViewById(R.id.pesticide).setVisibility(View.GONE);
         }
-        if(game.getLevel()%25 > 12 && game.getLevel()%25 < 17){
-            gravelfirstrun = true;
-            j.setBackground(m);
-            MediaPlayer leafmain = MediaPlayer.create(this, R.raw.leafmain);
-            if (leaffirstrun == true) {
-                MusicPlayer.startSong(leafmain);
-                leaffirstrun = false;
+        if (game.isAllDead()) {
+            //makes buttons and textViews appear, to make nextLevel screen.
+            findViewById(R.id.button2).setVisibility(View.VISIBLE);
+            findViewById(R.id.textView2).setVisibility(View.VISIBLE);
+            findViewById(R.id.textView22).setVisibility(View.VISIBLE);
+            findViewById(R.id.textView23).setVisibility(View.VISIBLE);
+            findViewById(R.id.textView24).setVisibility(View.VISIBLE);
+            findViewById(R.id.textView25).setVisibility(View.VISIBLE);
+            findViewById(R.id.imageView25).setVisibility(View.VISIBLE);
+            findViewById(R.id.imageView26).setVisibility(View.VISIBLE);
+            findViewById(R.id.button).setVisibility(View.GONE);
+            findViewById(R.id.progressBar).setVisibility(View.GONE);
+            findViewById(R.id.progressBar2).setVisibility(View.GONE);
+            findViewById(R.id.timeProgressBar).setVisibility(View.GONE);
+            findViewById(R.id.textView21).setVisibility(View.GONE);
+            findViewById(R.id.textView17).setVisibility(View.GONE);
+            findViewById(R.id.pesticide).setVisibility(View.GONE);
+            if (PlayerData.goldIncreaseLevel == 0) {
+
             }
-        }
-        if(game.getLevel()%25 > 16 && game.getLevel()%25 < 21){
-            leaffirstrun = true;
-            j.setBackground(n);
-            MediaPlayer desertmain = MediaPlayer.create(this, R.raw.desertmain);
-            if (desertfirstrun == true) {
-                MusicPlayer.startSong(desertmain);
-                desertfirstrun = false;
+            if (PlayerData.goldIncreaseLevel == 1) {
+                goldAddedPerLevel = (int) (goldAddedPerLevel * 1.25);
             }
-        }
-        if(game.getLevel()%25 > 20 && game.getLevel()%25 < 24){
-            desertfirstrun = true;
-            j.setBackground(p);
-            MediaPlayer snowmain = MediaPlayer.create(this, R.raw.snowmain);
-            if (snowfirstrun == true) {
-                MusicPlayer.startSong(snowmain);
-                snowfirstrun = false;
+            if (PlayerData.goldIncreaseLevel == 2) {
+                goldAddedPerLevel = (int) (goldAddedPerLevel * 1.5);
             }
+            if (PlayerData.goldIncreaseLevel == 3) {
+                goldAddedPerLevel = goldAddedPerLevel * 2;
+            }
+            if (PlayerData.goldIncreaseLevel == 4) {
+                goldAddedPerLevel = (int) (goldAddedPerLevel * 2.5);
+            }
+            if (PlayerData.goldIncreaseLevel == 5) {
+                goldAddedPerLevel = goldAddedPerLevel * 3;
+            }
+            goldearnedbylevel = goldearnedbylevel + goldAddedPerLevel;
+            PlayerData.currentGold = PlayerData.currentGold + goldearnedbylevel;
+            TextView goldEarnedDisplay = (TextView) findViewById(R.id.textView23);
+            TextView currentGoldDisplay = (TextView) findViewById(R.id.textView25);
+            goldEarnedDisplay.setText("" + goldearnedbylevel);
+            currentGoldDisplay.setText("" + PlayerData.currentGold);
         }
+        final View button = v;
+        putOffScreen(button);
+        v.postDelayed(new Runnable() {
+                public void run() {
+                    moveBack(button);
+                }
+            }, 510);
+
+    }
+    private static void moveBack(View v){
+        v.setY(1337);
     }
 
     private static void putOffScreen(View v) {

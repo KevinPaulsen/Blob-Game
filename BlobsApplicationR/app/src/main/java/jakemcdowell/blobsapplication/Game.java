@@ -25,7 +25,7 @@ import static jakemcdowell.blobsapplication.Constants.radiusIncreaseLevel5;
 public class Game extends AppCompatActivity {
     private ProgressBar levelProgressBar;
     private List<Bug> bugList;
-    private List<Bug> bugsInLevel;
+    public List<Bug> bugsInLevel;
     private List<Bug> availableBugsInLevel = new ArrayList<>();
     public int level;
     private int bugsKilledInLevel = 0;
@@ -120,6 +120,10 @@ public class Game extends AppCompatActivity {
     public void updateLevelKnockOutProgressBar() {
         levelProgressBar.setProgress((int) ((((double) getBugsKnockedOut()) / totalKnockoutsRequiredInLevel) * 100));
     }
+    public void resetKOBar(){
+        levelProgressBar.setProgress(0);
+    }
+
 
     public int getBugsKnockedOut() {
         int totalDeadBugs = 0;
@@ -148,5 +152,11 @@ public class Game extends AppCompatActivity {
     //returns how many bugs will die this level
     public int getBugsLeftInLevel() {
         return getTotalBugsInLevel() - bugsKilledInLevel;
+    }
+
+    public void pesticide(){
+        for(Bug bug : bugsInLevel){
+           bug.addDamage(bug.getHealth());
+        }
     }
 }

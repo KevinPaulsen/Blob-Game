@@ -177,6 +177,7 @@
         android:layout_width="43dp"
         android:layout_height="43dp"
         android:visibility="visible"
+        android:onClick="buttonTestClick"
         tools:layout_editor_absoluteX="263dp"
         tools:layout_editor_absoluteY="181dp" />
 
@@ -186,6 +187,7 @@
         android:layout_width="43dp"
         android:layout_height="43dp"
         android:visibility="visible"
+        android:onClick="buttonTestClick"
         tools:layout_editor_absoluteX="238dp"
         tools:layout_editor_absoluteY="100dp" />
 
@@ -195,15 +197,17 @@
         android:layout_width="43dp"
         android:layout_height="43dp"
         android:visibility="visible"
+        android:onClick="buttonTestClick"
         tools:layout_editor_absoluteX="138dp"
         tools:layout_editor_absoluteY="100dp" />
 
     <Button
         android:id="@+id/button9"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="39dp"
+        android:layout_width="43dp"
         android:layout_height="43dp"
         android:visibility="visible"
+        android:onClick="buttonTestClick"
         tools:layout_editor_absoluteX="30dp"
         tools:layout_editor_absoluteY="130dp" />
 
@@ -658,7 +662,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-condensed"
-        android:text="Remaining: 5"
+        android:text="Remaining: 0"
         android:textColor="@android:color/holo_green_light"
         android:textStyle="bold"
         android:visibility="visible"
@@ -676,5 +680,18 @@
         android:background="@drawable/goldcoin"
         tools:layout_editor_absoluteX="186dp"
         tools:layout_editor_absoluteY="533dp" />
+
+    <Button
+        android:id="@+id/pesticide"
+        style="@android:style/Widget.DeviceDefault.Button.Borderless"
+        android:layout_width="92dp"
+        android:layout_height="120dp"
+        android:onClick="pesticideUse"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.944" />
 
 </android.support.constraint.ConstraintLayout>

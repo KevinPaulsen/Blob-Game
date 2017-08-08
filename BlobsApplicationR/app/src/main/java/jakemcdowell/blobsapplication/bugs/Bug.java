@@ -129,7 +129,6 @@ public class Bug {
         hp.setProgress(100);
         timesKnockedOut++;
     }
-
     public boolean isKnockedOut() {
         if (damage == health) {
             return true;

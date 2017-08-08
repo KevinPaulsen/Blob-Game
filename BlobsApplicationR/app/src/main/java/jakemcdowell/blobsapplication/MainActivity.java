@@ -26,6 +26,12 @@ public class MainActivity extends AppCompatActivity {
         a.setText("Version: " + Constants.version);
         TextView b = (TextView) findViewById(R.id.textView32);
         b.setText("High Score: Level " + PlayerData.highestLevel);
+        if(PlayerData.continueLevel == true) {
+            ((Button) (findViewById(R.id.button))).setText("Continue Level " + (PlayerData.currentLevel+1));
+        }
+        if(PlayerData.continueLevel1 == true) {
+            ((Button) (findViewById(R.id.button))).setText("Continue Level " + (PlayerData.currentLevel));
+        }
     }
 
     public void onWindowFocusChanged(boolean hasFocus) {

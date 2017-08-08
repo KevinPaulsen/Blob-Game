@@ -6,8 +6,23 @@
     android:layout_height="match_parent"
     tools:context="jakemcdowell.blobsapplication.DamageIncreaseActivity">
 
+    <Button
+        android:id="@+id/button14"
+        android:layout_width="141dp"
+        android:layout_height="134dp"
+        android:background="@drawable/cashregister"
+        android:fontFamily="sans-serif-condensed"
+        android:onClick="purchaseupgradebutton"
+        android:text="Purchase"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.934"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.378" />
+
     <ImageView
-        android:id="@+id/soldout"
+        android:id="@+id/imageview11"
         android:layout_width="402dp"
         android:layout_height="657dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,15 +34,15 @@
 
     <ImageView
         android:id="@+id/imageView20"
-        android:layout_width="350dp"
+        android:layout_width="407dp"
         android:layout_height="44dp"
         android:background="#103807"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.213"
-        app:layout_constraintHorizontal_bias="1.0" />
+        app:layout_constraintVertical_bias="0.213" />
 
     <ImageView
         android:id="@+id/imageView13"
@@ -64,20 +79,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintVertical_bias="0.22000003" />
-
-    <Button
-        android:id="@+id/button14"
-        android:layout_width="141dp"
-        android:layout_height="134dp"
-        android:background="@drawable/cashregister"
-        android:fontFamily="sans-serif-condensed"
-        android:text="Purchase"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.934"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.378" />
 
     <Button
         android:id="@+id/button16"
@@ -208,14 +209,14 @@
 
     <TextView
         android:id="@+id/textView13"
-        android:layout_width="85dp"
+        android:layout_width="130dp"
         android:layout_height="42dp"
-        android:text="Level"
+        android:text="Amount"
         android:textColor="@android:color/holo_green_dark"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.217"
+        app:layout_constraintHorizontal_bias="0.106"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -246,16 +247,30 @@
         app:layout_constraintVertical_bias="0.867" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/soldout"
         android:layout_width="100dp"
         android:layout_height="26dp"
-        app:srcCompat="@drawable/soldout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.89"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.312"
+        app:srcCompat="@drawable/soldout" />
+
+    <TextView
+        android:id="@+id/textView38"
+        android:layout_width="253dp"
+        android:layout_height="17dp"
+        android:text="    100      252       762     2874   14132"
+        android:textColor="@android:color/holo_orange_light"
+        app:layout_constraintBottom_toTopOf="@+id/soldout"
+        app:layout_constraintTop_toBottomOf="@+id/button16"
+        app:layout_constraintVertical_bias="0.0"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.89"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.312" />
+        app:layout_constraintHorizontal_bias="0.974" />
+
 
 
 </android.support.constraint.ConstraintLayout>
