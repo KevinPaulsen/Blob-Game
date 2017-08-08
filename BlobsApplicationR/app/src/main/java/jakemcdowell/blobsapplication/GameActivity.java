@@ -50,6 +50,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private int goldEarnedByRandom = 0;
     private boolean gameactivityispaused = false;
     Button goldButton;
+    boolean nextLevelScreen = false;
 
     boolean sandyfirstrun = true;
     boolean gravelfirstrun = true;
@@ -449,261 +450,264 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        // MotionEvent object holds X-Y values
-        if (PlayerData.radiusIncreaseLevel == 0) {
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button).getX(),findViewById(R.id.button).getY()) <= Constants.radiusIncreaseLevel0) {
-                Button bugbutton1 = (Button) findViewById(R.id.button);
-                findBug(bugbutton1).damageBug(game);
+        if (!nextLevelScreen) {
+            // MotionEvent object holds X-Y values
+            if (PlayerData.radiusIncreaseLevel == 0) {
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button).getX(), findViewById(R.id.button).getY()) <= Constants.radiusIncreaseLevel0) {
+                    Button bugbutton1 = (Button) findViewById(R.id.button);
+                    findBug(bugbutton1).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button5).getX(), findViewById(R.id.button5).getY()) <= Constants.radiusIncreaseLevel0) {
+                    Button bugbutton2 = (Button) findViewById(R.id.button5);
+                    findBug(bugbutton2).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button6).getX(), findViewById(R.id.button6).getY()) <= Constants.radiusIncreaseLevel0) {
+                    Button bugbutton3 = (Button) findViewById(R.id.button6);
+                    findBug(bugbutton3).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button7).getX(), findViewById(R.id.button7).getY()) <= Constants.radiusIncreaseLevel0) {
+                    Button bugbutton4 = (Button) findViewById(R.id.button7);
+                    findBug(bugbutton4).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button8).getX(), findViewById(R.id.button8).getY()) <= Constants.radiusIncreaseLevel0) {
+                    Button bugbutton5 = (Button) findViewById(R.id.button8);
+                    findBug(bugbutton5).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button9).getX(), findViewById(R.id.button9).getY()) <= Constants.radiusIncreaseLevel0) {
+                    Button bugbutton6 = (Button) findViewById(R.id.button9);
+                    findBug(bugbutton6).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button10).getX(), findViewById(R.id.button10).getY()) <= Constants.radiusIncreaseLevel0) {
+                    Button bugbutton7 = (Button) findViewById(R.id.button10);
+                    findBug(bugbutton7).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button11).getX(), findViewById(R.id.button11).getY()) <= Constants.radiusIncreaseLevel0) {
+                    Button bugbutton8 = (Button) findViewById(R.id.button11);
+                    findBug(bugbutton8).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button12).getX(), findViewById(R.id.button12).getY()) <= Constants.radiusIncreaseLevel0) {
+                    Button bugbutton9 = (Button) findViewById(R.id.button12);
+                    findBug(bugbutton9).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button13).getX(), findViewById(R.id.button13).getY()) <= Constants.radiusIncreaseLevel0) {
+                    Button bugbutton10 = (Button) findViewById(R.id.button13);
+                    findBug(bugbutton10).damageBug(game);
+                }
             }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button5).getX(),findViewById(R.id.button5).getY()) <= Constants.radiusIncreaseLevel0) {
-                Button bugbutton2 = (Button) findViewById(R.id.button5);
-                findBug(bugbutton2).damageBug(game);
+            if (PlayerData.radiusIncreaseLevel == 1) {
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button).getX(), findViewById(R.id.button).getY()) <= Constants.radiusIncreaseLevel1) {
+                    Button bugbutton1 = (Button) findViewById(R.id.button);
+                    findBug(bugbutton1).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button5).getX(), findViewById(R.id.button5).getY()) <= Constants.radiusIncreaseLevel1) {
+                    Button bugbutton2 = (Button) findViewById(R.id.button5);
+                    findBug(bugbutton2).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button6).getX(), findViewById(R.id.button6).getY()) <= Constants.radiusIncreaseLevel1) {
+                    Button bugbutton3 = (Button) findViewById(R.id.button6);
+                    findBug(bugbutton3).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button7).getX(), findViewById(R.id.button7).getY()) <= Constants.radiusIncreaseLevel1) {
+                    Button bugbutton4 = (Button) findViewById(R.id.button7);
+                    findBug(bugbutton4).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button8).getX(), findViewById(R.id.button8).getY()) <= Constants.radiusIncreaseLevel1) {
+                    Button bugbutton5 = (Button) findViewById(R.id.button8);
+                    findBug(bugbutton5).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button9).getX(), findViewById(R.id.button9).getY()) <= Constants.radiusIncreaseLevel1) {
+                    Button bugbutton6 = (Button) findViewById(R.id.button9);
+                    findBug(bugbutton6).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button10).getX(), findViewById(R.id.button10).getY()) <= Constants.radiusIncreaseLevel1) {
+                    Button bugbutton7 = (Button) findViewById(R.id.button10);
+                    findBug(bugbutton7).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button11).getX(), findViewById(R.id.button11).getY()) <= Constants.radiusIncreaseLevel1) {
+                    Button bugbutton8 = (Button) findViewById(R.id.button11);
+                    findBug(bugbutton8).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button12).getX(), findViewById(R.id.button12).getY()) <= Constants.radiusIncreaseLevel1) {
+                    Button bugbutton9 = (Button) findViewById(R.id.button12);
+                    findBug(bugbutton9).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button13).getX(), findViewById(R.id.button13).getY()) <= Constants.radiusIncreaseLevel1) {
+                    Button bugbutton10 = (Button) findViewById(R.id.button13);
+                    findBug(bugbutton10).damageBug(game);
+                }
             }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button6).getX(),findViewById(R.id.button6).getY()) <= Constants.radiusIncreaseLevel0) {
-                Button bugbutton3 = (Button) findViewById(R.id.button6);
-                findBug(bugbutton3).damageBug(game);
+            if (PlayerData.radiusIncreaseLevel == 2) {
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button).getX(), findViewById(R.id.button).getY()) <= Constants.radiusIncreaseLevel2) {
+                    Button bugbutton1 = (Button) findViewById(R.id.button);
+                    findBug(bugbutton1).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button5).getX(), findViewById(R.id.button5).getY()) <= Constants.radiusIncreaseLevel2) {
+                    Button bugbutton2 = (Button) findViewById(R.id.button5);
+                    findBug(bugbutton2).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button6).getX(), findViewById(R.id.button6).getY()) <= Constants.radiusIncreaseLevel2) {
+                    Button bugbutton3 = (Button) findViewById(R.id.button6);
+                    findBug(bugbutton3).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button7).getX(), findViewById(R.id.button7).getY()) <= Constants.radiusIncreaseLevel2) {
+                    Button bugbutton4 = (Button) findViewById(R.id.button7);
+                    findBug(bugbutton4).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button8).getX(), findViewById(R.id.button8).getY()) <= Constants.radiusIncreaseLevel2) {
+                    Button bugbutton5 = (Button) findViewById(R.id.button8);
+                    findBug(bugbutton5).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button9).getX(), findViewById(R.id.button9).getY()) <= Constants.radiusIncreaseLevel2) {
+                    Button bugbutton6 = (Button) findViewById(R.id.button9);
+                    findBug(bugbutton6).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button10).getX(), findViewById(R.id.button10).getY()) <= Constants.radiusIncreaseLevel2) {
+                    Button bugbutton7 = (Button) findViewById(R.id.button10);
+                    findBug(bugbutton7).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button11).getX(), findViewById(R.id.button11).getY()) <= Constants.radiusIncreaseLevel2) {
+                    Button bugbutton8 = (Button) findViewById(R.id.button11);
+                    findBug(bugbutton8).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button12).getX(), findViewById(R.id.button12).getY()) <= Constants.radiusIncreaseLevel2) {
+                    Button bugbutton9 = (Button) findViewById(R.id.button12);
+                    findBug(bugbutton9).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button13).getX(), findViewById(R.id.button13).getY()) <= Constants.radiusIncreaseLevel2) {
+                    Button bugbutton10 = (Button) findViewById(R.id.button13);
+                    findBug(bugbutton10).damageBug(game);
+                }
             }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button7).getX(),findViewById(R.id.button7).getY()) <= Constants.radiusIncreaseLevel0) {
-                Button bugbutton4 = (Button) findViewById(R.id.button7);
-                findBug(bugbutton4).damageBug(game);
+            if (PlayerData.radiusIncreaseLevel == 3) {
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button).getX(), findViewById(R.id.button).getY()) <= Constants.radiusIncreaseLevel3) {
+                    Button bugbutton1 = (Button) findViewById(R.id.button);
+                    findBug(bugbutton1).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button5).getX(), findViewById(R.id.button5).getY()) <= Constants.radiusIncreaseLevel3) {
+                    Button bugbutton2 = (Button) findViewById(R.id.button5);
+                    findBug(bugbutton2).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button6).getX(), findViewById(R.id.button6).getY()) <= Constants.radiusIncreaseLevel3) {
+                    Button bugbutton3 = (Button) findViewById(R.id.button6);
+                    findBug(bugbutton3).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button7).getX(), findViewById(R.id.button7).getY()) <= Constants.radiusIncreaseLevel3) {
+                    Button bugbutton4 = (Button) findViewById(R.id.button7);
+                    findBug(bugbutton4).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button8).getX(), findViewById(R.id.button8).getY()) <= Constants.radiusIncreaseLevel3) {
+                    Button bugbutton5 = (Button) findViewById(R.id.button8);
+                    findBug(bugbutton5).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button9).getX(), findViewById(R.id.button9).getY()) <= Constants.radiusIncreaseLevel3) {
+                    Button bugbutton6 = (Button) findViewById(R.id.button9);
+                    findBug(bugbutton6).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button10).getX(), findViewById(R.id.button10).getY()) <= Constants.radiusIncreaseLevel3) {
+                    Button bugbutton7 = (Button) findViewById(R.id.button10);
+                    findBug(bugbutton7).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button11).getX(), findViewById(R.id.button11).getY()) <= Constants.radiusIncreaseLevel3) {
+                    Button bugbutton8 = (Button) findViewById(R.id.button11);
+                    findBug(bugbutton8).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button12).getX(), findViewById(R.id.button12).getY()) <= Constants.radiusIncreaseLevel3) {
+                    Button bugbutton9 = (Button) findViewById(R.id.button12);
+                    findBug(bugbutton9).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button13).getX(), findViewById(R.id.button13).getY()) <= Constants.radiusIncreaseLevel3) {
+                    Button bugbutton10 = (Button) findViewById(R.id.button13);
+                    findBug(bugbutton10).damageBug(game);
+                }
             }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button8).getX(),findViewById(R.id.button8).getY()) <= Constants.radiusIncreaseLevel0) {
-                Button bugbutton5 = (Button) findViewById(R.id.button8);
-                findBug(bugbutton5).damageBug(game);
+            if (PlayerData.radiusIncreaseLevel == 4) {
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button).getX(), findViewById(R.id.button).getY()) <= Constants.radiusIncreaseLevel4) {
+                    Button bugbutton1 = (Button) findViewById(R.id.button);
+                    findBug(bugbutton1).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button5).getX(), findViewById(R.id.button5).getY()) <= Constants.radiusIncreaseLevel4) {
+                    Button bugbutton2 = (Button) findViewById(R.id.button5);
+                    findBug(bugbutton2).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button6).getX(), findViewById(R.id.button6).getY()) <= Constants.radiusIncreaseLevel4) {
+                    Button bugbutton3 = (Button) findViewById(R.id.button6);
+                    findBug(bugbutton3).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button7).getX(), findViewById(R.id.button7).getY()) <= Constants.radiusIncreaseLevel4) {
+                    Button bugbutton4 = (Button) findViewById(R.id.button7);
+                    findBug(bugbutton4).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button8).getX(), findViewById(R.id.button8).getY()) <= Constants.radiusIncreaseLevel4) {
+                    Button bugbutton5 = (Button) findViewById(R.id.button8);
+                    findBug(bugbutton5).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button9).getX(), findViewById(R.id.button9).getY()) <= Constants.radiusIncreaseLevel4) {
+                    Button bugbutton6 = (Button) findViewById(R.id.button9);
+                    findBug(bugbutton6).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button10).getX(), findViewById(R.id.button10).getY()) <= Constants.radiusIncreaseLevel4) {
+                    Button bugbutton7 = (Button) findViewById(R.id.button10);
+                    findBug(bugbutton7).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button11).getX(), findViewById(R.id.button11).getY()) <= Constants.radiusIncreaseLevel4) {
+                    Button bugbutton8 = (Button) findViewById(R.id.button11);
+                    findBug(bugbutton8).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button12).getX(), findViewById(R.id.button12).getY()) <= Constants.radiusIncreaseLevel4) {
+                    Button bugbutton9 = (Button) findViewById(R.id.button12);
+                    findBug(bugbutton9).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button13).getX(), findViewById(R.id.button13).getY()) <= Constants.radiusIncreaseLevel4) {
+                    Button bugbutton10 = (Button) findViewById(R.id.button13);
+                    findBug(bugbutton10).damageBug(game);
+                }
             }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button9).getX(),findViewById(R.id.button9).getY()) <= Constants.radiusIncreaseLevel0) {
-                Button bugbutton6 = (Button) findViewById(R.id.button9);
-                findBug(bugbutton6).damageBug(game);
+            if (PlayerData.radiusIncreaseLevel == 5) {
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button).getX(), findViewById(R.id.button).getY()) <= Constants.radiusIncreaseLevel5) {
+                    Button bugbutton1 = (Button) findViewById(R.id.button);
+                    findBug(bugbutton1).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button5).getX(), findViewById(R.id.button5).getY()) <= Constants.radiusIncreaseLevel5) {
+                    Button bugbutton2 = (Button) findViewById(R.id.button5);
+                    findBug(bugbutton2).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button6).getX(), findViewById(R.id.button6).getY()) <= Constants.radiusIncreaseLevel5) {
+                    Button bugbutton3 = (Button) findViewById(R.id.button6);
+                    findBug(bugbutton3).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button7).getX(), findViewById(R.id.button7).getY()) <= Constants.radiusIncreaseLevel5) {
+                    Button bugbutton4 = (Button) findViewById(R.id.button7);
+                    findBug(bugbutton4).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button8).getX(), findViewById(R.id.button8).getY()) <= Constants.radiusIncreaseLevel5) {
+                    Button bugbutton5 = (Button) findViewById(R.id.button8);
+                    findBug(bugbutton5).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button9).getX(), findViewById(R.id.button9).getY()) <= Constants.radiusIncreaseLevel5) {
+                    Button bugbutton6 = (Button) findViewById(R.id.button9);
+                    findBug(bugbutton6).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button10).getX(), findViewById(R.id.button10).getY()) <= Constants.radiusIncreaseLevel5) {
+                    Button bugbutton7 = (Button) findViewById(R.id.button10);
+                    findBug(bugbutton7).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button11).getX(), findViewById(R.id.button11).getY()) <= Constants.radiusIncreaseLevel5) {
+                    Button bugbutton8 = (Button) findViewById(R.id.button11);
+                    findBug(bugbutton8).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button12).getX(), findViewById(R.id.button12).getY()) <= Constants.radiusIncreaseLevel5) {
+                    Button bugbutton9 = (Button) findViewById(R.id.button12);
+                    findBug(bugbutton9).damageBug(game);
+                }
+                if (getDistance(event.getX(), event.getY(), findViewById(R.id.button13).getX(), findViewById(R.id.button13).getY()) <= Constants.radiusIncreaseLevel5) {
+                    Button bugbutton10 = (Button) findViewById(R.id.button13);
+                    findBug(bugbutton10).damageBug(game);
+                }
             }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button10).getX(),findViewById(R.id.button10).getY()) <= Constants.radiusIncreaseLevel0) {
-                Button bugbutton7 = (Button) findViewById(R.id.button10);
-                findBug(bugbutton7).damageBug(game);
+            if (game.isAllDead()) {
+                allBugsDead();
+                nextLevelScreen = true;
             }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button11).getX(),findViewById(R.id.button11).getY()) <= Constants.radiusIncreaseLevel0) {
-                Button bugbutton8 = (Button) findViewById(R.id.button11);
-                findBug(bugbutton8).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button12).getX(),findViewById(R.id.button12).getY()) <= Constants.radiusIncreaseLevel0) {
-                Button bugbutton9 = (Button) findViewById(R.id.button12);
-                findBug(bugbutton9).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button13).getX(),findViewById(R.id.button13).getY()) <= Constants.radiusIncreaseLevel0) {
-                Button bugbutton10 = (Button) findViewById(R.id.button13);
-                findBug(bugbutton10).damageBug(game);
-            }
-        }
-        if (PlayerData.radiusIncreaseLevel == 1) {
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button).getX(),findViewById(R.id.button).getY()) <= Constants.radiusIncreaseLevel1) {
-                Button bugbutton1 = (Button) findViewById(R.id.button);
-                findBug(bugbutton1).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button5).getX(),findViewById(R.id.button5).getY()) <= Constants.radiusIncreaseLevel1) {
-                Button bugbutton2 = (Button) findViewById(R.id.button5);
-                findBug(bugbutton2).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button6).getX(),findViewById(R.id.button6).getY()) <= Constants.radiusIncreaseLevel1) {
-                Button bugbutton3 = (Button) findViewById(R.id.button6);
-                findBug(bugbutton3).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button7).getX(),findViewById(R.id.button7).getY()) <= Constants.radiusIncreaseLevel1) {
-                Button bugbutton4 = (Button) findViewById(R.id.button7);
-                findBug(bugbutton4).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button8).getX(),findViewById(R.id.button8).getY()) <= Constants.radiusIncreaseLevel1) {
-                Button bugbutton5 = (Button) findViewById(R.id.button8);
-                findBug(bugbutton5).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button9).getX(),findViewById(R.id.button9).getY()) <= Constants.radiusIncreaseLevel1) {
-                Button bugbutton6 = (Button) findViewById(R.id.button9);
-                findBug(bugbutton6).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button10).getX(),findViewById(R.id.button10).getY()) <= Constants.radiusIncreaseLevel1) {
-                Button bugbutton7 = (Button) findViewById(R.id.button10);
-                findBug(bugbutton7).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button11).getX(),findViewById(R.id.button11).getY()) <= Constants.radiusIncreaseLevel1) {
-                Button bugbutton8 = (Button) findViewById(R.id.button11);
-                findBug(bugbutton8).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button12).getX(),findViewById(R.id.button12).getY()) <= Constants.radiusIncreaseLevel1) {
-                Button bugbutton9 = (Button) findViewById(R.id.button12);
-                findBug(bugbutton9).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button13).getX(),findViewById(R.id.button13).getY()) <= Constants.radiusIncreaseLevel1) {
-                Button bugbutton10 = (Button) findViewById(R.id.button13);
-                findBug(bugbutton10).damageBug(game);
-            }
-        }
-        if (PlayerData.radiusIncreaseLevel == 2) {
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button).getX(),findViewById(R.id.button).getY()) <= Constants.radiusIncreaseLevel2) {
-                Button bugbutton1 = (Button) findViewById(R.id.button);
-                findBug(bugbutton1).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button5).getX(),findViewById(R.id.button5).getY()) <= Constants.radiusIncreaseLevel2) {
-                Button bugbutton2 = (Button) findViewById(R.id.button5);
-                findBug(bugbutton2).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button6).getX(),findViewById(R.id.button6).getY()) <= Constants.radiusIncreaseLevel2) {
-                Button bugbutton3 = (Button) findViewById(R.id.button6);
-                findBug(bugbutton3).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button7).getX(),findViewById(R.id.button7).getY()) <= Constants.radiusIncreaseLevel2) {
-                Button bugbutton4 = (Button) findViewById(R.id.button7);
-                findBug(bugbutton4).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button8).getX(),findViewById(R.id.button8).getY()) <= Constants.radiusIncreaseLevel2) {
-                Button bugbutton5 = (Button) findViewById(R.id.button8);
-                findBug(bugbutton5).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button9).getX(),findViewById(R.id.button9).getY()) <= Constants.radiusIncreaseLevel2) {
-                Button bugbutton6 = (Button) findViewById(R.id.button9);
-                findBug(bugbutton6).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button10).getX(),findViewById(R.id.button10).getY()) <= Constants.radiusIncreaseLevel2) {
-                Button bugbutton7 = (Button) findViewById(R.id.button10);
-                findBug(bugbutton7).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button11).getX(),findViewById(R.id.button11).getY()) <= Constants.radiusIncreaseLevel2) {
-                Button bugbutton8 = (Button) findViewById(R.id.button11);
-                findBug(bugbutton8).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button12).getX(),findViewById(R.id.button12).getY()) <= Constants.radiusIncreaseLevel2) {
-                Button bugbutton9 = (Button) findViewById(R.id.button12);
-                findBug(bugbutton9).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button13).getX(),findViewById(R.id.button13).getY()) <= Constants.radiusIncreaseLevel2) {
-                Button bugbutton10 = (Button) findViewById(R.id.button13);
-                findBug(bugbutton10).damageBug(game);
-            }
-        }
-        if (PlayerData.radiusIncreaseLevel == 3) {
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button).getX(),findViewById(R.id.button).getY()) <= Constants.radiusIncreaseLevel3) {
-                Button bugbutton1 = (Button) findViewById(R.id.button);
-                findBug(bugbutton1).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button5).getX(),findViewById(R.id.button5).getY()) <= Constants.radiusIncreaseLevel3) {
-                Button bugbutton2 = (Button) findViewById(R.id.button5);
-                findBug(bugbutton2).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button6).getX(),findViewById(R.id.button6).getY()) <= Constants.radiusIncreaseLevel3) {
-                Button bugbutton3 = (Button) findViewById(R.id.button6);
-                findBug(bugbutton3).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button7).getX(),findViewById(R.id.button7).getY()) <= Constants.radiusIncreaseLevel3) {
-                Button bugbutton4 = (Button) findViewById(R.id.button7);
-                findBug(bugbutton4).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button8).getX(),findViewById(R.id.button8).getY()) <= Constants.radiusIncreaseLevel3) {
-                Button bugbutton5 = (Button) findViewById(R.id.button8);
-                findBug(bugbutton5).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button9).getX(),findViewById(R.id.button9).getY()) <= Constants.radiusIncreaseLevel3) {
-                Button bugbutton6 = (Button) findViewById(R.id.button9);
-                findBug(bugbutton6).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button10).getX(),findViewById(R.id.button10).getY()) <= Constants.radiusIncreaseLevel3) {
-                Button bugbutton7 = (Button) findViewById(R.id.button10);
-                findBug(bugbutton7).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button11).getX(),findViewById(R.id.button11).getY()) <= Constants.radiusIncreaseLevel3) {
-                Button bugbutton8 = (Button) findViewById(R.id.button11);
-                findBug(bugbutton8).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button12).getX(),findViewById(R.id.button12).getY()) <= Constants.radiusIncreaseLevel3) {
-                Button bugbutton9 = (Button) findViewById(R.id.button12);
-                findBug(bugbutton9).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button13).getX(),findViewById(R.id.button13).getY()) <= Constants.radiusIncreaseLevel3) {
-                Button bugbutton10 = (Button) findViewById(R.id.button13);
-                findBug(bugbutton10).damageBug(game);
-            }
-        }
-        if (PlayerData.radiusIncreaseLevel == 4) {
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button).getX(),findViewById(R.id.button).getY()) <= Constants.radiusIncreaseLevel4) {
-                Button bugbutton1 = (Button) findViewById(R.id.button);
-                findBug(bugbutton1).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button5).getX(),findViewById(R.id.button5).getY()) <= Constants.radiusIncreaseLevel4) {
-                Button bugbutton2 = (Button) findViewById(R.id.button5);
-                findBug(bugbutton2).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button6).getX(),findViewById(R.id.button6).getY()) <= Constants.radiusIncreaseLevel4) {
-                Button bugbutton3 = (Button) findViewById(R.id.button6);
-                findBug(bugbutton3).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button7).getX(),findViewById(R.id.button7).getY()) <= Constants.radiusIncreaseLevel4) {
-                Button bugbutton4 = (Button) findViewById(R.id.button7);
-                findBug(bugbutton4).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button8).getX(),findViewById(R.id.button8).getY()) <= Constants.radiusIncreaseLevel4) {
-                Button bugbutton5 = (Button) findViewById(R.id.button8);
-                findBug(bugbutton5).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button9).getX(),findViewById(R.id.button9).getY()) <= Constants.radiusIncreaseLevel4) {
-                Button bugbutton6 = (Button) findViewById(R.id.button9);
-                findBug(bugbutton6).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button10).getX(),findViewById(R.id.button10).getY()) <= Constants.radiusIncreaseLevel4) {
-                Button bugbutton7 = (Button) findViewById(R.id.button10);
-                findBug(bugbutton7).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button11).getX(),findViewById(R.id.button11).getY()) <= Constants.radiusIncreaseLevel4) {
-                Button bugbutton8 = (Button) findViewById(R.id.button11);
-                findBug(bugbutton8).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button12).getX(),findViewById(R.id.button12).getY()) <= Constants.radiusIncreaseLevel4) {
-                Button bugbutton9 = (Button) findViewById(R.id.button12);
-                findBug(bugbutton9).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button13).getX(),findViewById(R.id.button13).getY()) <= Constants.radiusIncreaseLevel4) {
-                Button bugbutton10 = (Button) findViewById(R.id.button13);
-                findBug(bugbutton10).damageBug(game);
-            }
-        }
-        if (PlayerData.radiusIncreaseLevel == 5) {
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button).getX(),findViewById(R.id.button).getY()) <= Constants.radiusIncreaseLevel5) {
-                Button bugbutton1 = (Button) findViewById(R.id.button);
-                findBug(bugbutton1).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button5).getX(),findViewById(R.id.button5).getY()) <= Constants.radiusIncreaseLevel5) {
-                Button bugbutton2 = (Button) findViewById(R.id.button5);
-                findBug(bugbutton2).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button6).getX(),findViewById(R.id.button6).getY()) <= Constants.radiusIncreaseLevel5) {
-                Button bugbutton3 = (Button) findViewById(R.id.button6);
-                findBug(bugbutton3).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button7).getX(),findViewById(R.id.button7).getY()) <= Constants.radiusIncreaseLevel5) {
-                Button bugbutton4 = (Button) findViewById(R.id.button7);
-                findBug(bugbutton4).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button8).getX(),findViewById(R.id.button8).getY()) <= Constants.radiusIncreaseLevel5) {
-                Button bugbutton5 = (Button) findViewById(R.id.button8);
-                findBug(bugbutton5).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button9).getX(),findViewById(R.id.button9).getY()) <= Constants.radiusIncreaseLevel5) {
-                Button bugbutton6 = (Button) findViewById(R.id.button9);
-                findBug(bugbutton6).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button10).getX(),findViewById(R.id.button10).getY()) <= Constants.radiusIncreaseLevel5) {
-                Button bugbutton7 = (Button) findViewById(R.id.button10);
-                findBug(bugbutton7).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button11).getX(),findViewById(R.id.button11).getY()) <= Constants.radiusIncreaseLevel5) {
-                Button bugbutton8 = (Button) findViewById(R.id.button11);
-                findBug(bugbutton8).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button12).getX(),findViewById(R.id.button12).getY()) <= Constants.radiusIncreaseLevel5) {
-                Button bugbutton9 = (Button) findViewById(R.id.button12);
-                findBug(bugbutton9).damageBug(game);
-            }
-            if (getDistance(event.getX(),event.getY(),findViewById(R.id.button13).getX(),findViewById(R.id.button13).getY()) <= Constants.radiusIncreaseLevel5) {
-                Button bugbutton10 = (Button) findViewById(R.id.button13);
-                findBug(bugbutton10).damageBug(game);
-            }
-        }
-        if (game.isAllDead()) {
-            allBugsDead();
         }
         return super.onTouchEvent(event);
     }
@@ -1269,7 +1273,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
     //code rand for nextLevelButtonClick
     public void nextLevelButtonClick(View v) {
-
+        nextLevelScreen = false;
         //checks to see if new bug on screen should be added
 
         game.nextLevel();

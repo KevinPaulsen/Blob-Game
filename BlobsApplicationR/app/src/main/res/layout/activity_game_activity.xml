@@ -323,13 +323,14 @@
         android:id="@+id/imageView"
         android:layout_width="63dp"
         android:layout_height="58dp"
-        app:srcCompat="@drawable/home"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHorizontal_bias="0.965"
-        app:layout_constraintVertical_bias="0.026" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.026"
+        app:srcCompat="@drawable/home" />
 
     <TextView
         android:id="@+id/textView21"
@@ -462,13 +463,14 @@
         android:id="@+id/imageView28"
         android:layout_width="90dp"
         android:layout_height="327dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="?attr/colorButtonNormal"
-        app:layout_constraintVertical_bias="0.466" />
+        app:layout_constraintVertical_bias="0.466"
+        app:srcCompat="?attr/colorButtonNormal" />
 
     <TextView
         android:id="@+id/textView26"
