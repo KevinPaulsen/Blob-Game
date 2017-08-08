@@ -10,7 +10,7 @@ public class Constants {
 
 //BASIC CONSTANTS
     //This is the amount of time in the level measured in seconds times 1000(milliseconds)
-    public static long timeInLevel = 10 * 1000;
+    public static long timeInLevel = 10000000 * 1000;
 
 //UPGRADES
     //This is the price of the damage increase upgrade by level

@@ -177,7 +177,6 @@
         android:layout_width="43dp"
         android:layout_height="43dp"
         android:visibility="visible"
-        android:onClick="buttonTestClick"
         tools:layout_editor_absoluteX="263dp"
         tools:layout_editor_absoluteY="181dp" />
 
@@ -187,7 +186,6 @@
         android:layout_width="43dp"
         android:layout_height="43dp"
         android:visibility="visible"
-        android:onClick="buttonTestClick"
         tools:layout_editor_absoluteX="238dp"
         tools:layout_editor_absoluteY="100dp" />
 
@@ -197,7 +195,6 @@
         android:layout_width="43dp"
         android:layout_height="43dp"
         android:visibility="visible"
-        android:onClick="buttonTestClick"
         tools:layout_editor_absoluteX="138dp"
         tools:layout_editor_absoluteY="100dp" />
 
@@ -207,7 +204,6 @@
         android:layout_width="43dp"
         android:layout_height="43dp"
         android:visibility="visible"
-        android:onClick="buttonTestClick"
         tools:layout_editor_absoluteX="30dp"
         tools:layout_editor_absoluteY="130dp" />
 
@@ -680,6 +676,11 @@
         android:layout_width="86dp"
         android:layout_height="86dp"
         android:background="@drawable/goldcoin"
+        android:fontFamily="sans-serif-condensed"
+        android:text="0"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
         tools:layout_editor_absoluteX="186dp"
         tools:layout_editor_absoluteY="533dp" />
 
