@@ -10,9 +10,19 @@
 
 
     <ImageView
+        android:id="@+id/imageView39"
+        android:layout_width="752dp"
+        android:layout_height="899dp"
+        android:layout_marginLeft="78dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:srcCompat="@drawable/grassyfields"
+        tools:layout_editor_absoluteY="85dp"
+        android:layout_marginStart="78dp" />
+
+    <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="402dp"
-        android:layout_height="658dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -58,16 +68,16 @@
 
     <Button
         android:id="@+id/KillAllShop"
-        android:layout_width="59dp"
-        android:layout_height="94dp"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
         android:background="@drawable/spraycan"
         android:onClick="pesticidebutton"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintHorizontal_bias="0.095"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.661" />
+        app:layout_constraintVertical_bias="0.672" />
 
     <Button
         android:id="@+id/GoldIncreaseShop"
@@ -84,17 +94,17 @@
 
     <Button
         android:id="@+id/LeaveShopButton"
-        android:layout_width="137dp"
-        android:layout_height="326dp"
+        android:layout_width="139dp"
+        android:layout_height="334dp"
         android:background="@drawable/door"
         android:onClick="leaveshopbutton"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.985"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.98" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView7"

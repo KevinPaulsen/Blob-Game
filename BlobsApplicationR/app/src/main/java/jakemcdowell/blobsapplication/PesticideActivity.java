@@ -18,6 +18,12 @@ public class PesticideActivity extends AppCompatActivity {
         ImageView e = (ImageView) findViewById(R.id.soldout);
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+
     public void leavepurchasebutton(View v) {
         finish();
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);

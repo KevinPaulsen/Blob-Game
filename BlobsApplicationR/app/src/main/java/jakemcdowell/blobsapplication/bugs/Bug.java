@@ -1,6 +1,7 @@
 package jakemcdowell.blobsapplication.bugs;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 
 import java.util.concurrent.Executors;
@@ -48,6 +49,15 @@ public class Bug {
         button.setY((float) ((Math.random() * 1200) + 220));
         hp.setX(button.getX() + 40);
         hp.setY(button.getY() - 40);
+    }
+
+    private int getDiff(float val1, float val2) {
+        return (int) (val1 - val2);
+    }
+
+    public int getDistance(Bug bug) {
+        return (int) Math.sqrt(Math.pow(getDiff(getButton().getX(), bug.getButton().getX()), 2) +
+                Math.pow(getDiff(getButton().getY(), bug.getButton().getY()), 2));
     }
 
     public void moveOffScreen() {
@@ -130,7 +140,7 @@ public class Bug {
     public void pauseDeath() {
         moveOffScreen();
 
-        if (getKnockOuts() != 5) {
+        if (getKnockOuts() != Constants.KOSPERDEATH) {
             getButton().postDelayed(new Runnable() {
                 @Override
                 public void run() {

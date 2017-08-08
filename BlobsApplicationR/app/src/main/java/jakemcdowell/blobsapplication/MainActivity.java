@@ -13,9 +13,11 @@ import jakemcdowell.blobsapplication.HelpActivity;
 import jakemcdowell.blobsapplication.R;
 import jakemcdowell.blobsapplication.ShopActivity;
 
+import static android.R.color.transparent;
+
 
 public class MainActivity extends AppCompatActivity {
-
+    public static boolean isMuted = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onWindowFocusChanged(boolean hasFocus) {
+        playMainTheme();
+        if (isMuted && findViewById(R.id.button20).getVisibility() == View.VISIBLE) {
+            findViewById(R.id.button20).setBackgroundResource(R.drawable.x);
+        }
+    }
+
+    public void playMainTheme() {
         MediaPlayer maintheme = MediaPlayer.create(this, R.raw.maintheme);
         MusicPlayer.startSong(maintheme);
     }
@@ -39,9 +48,23 @@ public class MainActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
+    public void mutebuttonclick(View v) {
+        if (isMuted) {
+            findViewById(R.id.button20).setBackgroundResource(transparent);
+            isMuted = !isMuted;
+            playMainTheme();
+        } else {
+            findViewById(R.id.button20).setBackgroundResource(R.drawable.x);
+            MusicPlayer.stopCurrentMusic();
+            isMuted = !isMuted;
+        }
+
+    }
+
     public void entershopbuttonclick(View v) {
         MediaPlayer maintheme = MediaPlayer.create(this, R.raw.maintheme);
         MusicPlayer.resetMusic(maintheme);
+        ShopActivity.shopmusicstart = true;
         Intent intent2 = new Intent(this,ShopActivity.class);
         startActivity(intent2);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
@@ -50,6 +73,12 @@ public class MainActivity extends AppCompatActivity {
     public void howtoplaybuttonclick(View v) {
         Intent intent3 = new Intent(this,HelpActivity.class);
         startActivity(intent3);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+
+    public void extrasbuttonclick(View v) {
+        Intent intent4 = new Intent(this, ExtrasActivity.class);
+        startActivity(intent4);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 }

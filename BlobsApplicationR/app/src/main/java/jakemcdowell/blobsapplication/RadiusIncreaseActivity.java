@@ -78,6 +78,11 @@ public class RadiusIncreaseActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
 
     public void leavepurchasebutton(View v) {
         finish();

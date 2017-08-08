@@ -5,7 +5,7 @@ package jakemcdowell.blobsapplication;
  */
 
 public class PlayerData {
-    public static int currentGold = 0;
+    public static int currentGold = 999;
     public static int currentLevel = 1;
     public static int highestLevel = 0;
 

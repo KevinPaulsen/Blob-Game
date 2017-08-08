@@ -27,7 +27,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="86dp"
         android:layout_height="86dp"
-        android:onClick="buttonTestClick"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.537"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -167,7 +167,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="86dp"
         android:layout_height="86dp"
-        android:onClick="buttonTestClick"
+        android:visibility="visible"
         tools:layout_editor_absoluteX="180dp"
         tools:layout_editor_absoluteY="256dp" />
 
@@ -176,7 +176,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="43dp"
         android:layout_height="43dp"
-        android:onClick="buttonTestClick"
+        android:visibility="visible"
         tools:layout_editor_absoluteX="263dp"
         tools:layout_editor_absoluteY="181dp" />
 
@@ -185,7 +185,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="43dp"
         android:layout_height="43dp"
-        android:onClick="buttonTestClick"
+        android:visibility="visible"
         tools:layout_editor_absoluteX="238dp"
         tools:layout_editor_absoluteY="100dp" />
 
@@ -194,7 +194,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="43dp"
         android:layout_height="43dp"
-        android:onClick="buttonTestClick"
+        android:visibility="visible"
         tools:layout_editor_absoluteX="138dp"
         tools:layout_editor_absoluteY="100dp" />
 
@@ -203,7 +203,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="39dp"
         android:layout_height="43dp"
-        android:onClick="buttonTestClick"
+        android:visibility="visible"
         tools:layout_editor_absoluteX="30dp"
         tools:layout_editor_absoluteY="130dp" />
 
@@ -212,7 +212,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="86dp"
         android:layout_height="86dp"
-        android:onClick="buttonTestClick"
+        android:visibility="visible"
         tools:layout_editor_absoluteX="37dp"
         tools:layout_editor_absoluteY="287dp" />
 
@@ -221,7 +221,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="86dp"
         android:layout_height="86dp"
-        android:onClick="buttonTestClick"
+        android:visibility="visible"
         tools:layout_editor_absoluteX="48dp"
         tools:layout_editor_absoluteY="413dp" />
 
@@ -230,7 +230,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="86dp"
         android:layout_height="86dp"
-        android:onClick="buttonTestClick"
+        android:visibility="visible"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="204dp" />
 
@@ -247,7 +247,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="86dp"
         android:layout_height="86dp"
-        android:onClick="buttonTestClick"
+        android:visibility="visible"
         tools:layout_editor_absoluteX="193dp"
         tools:layout_editor_absoluteY="48dp" />
 
@@ -468,8 +468,8 @@
 
     <TextView
         android:id="@+id/textView26"
-        android:layout_width="80dp"
-        android:layout_height="66dp"
+        android:layout_width="84dp"
+        android:layout_height="190dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Upgrades"
         android:textColor="@android:color/black"
@@ -480,7 +480,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.273" />
+        app:layout_constraintVertical_bias="0.345" />
 
     <ImageView
         android:id="@+id/imageView29"
@@ -614,7 +614,7 @@
         android:id="@+id/imageView36"
         android:layout_width="90dp"
         android:layout_height="121dp"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -632,7 +632,7 @@
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -644,7 +644,7 @@
         android:id="@+id/imageView37"
         android:layout_width="55dp"
         android:layout_height="64dp"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.955"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -661,12 +661,20 @@
         android:text="Remaining: 5"
         android:textColor="@android:color/holo_green_light"
         android:textStyle="bold"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.98"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.94" />
+
+    <Button
+        android:id="@+id/goldRandomButton"
+        android:layout_width="86dp"
+        android:layout_height="86dp"
+        android:background="@drawable/goldcoin"
+        tools:layout_editor_absoluteX="186dp"
+        tools:layout_editor_absoluteY="533dp" />
 
 </android.support.constraint.ConstraintLayout>

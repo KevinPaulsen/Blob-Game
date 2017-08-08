@@ -24,7 +24,6 @@ public class GameOverActivity extends AppCompatActivity implements View.OnClickL
         MusicPlayer.startSongOnce(gameovertheme);
     }
 
-
     public void onClick(View v) {
         if (v.equals(playgameagain)) {
             playgameagainbutton();
@@ -39,6 +38,11 @@ public class GameOverActivity extends AppCompatActivity implements View.OnClickL
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+
+    @Override
+    public void onBackPressed() {
+        returntomenubutton();
     }
 
     public void returntomenubutton() {

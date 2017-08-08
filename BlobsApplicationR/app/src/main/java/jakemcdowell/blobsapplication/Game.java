@@ -12,6 +12,12 @@ import java.lang.Math;
 //>>>>>>> Stashed changes
 import jakemcdowell.blobsapplication.bugs.Bug;
 
+import static jakemcdowell.blobsapplication.Constants.radiusIncreaseLevel1;
+import static jakemcdowell.blobsapplication.Constants.radiusIncreaseLevel2;
+import static jakemcdowell.blobsapplication.Constants.radiusIncreaseLevel3;
+import static jakemcdowell.blobsapplication.Constants.radiusIncreaseLevel4;
+import static jakemcdowell.blobsapplication.Constants.radiusIncreaseLevel5;
+
 
 /**
  * Created by kevin on 7/25/17.
@@ -58,6 +64,33 @@ public class Game extends AppCompatActivity {
     public void endLevel() {
         for (Bug bug : bugList) {
             bug.resetBugToInitialState();
+        }
+    }
+
+    public void radiusDamage(Bug bug1, Game game) {
+        bug1.damageBug(game);
+        for (Bug bug2 : bugsInLevel) {
+            if (PlayerData.radiusIncreaseLevel == 1 && bug1 != bug2) {
+                if (bug1.getDistance(bug2) <= radiusIncreaseLevel1) {
+                    bug2.damageBug(game);
+                }
+            } else if (PlayerData.radiusIncreaseLevel == 2 && bug1 != bug2) {
+                if (bug1.getDistance(bug2) <= radiusIncreaseLevel2) {
+                    bug2.damageBug(game);
+                }
+            } else if (PlayerData.radiusIncreaseLevel == 3 && bug1 != bug2) {
+                if (bug1.getDistance(bug2) <= radiusIncreaseLevel3) {
+                    bug2.damageBug(game);
+                }
+            } else if (PlayerData.radiusIncreaseLevel == 4 && bug1 != bug2) {
+                if (bug1.getDistance(bug2) <= radiusIncreaseLevel4) {
+                    bug2.damageBug(game);
+                }
+            } else if (PlayerData.radiusIncreaseLevel == 5 && bug1 != bug2) {
+                if (bug1.getDistance(bug2) <= radiusIncreaseLevel5) {
+                    bug2.damageBug(game);
+                }
+            }
         }
     }
 
