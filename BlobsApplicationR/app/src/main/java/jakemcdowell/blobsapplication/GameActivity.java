@@ -194,13 +194,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         if (PlayerData.numberOfPesticide == 0) {
             findViewById(R.id.pesticide).setVisibility(View.GONE);
         }
-        if (PlayerData.continueLevel == true) {
+        if (PlayerData.continueLevel == true || PlayerData.beginLevel == true) {
             PlayerData.continueLevel = false;
             PlayerData.continueLevel1 = false;
             //NEXTLEVELBUTTONCLICKCALLED
             //checks to see if new bug on screen should be added
-
-
+            if(PlayerData.beginLevel == true) {
+                PlayerData.currentLevel = PlayerData.currentLevel - 1;
+                PlayerData.beginLevel = false;
+            }
             //Updates level marker
             TextView f = (TextView) findViewById(R.id.textView1);
             Game.nextLevel(game);
@@ -292,7 +294,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         f.setText("Level: " + game.getLevel());
         TextView g = (TextView) findViewById(R.id.textView31);
         g.setText("Remaining: " + PlayerData.numberOfPesticide);
-
+        startCountDownTimer();
     }
 
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -309,7 +311,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         // Starts moving gold
-        //randomGoldMove();
+        randomGoldMove();
 
         //starts every animation, countdown timer,
         if (!isInitialized) {
@@ -521,6 +523,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.textView21).setVisibility(View.GONE);
         findViewById(R.id.textView17).setVisibility(View.GONE);
         findViewById(R.id.goldRandomButton).setVisibility(View.GONE);
+        PlayerData.currentGold = PlayerData.currentGold + goldEarnedByRandom;
         if (PlayerData.goldIncreaseLevel == 0) {
 
         }
@@ -611,18 +614,23 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             if (game.getLevel() > PlayerData.highestLevel) {
                 PlayerData.highestLevel = game.getLevel();
             }
-        if(game.getLevel() != 1) {
-
+        if(game.isAllDead()){
+            PlayerData.currentLevel = game.getLevel();
+            PlayerData.beginLevel = true;
+        }
+        else if(game.getLevel() != 1) {
             PlayerData.currentLevel = game.getLevel() - 1;
-
             PlayerData.continueLevel = true;
             for (Bug bug : game.bugsInLevel) {
                 bug.setBugToInitialState();
             }
             game.resetKOBar();
+            goldEarnedByRandom = 0;
         }
         else{
             PlayerData.continueLevel1 = true;
+            game.resetKOBar();
+            goldEarnedByRandom = 0;
         }
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -634,12 +642,29 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         if (game.getLevel() > PlayerData.highestLevel) {
             PlayerData.highestLevel = game.getLevel();
         }
-        PlayerData.currentLevel = game.getLevel();
+        if(game.isAllDead()){
+            PlayerData.currentLevel = game.getLevel();
+            PlayerData.beginLevel = true;
+        }
+        else if(game.getLevel() != 1) {
+            PlayerData.currentLevel = game.getLevel() - 1;
+            PlayerData.continueLevel = true;
+            for (Bug bug : game.bugsInLevel) {
+                bug.setBugToInitialState();
+            }
+            game.resetKOBar();
+            goldEarnedByRandom = 0;
+        }
+        else{
+            PlayerData.continueLevel1 = true;
+            game.resetKOBar();
+            goldEarnedByRandom = 0;
+        }
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-    }
+}
     //code rand for nextLevelButtonClick
     public void nextLevelButtonClick(View v) {
         goldButton.setText("" + randomGoldNumber);
@@ -682,11 +707,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.textView17).setVisibility(View.VISIBLE);
         findViewById(R.id.timeProgressBar).setVisibility(View.VISIBLE);
         findViewById(R.id.goldRandomButton).setVisibility(View.VISIBLE);
-
             if (PlayerData.numberOfPesticide != 0) {
                 findViewById(R.id.pesticide).setVisibility(View.VISIBLE);
             }
-
             if (game.getLevel() % 25 == 0 && game.getLevel() % 25 < 5) {
                 snowFirstRun = true;
                 j.setBackground(o);
@@ -742,8 +765,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         }
-
-
     public void pesticideUse(View v) {
         game.pesticide();
         for (Bug bug : game.bugsInLevel) {

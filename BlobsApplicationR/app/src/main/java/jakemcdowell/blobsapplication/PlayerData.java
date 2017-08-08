@@ -22,4 +22,5 @@ public class PlayerData {
     public static int numberOfPesticide = 5;
     public static boolean continueLevel = false;
     public static boolean continueLevel1 = false;
+    public static boolean beginLevel = false;
 }

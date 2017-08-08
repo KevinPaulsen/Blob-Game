@@ -29,8 +29,11 @@ public class MainActivity extends AppCompatActivity {
         if(PlayerData.continueLevel == true) {
             ((Button) (findViewById(R.id.button))).setText("Continue Level " + (PlayerData.currentLevel+1));
         }
-        if(PlayerData.continueLevel1 == true) {
+        else if(PlayerData.continueLevel1 == true) {
             ((Button) (findViewById(R.id.button))).setText("Continue Level " + (PlayerData.currentLevel));
+        }
+        else if(PlayerData.beginLevel == true){
+            ((Button) (findViewById(R.id.button))).setText("Begin Level " + (PlayerData.currentLevel+1));
         }
     }
 
