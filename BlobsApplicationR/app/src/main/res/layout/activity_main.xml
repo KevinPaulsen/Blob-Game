@@ -12,7 +12,7 @@
         android:id="@+id/button"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="207dp"
-        android:layout_height="109dp"
+        android:layout_height="112dp"
         android:onClick="playgamebuttonclick"
         android:text="Play Game"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -154,18 +154,16 @@
 
     <Button
         android:id="@+id/button21"
-        android:layout_width="112dp"
-        android:layout_height="70dp"
+        android:layout_width="304dp"
+        android:layout_height="71dp"
         android:onClick="extrasbuttonclick"
         android:text="Extras"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.69"
+        app:layout_constraintHorizontal_bias="0.149"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.991"
-        tools:layout_editor_absoluteY="584dp"
-        tools:layout_editor_absoluteX="207dp" />
+        app:layout_constraintVertical_bias="0.977" />
 
     <TextView
         android:id="@+id/textView33"
