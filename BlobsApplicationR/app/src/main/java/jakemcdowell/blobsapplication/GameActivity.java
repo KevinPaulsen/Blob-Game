@@ -199,16 +199,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             PlayerData.continueLevel1 = false;
             //NEXTLEVELBUTTONCLICKCALLED
             //checks to see if new bug on screen should be added
-            if(PlayerData.beginLevel == true) {
-                PlayerData.currentLevel = PlayerData.currentLevel - 1;
-                PlayerData.beginLevel = false;
-            }
+
+            PlayerData.beginLevel = false;
+
             //Updates level marker
-            TextView f = (TextView) findViewById(R.id.textView1);
+
             Game.nextLevel(game);
             startCountDownTimer();
-            f.setText("Level: " + game.getLevel());
-            goldButton.setText("" + randomGoldNumber);
+            randomGoldNumber = PlayerData.totalEarnedGoldInLevel / game.getLevel();
+            goldButton.setText("" + 2);
             ConstraintLayout j = (ConstraintLayout) findViewById(R.id.Constraint);
             Drawable k = getDrawable(R.drawable.sandy);
             Drawable l = getDrawable(R.drawable.gravel);
@@ -298,6 +297,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void onWindowFocusChanged(boolean hasFocus) {
+        randomGoldNumber = PlayerData.totalEarnedGoldInLevel / game.getLevel();
+        goldButton.setText("" + 2);
         sandyFirstRun = true;
         gravelFirstRun = true;
         leafFirstRun = true;
@@ -453,6 +454,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void gameOver() {
+        PlayerData.totalEarnedGoldInLevel = 0;
         PlayerData.currentLevel = 1;
         Intent intent = new Intent(this, GameOverActivity.class);
         startActivity(intent);
@@ -492,7 +494,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     public void goldButtonClick() {
         moveOffScreen(goldButton);
-        goldEarnedByRandom += PlayerData.totalEarnedGoldInLevel / game.getLevel();
+        goldEarnedByRandom += 2;
     }
 
     public void resetCountDownTimer() {
@@ -545,7 +547,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         if (PlayerData.goldIncreaseLevel == 5) {
             goldAddedPerLevel = goldAddedPerLevel * 3;
         }
-        PlayerData.totalEarnedGoldInLevel += Constants.goldAddedPerLevel;
+        PlayerData.totalEarnedGoldInLevel = Constants.goldAddedPerLevel * game.getLevel();
         PlayerData.currentGold = PlayerData.currentGold + PlayerData.totalEarnedGoldInLevel;
         TextView goldEarnedDisplay = (TextView) findViewById(R.id.textView23);
         TextView currentGoldDisplay = (TextView) findViewById(R.id.textView25);
@@ -670,7 +672,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 }
     //code rand for nextLevelButtonClick
     public void nextLevelButtonClick(View v) {
-        goldButton.setText("" + randomGoldNumber);
+        randomGoldNumber = PlayerData.totalEarnedGoldInLevel / game.getLevel();
+        goldButton.setText("" + 2);
         goldEarnedByRandom = 0;
         nextLevelScreen = false;
 
@@ -685,7 +688,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         //Updates level marker
         TextView f = (TextView) findViewById(R.id.textView1);
         f.setText("Level: " + game.getLevel());
-        goldButton.setText("" + goldEarnedByRandom);
         ConstraintLayout j = (ConstraintLayout) findViewById(R.id.Constraint);
         Drawable k = getDrawable(R.drawable.sandy);
         Drawable l = getDrawable(R.drawable.gravel);
@@ -814,11 +816,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             if (PlayerData.goldIncreaseLevel == 5) {
                 goldAddedPerLevel = goldAddedPerLevel * 3;
             }
-            PlayerData.totalEarnedGoldInLevel += Constants.goldAddedPerLevel;
+            PlayerData.totalEarnedGoldInLevel = Constants.goldAddedPerLevel * game.getLevel() ;
             PlayerData.currentGold = PlayerData.currentGold + PlayerData.totalEarnedGoldInLevel;
             TextView goldEarnedDisplay = (TextView) findViewById(R.id.textView23);
             TextView currentGoldDisplay = (TextView) findViewById(R.id.textView25);
-            goldEarnedDisplay.setText("" + PlayerData.totalEarnedGoldInLevel);
+            goldEarnedDisplay.setText("" + PlayerData.totalEarnedGoldInLevel + goldEarnedByRandom);
             currentGoldDisplay.setText("" + PlayerData.currentGold);
         }
         final View button = v;

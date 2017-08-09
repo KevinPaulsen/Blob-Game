@@ -14,7 +14,7 @@ public class Constants {
 //BASIC CONSTANTS
 
 //This is the amount of time in the level measured in seconds times 1000(milliseconds)
-    public static long timeInLevel = 10 * 60 * 1000;
+    public static long timeInLevel = 30 * 1000;
 
 //UPGRADES
     //This is the price of the damage increase upgrade by level
@@ -73,9 +73,9 @@ public class Constants {
     //This is the MOVINGBUGSPEED(milliseconds) per 20 pixels a bug moves
     public static final int MOVINGBUGSPEED = 100;
 // Initial Health
-    public static final int INITIAL_HEALTH = 1;
+    public static final int INITIAL_HEALTH = 2;
 //Times knocked out per death
-    public static final int KOSPERDEATH = 2;
+    public static final int KOSPERDEATH = 4;
 //Health added per next level
     public static final int HEALTH_ADDED = 1;
 }
