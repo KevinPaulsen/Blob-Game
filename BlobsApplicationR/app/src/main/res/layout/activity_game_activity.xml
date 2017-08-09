@@ -178,6 +178,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="43dp"
         android:layout_height="43dp"
+        android:onClick="buttonTestClick"
         android:visibility="visible"
         tools:layout_editor_absoluteX="263dp"
         tools:layout_editor_absoluteY="181dp" />
@@ -187,6 +188,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="43dp"
         android:layout_height="43dp"
+        android:onClick="buttonTestClick"
         android:visibility="visible"
         tools:layout_editor_absoluteX="238dp"
         tools:layout_editor_absoluteY="100dp" />
@@ -196,6 +198,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="43dp"
         android:layout_height="43dp"
+        android:onClick="buttonTestClick"
         android:visibility="visible"
         tools:layout_editor_absoluteX="138dp"
         tools:layout_editor_absoluteY="100dp" />
@@ -205,6 +208,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="43dp"
         android:layout_height="43dp"
+        android:onClick="buttonTestClick"
         android:visibility="visible"
         tools:layout_editor_absoluteX="30dp"
         tools:layout_editor_absoluteY="130dp" />
@@ -214,6 +218,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="86dp"
         android:layout_height="86dp"
+        android:onClick="buttonTestClick"
         android:visibility="visible"
         tools:layout_editor_absoluteX="37dp"
         tools:layout_editor_absoluteY="287dp" />
@@ -223,6 +228,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="86dp"
         android:layout_height="86dp"
+        android:onClick="buttonTestClick"
         android:visibility="visible"
         tools:layout_editor_absoluteX="48dp"
         tools:layout_editor_absoluteY="413dp" />
@@ -232,6 +238,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="86dp"
         android:layout_height="86dp"
+        android:onClick="buttonTestClick"
         android:visibility="visible"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="204dp" />
@@ -249,6 +256,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="86dp"
         android:layout_height="86dp"
+        android:onClick="buttonTestClick"
         android:visibility="visible"
         tools:layout_editor_absoluteX="193dp"
         tools:layout_editor_absoluteY="48dp" />

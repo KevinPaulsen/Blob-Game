@@ -306,9 +306,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         grassyFirstRun = true;
 
         //makes every button unclickable
+
+        /*
         for (int idx : buttonIds) {
             findViewById(idx).setClickable(false);
         }
+        */
 
         // Starts moving gold
         randomGoldMove();
