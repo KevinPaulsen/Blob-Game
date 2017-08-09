@@ -1,17 +1,12 @@
 package jakemcdowell.blobsapplication;
 
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ProgressBar;
 import java.util.ArrayList;
 import java.util.List;
 import java.lang.Math;
 import jakemcdowell.blobsapplication.bugs.Bug;
-
-import static jakemcdowell.blobsapplication.Constants.radiusIncreaseLevel1;
-import static jakemcdowell.blobsapplication.Constants.radiusIncreaseLevel2;
-import static jakemcdowell.blobsapplication.Constants.radiusIncreaseLevel3;
-import static jakemcdowell.blobsapplication.Constants.radiusIncreaseLevel4;
-import static jakemcdowell.blobsapplication.Constants.radiusIncreaseLevel5;
 import static jakemcdowell.blobsapplication.Constants.radiusPricePerRadiusUpgrade;
 
 
@@ -26,7 +21,8 @@ public class Game extends AppCompatActivity {
     private int bugsKilledInLevel = 0;
     private int totalKnockoutsRequiredInLevel;
 
-    public Game(ProgressBar progressBar, List<Bug> bugList) {
+    public Game(ProgressBar progressBar, List<Bug> bugList, View view) {
+
         levelProgressBar = progressBar;
         this.bugList = bugList;
         ArrayList<Integer> damageIncreaseLevel = new ArrayList<>();
@@ -146,6 +142,10 @@ public class Game extends AppCompatActivity {
         for(Bug bug : bugsInLevel){
            bug.addDamage(bug.getHealth());
         }
+    }
+
+    public int getGoldEarnedInLevel() {
+        return ((PlayerData.currentLevel) * 2);
     }
 
     public void damageNear(int x, int y) {

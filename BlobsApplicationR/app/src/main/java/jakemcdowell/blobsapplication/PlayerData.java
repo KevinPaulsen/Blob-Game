@@ -13,7 +13,7 @@ public class PlayerData {
     public static int totalEarnedGoldInLevel = 0;
     public static List<List<Integer>> damageIncreasePerLevel = new ArrayList<>();
 
-    public static int currentLevel = 0;
+    public static int currentLevel = 1;
     public static int highestLevel = 0;
 
     public static int damageIncreaseLevel = 0;

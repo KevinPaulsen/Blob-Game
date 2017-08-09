@@ -12,16 +12,13 @@ import android.widget.TextView;
 import android.view.View;
 import android.widget.ProgressBar;
 import java.util.ArrayList;
-import java.util.concurrent.ScheduledFuture;
+
 import jakemcdowell.blobsapplication.bugs.Bug;
 import jakemcdowell.blobsapplication.bugs.FireBug;
 import jakemcdowell.blobsapplication.bugs.MovingBug;
 import jakemcdowell.blobsapplication.bugs.SmallBug;
 import jakemcdowell.blobsapplication.bugs.TeleportingBug;
 import static jakemcdowell.blobsapplication.Constants.goldAddedPerLevel;
-import static jakemcdowell.blobsapplication.bugs.Bug.scheduler;
-import static java.util.concurrent.TimeUnit.MILLISECONDS;
-import static java.util.concurrent.TimeUnit.MINUTES;
 
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener{
@@ -31,10 +28,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private ArrayList<Bug> bugList = new ArrayList<>();
     private boolean isInitialized = false;
     private ProgressBar timeProgressbar;
-    private int goldEarnedByRandom = 0;
-    private int randomGoldNumber = 0;
     private boolean gameActivityIsPaused = false;
-    Button goldButton;
+    GoldButton goldButton;
     boolean nextLevelScreen = false;
 
     boolean sandyFirstRun = true;
@@ -47,6 +42,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     //Sets up game screen (progress bar)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_game_activity);
+
+        goldButton = new GoldButton(findViewById(R.id.goldRandomButton));
+        goldButton.getButton().setOnClickListener(this);
+
         sandyFirstRun = true;
         gravelFirstRun = true;
         leafFirstRun = true;
@@ -59,12 +60,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         int progressBarIds[] = new int[10];
         int health = Constants.INITIAL_HEALTH;
         int kOsPerDeath = Constants.KOSPERDEATH;
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_activity);
-
-        goldButton = (Button)this.findViewById(R.id.goldRandomButton);
-        goldButton.setOnClickListener(this);
 
         buttonIds[0] = R.id.button;
         buttonIds[1] = R.id.button5;
@@ -109,7 +104,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         //Creates new Game
         ProgressBar levelProgress = (ProgressBar) this.findViewById(R.id.progressBar2);
-        game = new Game(levelProgress, bugList);
+        game = new Game(levelProgress, bugList, findViewById(R.id.goldRandomButton));
 
         if (PlayerData.damageIncreaseLevel == 0) {
             findViewById(R.id.imageView29).setVisibility(View.GONE);
@@ -206,8 +201,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
             Game.nextLevel(game);
             startCountDownTimer();
-            randomGoldNumber = PlayerData.totalEarnedGoldInLevel / game.getLevel();
-            goldButton.setText("" + 2);
             ConstraintLayout j = (ConstraintLayout) findViewById(R.id.Constraint);
             Drawable k = getDrawable(R.drawable.sandy);
             Drawable l = getDrawable(R.drawable.gravel);
@@ -296,9 +289,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         startCountDownTimer();
     }
 
+
     public void onWindowFocusChanged(boolean hasFocus) {
-        randomGoldNumber = PlayerData.totalEarnedGoldInLevel / game.getLevel();
-        goldButton.setText("" + 2);
         sandyFirstRun = true;
         gravelFirstRun = true;
         leafFirstRun = true;
@@ -315,7 +307,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         */
 
         // Starts moving gold
-        randomGoldMove();
+        goldButton.startRandomMove();
 
         //starts every animation, countdown timer,
         if (!isInitialized) {
@@ -403,14 +395,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         return super.onTouchEvent(event);
     }
 
-    public int getDistance(float centerPointX, float centerPointY, float buttonPointX, float buttonPointY) {
-        float number1 = buttonPointX - centerPointX;
-        float number2 = buttonPointY - centerPointY;
-        number1 = number1*number1;
-        number2 = number2*number2;
-        return (int) Math.sqrt(number1+number2);
-    }
-
     public void onPause() {
         super.onPause();
         gameActivityIsPaused = true;
@@ -461,40 +445,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
-    private void moveOnScreen(View view) {
-        view.setX((int)(Math.random() * 575) + 50);
-        view.setY((int)(Math.random() * 1200) + 220);
-    }
-
-    private void moveOffScreen(View view) {
-        view.setY(10000);
-    }
-
-    public void randomGoldMove() {
-        final Runnable beeper = new Runnable() {
-            public void run() {
-                if (Math.random() * 100 + 1 <= Constants.chanceOfSeeingGold) {
-                    moveOnScreen(goldButton);
-                } else {
-                    moveOffScreen(goldButton);
-                }
-            }
-        };
-        final ScheduledFuture<?> beeperHandle = scheduler.scheduleAtFixedRate(beeper, 0, Constants.goldMovementTiming, MILLISECONDS);
-        scheduler.schedule(new Runnable() {
-            public void run() {
-                beeperHandle.cancel(true);
-            }
-        }, 3000, MINUTES);
-    }
-
     public void onClick(View v) {
-        goldButtonClick();
-    }
-
-    public void goldButtonClick() {
-        moveOffScreen(goldButton);
-        goldEarnedByRandom += 2;
+        goldButton.click();
     }
 
     public void resetCountDownTimer() {
@@ -511,10 +463,18 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    public void setGoldButtonText() {
+
+    }
+
     public void allBugsDead() {
-        //makes buttons and textViews appear, to make nextLevel screen.
-        findViewById(R.id.button2).setVisibility(View.VISIBLE);
-        findViewById(R.id.textView2).setVisibility(View.VISIBLE);
+
+        PlayerData.currentGold += game.getGoldEarnedInLevel() + goldButton.getGoldEarnedInLevel();
+        TextView goldEarnedDisplay = (TextView) findViewById(R.id.textView23);
+        TextView currentGoldDisplay = (TextView) findViewById(R.id.textView25);findViewById(R.id.button2).setVisibility(View.VISIBLE);
+        goldEarnedDisplay.setText("" + game.getGoldEarnedInLevel() + goldButton.getGoldEarnedInLevelString());
+        currentGoldDisplay.setText("" + PlayerData.currentGold);
+
         findViewById(R.id.textView22).setVisibility(View.VISIBLE);
         findViewById(R.id.textView23).setVisibility(View.VISIBLE);
         findViewById(R.id.textView24).setVisibility(View.VISIBLE);
@@ -528,10 +488,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.textView21).setVisibility(View.GONE);
         findViewById(R.id.textView17).setVisibility(View.GONE);
         findViewById(R.id.goldRandomButton).setVisibility(View.GONE);
-        PlayerData.currentGold = PlayerData.currentGold + goldEarnedByRandom;
-        if (PlayerData.goldIncreaseLevel == 0) {
-
-        }
         if (PlayerData.goldIncreaseLevel == 1) {
             goldAddedPerLevel = (int) (goldAddedPerLevel * 1.25);
         }
@@ -547,13 +503,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         if (PlayerData.goldIncreaseLevel == 5) {
             goldAddedPerLevel = goldAddedPerLevel * 3;
         }
-        PlayerData.totalEarnedGoldInLevel = Constants.goldAddedPerLevel * game.getLevel();
-        PlayerData.currentGold = PlayerData.currentGold + PlayerData.totalEarnedGoldInLevel;
-        TextView goldEarnedDisplay = (TextView) findViewById(R.id.textView23);
-        TextView currentGoldDisplay = (TextView) findViewById(R.id.textView25);
-        goldEarnedDisplay.setText("" + (PlayerData.totalEarnedGoldInLevel + goldEarnedByRandom));
-        currentGoldDisplay.setText("" + PlayerData.currentGold);
-
         if(game.getLevel()%25 == 4) {
             MediaPlayer grassyend = MediaPlayer.create(this, R.raw.grassyend);
             MusicPlayer.playEndingMusic(grassyend);
@@ -630,12 +579,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 bug.setBugToInitialState();
             }
             game.resetKOBar();
-            goldEarnedByRandom = 0;
         }
         else{
             PlayerData.continueLevel1 = true;
             game.resetKOBar();
-            goldEarnedByRandom = 0;
         }
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -658,12 +605,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 bug.setBugToInitialState();
             }
             game.resetKOBar();
-            goldEarnedByRandom = 0;
         }
         else{
             PlayerData.continueLevel1 = true;
             game.resetKOBar();
-            goldEarnedByRandom = 0;
         }
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -672,16 +617,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 }
     //code rand for nextLevelButtonClick
     public void nextLevelButtonClick(View v) {
-        randomGoldNumber = PlayerData.totalEarnedGoldInLevel / game.getLevel();
-        goldButton.setText("" + 2);
-        goldEarnedByRandom = 0;
-        nextLevelScreen = false;
 
 
 
         //checks to see if new bug on screen should be added
 
         Game.nextLevel(game);
+        goldButton.resetButton();
 
         startCountDownTimer();
 
@@ -816,12 +758,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             if (PlayerData.goldIncreaseLevel == 5) {
                 goldAddedPerLevel = goldAddedPerLevel * 3;
             }
-            PlayerData.totalEarnedGoldInLevel = Constants.goldAddedPerLevel * game.getLevel() ;
-            PlayerData.currentGold = PlayerData.currentGold + PlayerData.totalEarnedGoldInLevel;
-            TextView goldEarnedDisplay = (TextView) findViewById(R.id.textView23);
-            TextView currentGoldDisplay = (TextView) findViewById(R.id.textView25);
-            goldEarnedDisplay.setText("" + PlayerData.totalEarnedGoldInLevel + goldEarnedByRandom);
-            currentGoldDisplay.setText("" + PlayerData.currentGold);
+
+
+
+
+
+
         }
         final View button = v;
         putOffScreen(button);

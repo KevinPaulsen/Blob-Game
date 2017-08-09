@@ -14,7 +14,7 @@ public class Constants {
 //BASIC CONSTANTS
 
 //This is the amount of time in the level measured in seconds times 1000(milliseconds)
-    public static long timeInLevel = 30 * 1000;
+    public static long timeInLevel = 10 * 60 * 1000;
 
 //UPGRADES
     //This is the price of the damage increase upgrade by level
@@ -65,17 +65,17 @@ public class Constants {
 
 //RANDOM GOLD
     //This is the chance of seeing random gold (out of 100) everytime it moves
-    public static int chanceOfSeeingGold = 50;
-    //This is how often random gold moves around in seconds times 1000(milliseconds)
-    public static int goldMovementTiming = 2 * 1000;
+    public static int chanceOfSeeingGold = 15;
+    //This is how often random gold moves around in seconds x times 1000(milliseconds)
+    public static int goldMovementTiming = (int) (1.5 * 1000);
 
 //BUG MECHANICS
     //This is the MOVINGBUGSPEED(milliseconds) per 20 pixels a bug moves
     public static final int MOVINGBUGSPEED = 100;
 // Initial Health
-    public static final int INITIAL_HEALTH = 2;
+    public static final int INITIAL_HEALTH = 1;
 //Times knocked out per death
-    public static final int KOSPERDEATH = 4;
+    public static final int KOSPERDEATH = 2;
 //Health added per next level
-    public static final int HEALTH_ADDED = 1;
+    public static final int HEALTH_ADDED = 0;
 }
