@@ -1,5 +1,6 @@
 package jakemcdowell.blobsapplication.bugs;
 
+import android.content.res.Resources;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -18,17 +19,12 @@ public class SmallBug extends Bug {
 
     @Override
     public int getHealthBarXOffset() {
-        return -5;
+        int barOffsetX = (int) (Resources.getSystem().getDisplayMetrics().widthPixels * 0.0046);
+        return -barOffsetX;
     }
 
     @Override
     public int getHealthBarYOffset() {
-        return -30;
-    }
-
-    public void move() {
-        setX((float) ((Math.random() * 575) + 50));
-        setY((float) ((Math.random() * 1200) + 220));
-    }
-
+        int barOffsetY = (int) (Resources.getSystem().getDisplayMetrics().heightPixels * 0.0156);
+        return -barOffsetY;    }
 }

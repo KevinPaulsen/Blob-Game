@@ -1,6 +1,7 @@
 package jakemcdowell.blobsapplication.bugs;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.graphics.drawable.AnimationDrawable;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -65,24 +66,30 @@ public class FireBug extends Bug {
     }
 
     private class Beeper implements Runnable {
+
+        float smallX = (float) (Resources.getSystem().getDisplayMetrics().widthPixels * 0.0277);
+        float largeX = (float) (Resources.getSystem().getDisplayMetrics().widthPixels * 0.5555);
+        float smallY = (float) (Resources.getSystem().getDisplayMetrics().heightPixels * 0.11458);
+        float largeY = (float) (Resources.getSystem().getDisplayMetrics().widthPixels * 0.73958);
+
         public void run() {
-            if (getX() <= 30) {
+            if (getX() <= smallX) {
                 isAtLowEdgeX = true;
                 isAtHighEdgeX = false;
 
                 directionX = possibleDirections.get(1);
-            } else if (getX() >= 600) {
+            } else if (getX() >= largeX) {
                 isAtLowEdgeX = false;
                 isAtHighEdgeX = true;
 
                 directionX = possibleDirections.get(2);
             }
-            if (getY() <= 220) {
+            if (getY() <= smallY) {
                 isAtLowEdgeY = true;
                 isAtHighEdgeY = false;
 
                 directionY = possibleDirections.get(1);
-            } else if (getY() >= 1420) {
+            } else if (getY() >= largeY) {
                 isAtLowEdgeY = false;
                 isAtHighEdgeY = true;
 

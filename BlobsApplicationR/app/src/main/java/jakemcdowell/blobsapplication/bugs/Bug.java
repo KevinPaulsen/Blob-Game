@@ -1,5 +1,6 @@
 package jakemcdowell.blobsapplication.bugs;
 
+import android.content.res.Resources;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
@@ -51,8 +52,13 @@ public class Bug {
     }
 
     public void move() {
-        setX((float) ((Math.random() * 575) + 50));
-        setY((float) ((Math.random() * 1200) + 220));
+        float smallNumX = ((float) (Resources.getSystem().getDisplayMetrics().widthPixels * 0.046));
+        float largeNumX = ((float) (Resources.getSystem().getDisplayMetrics().widthPixels * 0.5787));
+        float smallNumY = ((float) (Resources.getSystem().getDisplayMetrics().heightPixels * 0.11458));
+        float largeNumY = ((float) (Resources.getSystem().getDisplayMetrics().heightPixels * 0.739583));
+
+        setX((float) ((Math.random() * (largeNumX - smallNumX) + smallNumX)));
+        setY((float) ((Math.random() * (largeNumY - smallNumY)) + smallNumY));
     }
 
     public void moveOffScreen() {
@@ -94,11 +100,13 @@ public class Bug {
     }
 
     public int getHealthBarXOffset() {
-        return 40;
+        int barOffsetX = (int) (Resources.getSystem().getDisplayMetrics().widthPixels * 0.04703);
+        return barOffsetX;
     }
 
     public int getHealthBarYOffset() {
-        return -40;
+        int barOffsetY = (int) (Resources.getSystem().getDisplayMetrics().heightPixels * 0.02083);
+        return -barOffsetY;
     }
 
     public GameActivity getGameActivity() {

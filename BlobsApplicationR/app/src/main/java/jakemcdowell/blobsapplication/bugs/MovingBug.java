@@ -1,5 +1,6 @@
 package jakemcdowell.blobsapplication.bugs;
 
+import android.content.res.Resources;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -60,33 +61,41 @@ public class MovingBug extends Bug {
 
     @Override
     public int getHealthBarXOffset() {
-        return -5;
+        int barOffsetX = (int) (Resources.getSystem().getDisplayMetrics().widthPixels * 0.004629);
+        return -barOffsetX;
     }
 
     @Override
     public int getHealthBarYOffset() {
-        return -30;
+        int barOffsetY = (int) (Resources.getSystem().getDisplayMetrics().heightPixels * 0.0156);
+        return -barOffsetY;
     }
 
     private class Beeper implements Runnable {
+
+        float smallX = (float) (Resources.getSystem().getDisplayMetrics().widthPixels * 0.0277);
+        float largeX = (float) (Resources.getSystem().getDisplayMetrics().widthPixels * 0.5555);
+        float smallY = (float) (Resources.getSystem().getDisplayMetrics().heightPixels * 0.11458);
+        float largeY = (float) (Resources.getSystem().getDisplayMetrics().widthPixels * 0.73958);
+
         public void run() {
-            if (getX() <= 30) {
+            if (getX() <= smallX) {
                 isAtLowEdgeX = true;
                 isAtHighEdgeX = false;
 
                 directionX = possibleDirections.get(1);
-            } else if (getX() >= 600) {
+            } else if (getX() >= largeX) {
                 isAtLowEdgeX = false;
                 isAtHighEdgeX = true;
 
                 directionX = possibleDirections.get(2);
             }
-            if (getY() <= 220) {
+            if (getY() <= smallY) {
                 isAtLowEdgeY = true;
                 isAtHighEdgeY = false;
 
                 directionY = possibleDirections.get(1);
-            } else if (getY() >= 1420) {
+            } else if (getY() >= largeY) {
                 isAtLowEdgeY = false;
                 isAtHighEdgeY = true;
 
