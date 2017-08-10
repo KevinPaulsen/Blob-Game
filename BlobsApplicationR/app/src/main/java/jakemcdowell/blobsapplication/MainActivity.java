@@ -40,6 +40,22 @@ public class MainActivity extends AppCompatActivity {
         if (isMuted && findViewById(R.id.button20).getVisibility() == View.VISIBLE) {
             findViewById(R.id.button20).setBackgroundResource(R.drawable.x);
         }
+        if (!PlayerData.shouldResumeGame) {
+            Button restartGame = (Button) findViewById(R.id.button24);
+            Button playGame = (Button) findViewById(R.id.button);
+            Button continueGame = (Button) findViewById(R.id.button25);
+            restartGame.setVisibility(View.GONE);
+            playGame.setVisibility(View.GONE);
+            continueGame.setVisibility(View.VISIBLE);
+        }
+        else {
+            Button restartGame = (Button) findViewById(R.id.button24);
+            Button playGame = (Button) findViewById(R.id.button);
+            Button continueGame = (Button) findViewById(R.id.button25);
+            restartGame.setVisibility(View.VISIBLE);
+            playGame.setVisibility(View.VISIBLE);
+            continueGame.setVisibility(View.GONE);
+        }
         /*if (PlayerData.currentLevel > 1) {
             Button restartGameButton = (Button) findViewById(R.id.button23);
             restartGameButton.setVisibility(View.VISIBLE);
@@ -66,6 +82,15 @@ public class MainActivity extends AppCompatActivity {
     }*/
 
     public void playgamebuttonclick(View v) {
+        MediaPlayer mainTheme = MediaPlayer.create(this, R.raw.maintheme);
+        MusicPlayer.resetMusic(mainTheme);
+        Intent intent = new Intent(this, GameActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+
+    public void restartGameClick(View v) {
+        PlayerData.currentLevel = 1;
         MediaPlayer mainTheme = MediaPlayer.create(this, R.raw.maintheme);
         MusicPlayer.resetMusic(mainTheme);
         Intent intent = new Intent(this, GameActivity.class);
