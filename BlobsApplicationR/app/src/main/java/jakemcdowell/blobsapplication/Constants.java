@@ -14,7 +14,7 @@ public class Constants {
 //BASIC CONSTANTS
 
 //This is the amount of time in the level measured in seconds times 1000(milliseconds)
-    public static long timeInLevel = 10 * 60 * 1000;
+    public static long timeInLevel = 10  * 1000;
 
 //UPGRADES
     //This is the price of the damage increase upgrade by level
@@ -60,6 +60,8 @@ public class Constants {
     public static int goldIncreasePriceLevel3 = 7696;
     public static int goldIncreasePriceLevel4 = 46080;
     public static int goldIncreasePriceLevel5 = 394652;
+
+    public static List<Double> goldIncreaseModifier;
 
     public static int goldAddedPerLevel = 2;
 

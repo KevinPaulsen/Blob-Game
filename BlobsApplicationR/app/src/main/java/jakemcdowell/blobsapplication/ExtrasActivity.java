@@ -77,6 +77,7 @@ public class ExtrasActivity extends AppCompatActivity implements View.OnClickLis
         kazoo2.start();
         kazoo3.start();
         kazoo4.start();
+
     }
 
     public void playCreditsMusic() {

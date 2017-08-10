@@ -100,7 +100,7 @@ public class Bug {
     }
 
     public int getHealthBarXOffset() {
-        int barOffsetX = (int) (Resources.getSystem().getDisplayMetrics().widthPixels * 0.04703);
+        int barOffsetX = (int) (Resources.getSystem().getDisplayMetrics().widthPixels * 0.03103);
         return barOffsetX;
     }
 

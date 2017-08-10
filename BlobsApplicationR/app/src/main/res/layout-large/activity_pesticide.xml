@@ -8,14 +8,14 @@
 
     <ImageView
         android:id="@+id/soldout"
-        android:layout_width="100dp"
-        android:layout_height="26dp"
+        android:layout_width="124dp"
+        android:layout_height="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.89"
+        app:layout_constraintHorizontal_bias="0.857"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.312"
+        app:layout_constraintVertical_bias="0.29"
         app:srcCompat="@drawable/soldout" />
 
     <ImageView
@@ -120,11 +120,11 @@
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintHorizontal_bias="0.237"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.025" />
+        app:layout_constraintVertical_bias="0.011" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -280,13 +280,13 @@
 
     <TextView
         android:id="@+id/textView38"
-        android:layout_width="356dp"
-        android:layout_height="29dp"
+        android:layout_width="373dp"
+        android:layout_height="32dp"
         android:text="    100      252       762     2874   14132"
         android:textColor="@android:color/holo_orange_light"
         android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView20"
-        app:layout_constraintHorizontal_bias="0.967"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button16"

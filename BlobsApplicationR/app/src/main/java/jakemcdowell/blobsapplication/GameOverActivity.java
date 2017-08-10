@@ -34,6 +34,9 @@ public class GameOverActivity extends AppCompatActivity implements View.OnClickL
     }
 
     public void playgameagainbutton() {
+        PlayerData.currentLevel = 1;
+        MediaPlayer gameovertheme = MediaPlayer.create(this, R.raw.gameovertheme);
+        MusicPlayer.resetMusic(gameovertheme);
         Intent intent = new Intent(this, GameActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
@@ -45,7 +48,10 @@ public class GameOverActivity extends AppCompatActivity implements View.OnClickL
         returntomenubutton();
     }
 
+
     public void returntomenubutton() {
+        MediaPlayer gameovertheme = MediaPlayer.create(this, R.raw.gameovertheme);
+        MusicPlayer.resetMusic(gameovertheme);
         Intent intent2 = new Intent(this, MainActivity.class);
         intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent2);

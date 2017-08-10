@@ -8,15 +8,16 @@
 
     <ImageView
         android:id="@+id/soldout"
-        android:layout_width="100dp"
-        android:layout_height="26dp"
+        android:layout_width="113dp"
+        android:layout_height="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.89"
+        app:layout_constraintHorizontal_bias="0.86"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.312"
-        app:srcCompat="@drawable/soldout" />
+        app:layout_constraintVertical_bias="0.286"
+        app:srcCompat="@drawable/soldout"
+        tools:layout_editor_absoluteY="248dp" />
 
     <ImageView
         android:id="@+id/imageView11"
@@ -119,11 +120,11 @@
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintHorizontal_bias="0.236"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.025" />
+        app:layout_constraintVertical_bias="0.011" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -240,13 +241,13 @@
 
     <TextView
         android:id="@+id/textView16"
-        android:layout_width="452dp"
-        android:layout_height="57dp"
+        android:layout_width="454dp"
+        android:layout_height="67dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Gold Increase Upgrade"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintHorizontal_bias="0.543"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"

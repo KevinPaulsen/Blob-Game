@@ -20,8 +20,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="?attr/colorButtonNormal"
-        tools:layout_editor_absoluteX="470dp" />
+        app:srcCompat="?attr/colorButtonNormal" />
 
     <Button
         android:id="@+id/button"
@@ -42,7 +41,9 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="54dp"
         android:layout_height="17dp"
-        android:layout_marginTop="326dp"
+        android:progressTint="@color/colorAccent"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp" />
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -51,19 +52,26 @@
     <ProgressBar
         android:id="@+id/progressBar2"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="201dp"
-        android:layout_height="44dp"
+        android:layout_width="229dp"
+        android:layout_height="47dp"
+        android:progressTint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.63"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.604"
+        app:layout_constraintVertical_bias="0.036" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.612"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.04" />
+        app:layout_constraintVertical_bias="0.036" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="343dp"
-        android:layout_height="133dp"
+        android:layout_width="400dp"
+        android:layout_height="120dp"
         android:onClick="nextLevelButtonClick"
         android:text="Continue"
         android:textSize="24sp"
@@ -85,17 +93,16 @@
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.019"
-        tools:layout_editor_absoluteY="17dp" />
+        app:layout_constraintVertical_bias="0.019" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="341dp"
-        android:layout_height="67dp"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Level Complete!"
         android:textColor="@android:color/black"
@@ -114,6 +121,9 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:progressTint="@color/colorAccent"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp" />
         tools:layout_editor_absoluteX="101dp"
         tools:layout_editor_absoluteY="162dp" />
 
@@ -122,6 +132,9 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:progressTint="@color/colorAccent"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp" />
         tools:layout_editor_absoluteX="180dp"
         tools:layout_editor_absoluteY="162dp" />
 
@@ -130,6 +143,9 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:progressTint="@color/colorAccent"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp" />
         tools:layout_editor_absoluteX="101dp"
         tools:layout_editor_absoluteY="205dp" />
 
@@ -138,6 +154,9 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:progressTint="@color/colorAccent"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp" />
         tools:layout_editor_absoluteX="180dp"
         tools:layout_editor_absoluteY="205dp" />
 
@@ -146,6 +165,9 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:progressTint="@color/colorAccent"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp" />
         tools:layout_editor_absoluteX="101dp"
         tools:layout_editor_absoluteY="237dp" />
 
@@ -154,6 +176,9 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:progressTint="@color/colorAccent"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp" />
         tools:layout_editor_absoluteX="180dp"
         tools:layout_editor_absoluteY="240dp" />
 
@@ -162,6 +187,9 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:progressTint="@color/colorAccent"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp" />
         tools:layout_editor_absoluteX="101dp"
         tools:layout_editor_absoluteY="271dp" />
 
@@ -173,7 +201,7 @@
         android:onClick="buttonTestClick"
         android:visibility="visible"
         tools:layout_editor_absoluteX="180dp"
-        tools:layout_editor_absoluteY="256dp" />
+        tools:layout_editor_absoluteY="254dp" />
 
     <Button
         android:id="@+id/button6"
@@ -183,7 +211,7 @@
         android:onClick="buttonTestClick"
         android:visibility="visible"
         tools:layout_editor_absoluteX="263dp"
-        tools:layout_editor_absoluteY="181dp" />
+        tools:layout_editor_absoluteY="179dp" />
 
     <Button
         android:id="@+id/button7"
@@ -192,7 +220,7 @@
         android:layout_height="43dp"
         android:onClick="buttonTestClick"
         android:visibility="visible"
-        tools:layout_editor_absoluteX="238dp"
+        tools:layout_editor_absoluteX="237dp"
         tools:layout_editor_absoluteY="100dp" />
 
     <Button
@@ -202,7 +230,7 @@
         android:layout_height="43dp"
         android:onClick="buttonTestClick"
         android:visibility="visible"
-        tools:layout_editor_absoluteX="138dp"
+        tools:layout_editor_absoluteX="137dp"
         tools:layout_editor_absoluteY="100dp" />
 
     <Button
@@ -212,7 +240,7 @@
         android:layout_height="43dp"
         android:onClick="buttonTestClick"
         android:visibility="visible"
-        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteX="29dp"
         tools:layout_editor_absoluteY="130dp" />
 
     <Button
@@ -232,8 +260,8 @@
         android:layout_height="86dp"
         android:onClick="buttonTestClick"
         android:visibility="visible"
-        tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="413dp" />
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="411dp" />
 
     <Button
         android:id="@+id/button12"
@@ -243,13 +271,16 @@
         android:onClick="buttonTestClick"
         android:visibility="visible"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="204dp" />
+        tools:layout_editor_absoluteY="203dp" />
 
     <ProgressBar
         android:id="@+id/progressBar10"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:progressTint="@color/colorAccent"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp" />
         tools:layout_editor_absoluteX="101dp"
         tools:layout_editor_absoluteY="80dp" />
 
@@ -260,28 +291,38 @@
         android:layout_height="86dp"
         android:onClick="buttonTestClick"
         android:visibility="visible"
-        tools:layout_editor_absoluteX="193dp"
-        tools:layout_editor_absoluteY="48dp" />
+        tools:layout_editor_absoluteX="192dp"
+        tools:layout_editor_absoluteY="46dp" />
 
     <ProgressBar
         android:id="@+id/progressBar11"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:progressTint="@color/colorAccent"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp" />
         tools:layout_editor_absoluteX="262dp"
         tools:layout_editor_absoluteY="64dp" />
 
     <ProgressBar
         android:id="@+id/timeProgressBar"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="255dp"
-        android:layout_height="34dp"
+        android:layout_width="374dp"
+        android:layout_height="35dp"
+        android:progressTint="@color/colorAccent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.572"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.885"
+        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.929"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.997" />
+        app:layout_constraintVertical_bias="0.998" />
 
     <TextView
         android:id="@+id/textView17"
@@ -309,24 +350,23 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="472dp" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView18"
-        android:layout_width="72dp"
-        android:layout_height="26dp"
+        android:layout_width="87dp"
+        android:layout_height="33dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Return"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.952"
+        app:layout_constraintHorizontal_bias="0.968"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.135" />
+        app:layout_constraintVertical_bias="0.125" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -344,13 +384,13 @@
     <TextView
         android:id="@+id/textView21"
         android:layout_width="160dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Level Progress"
         android:textColor="@android:color/black"
         android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.625"
+        app:layout_constraintHorizontal_bias="0.603"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -358,8 +398,8 @@
 
     <TextView
         android:id="@+id/textView22"
-        android:layout_width="187dp"
-        android:layout_height="39dp"
+        android:layout_width="200dp"
+        android:layout_height="35dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Gold Earned:"
         android:textColor="@android:color/black"
@@ -375,7 +415,7 @@
 
     <TextView
         android:id="@+id/textView23"
-        android:layout_width="129dp"
+        android:layout_width="120dp"
         android:layout_height="35dp"
         android:fontFamily="sans-serif-condensed"
         android:text="0"
@@ -391,8 +431,8 @@
 
     <TextView
         android:id="@+id/textView24"
-        android:layout_width="186dp"
-        android:layout_height="37dp"
+        android:layout_width="200dp"
+        android:layout_height="35dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Current Gold:"
         android:textColor="@android:color/black"
@@ -404,12 +444,11 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.319"
-        tools:layout_editor_absoluteY="261dp" />
+        app:layout_constraintVertical_bias="0.319" />
 
     <TextView
         android:id="@+id/textView25"
-        android:layout_width="129dp"
+        android:layout_width="120dp"
         android:layout_height="35dp"
         android:fontFamily="sans-serif-condensed"
         android:text="0"
@@ -478,8 +517,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.464"
-        app:srcCompat="?attr/colorButtonNormal"
-        tools:layout_editor_absoluteX="469dp" />
+        app:srcCompat="?attr/colorButtonNormal" />
 
     <TextView
         android:id="@+id/textView26"
@@ -519,9 +557,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintHorizontal_bias="0.968"
-        app:layout_constraintVertical_bias="0.359"
-        tools:layout_editor_absoluteY="295dp"
-        tools:layout_editor_absoluteX="545dp" />
+        app:layout_constraintVertical_bias="0.359" />
 
     <TextView
         android:id="@+id/textView27"
@@ -642,14 +678,12 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.946"
-        app:srcCompat="?attr/colorButtonNormal"
-        tools:layout_editor_absoluteY="702dp"
-        tools:layout_editor_absoluteX="472dp" />
+        app:srcCompat="?attr/colorButtonNormal" />
 
     <TextView
         android:id="@+id/textView30"
-        android:layout_width="106dp"
-        android:layout_height="26dp"
+        android:layout_width="117dp"
+        android:layout_height="33dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Power Ups"
         android:textColor="@android:color/black"
@@ -657,11 +691,11 @@
         android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.989"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.826" />
+        app:layout_constraintVertical_bias="0.832" />
 
     <ImageView
         android:id="@+id/imageView37"
@@ -704,7 +738,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="186dp"
-        tools:layout_editor_absoluteY="533dp" />
+        tools:layout_editor_absoluteY="532dp" />
 
     <Button
         android:id="@+id/pesticide"
@@ -717,8 +751,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.944"
-        tools:layout_editor_absoluteY="702dp"
-        tools:layout_editor_absoluteX="472dp" />
+        app:layout_constraintVertical_bias="0.944" />
 
 </android.support.constraint.ConstraintLayout>

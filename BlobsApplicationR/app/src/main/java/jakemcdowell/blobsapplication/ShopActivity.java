@@ -21,6 +21,7 @@ public class ShopActivity extends AppCompatActivity implements Runnable {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        shopmusicstart = true;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
         Button leaveshopbutton = (Button) findViewById(R.id.LeaveShopButton);

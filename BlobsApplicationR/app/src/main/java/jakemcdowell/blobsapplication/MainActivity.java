@@ -18,8 +18,11 @@ import static android.R.color.transparent;
 
 public class MainActivity extends AppCompatActivity {
     public static boolean isMuted = false;
+    static boolean mainthemestart = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mainthemestart = true;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView a = (TextView) findViewById(R.id.textView20);
@@ -36,7 +39,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onWindowFocusChanged(boolean hasFocus) {
-        playMainTheme();
+        if (mainthemestart) {
+            playMainTheme();
+            mainthemestart = false;
+        }
+        else {
+            mainthemestart = true;
+        }
         if (isMuted && findViewById(R.id.button20).getVisibility() == View.VISIBLE) {
             findViewById(R.id.button20).setBackgroundResource(R.drawable.x);
         }

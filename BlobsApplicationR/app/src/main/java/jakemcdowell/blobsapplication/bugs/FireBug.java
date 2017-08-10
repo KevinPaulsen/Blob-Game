@@ -24,6 +24,7 @@ import static java.util.concurrent.TimeUnit.MILLISECONDS;
 public class FireBug extends Bug {
 
     private ScheduledFuture beeperHandle = null;
+    public boolean bugAlreadyExploded = false;
     private boolean isAtLowEdgeX = false;
     private boolean isAtHighEdgeX = false;
     private boolean isAtLowEdgeY = false;
@@ -139,7 +140,8 @@ public class FireBug extends Bug {
 
     @Override
     public void damageBug(Game game) {
-        if (!isClickable) {
+        if (!isClickable && !bugAlreadyExploded) {
+            bugAlreadyExploded = true;
             getGameActivity().gameOver();
         } else {
             super.damageBug(game);

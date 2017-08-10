@@ -3,6 +3,8 @@ package jakemcdowell.blobsapplication;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ProgressBar;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.lang.Math;
@@ -30,6 +32,7 @@ public class Game extends AppCompatActivity {
         ArrayList<Integer> damageIncrease = new ArrayList<>();
         ArrayList<Integer> radiusIncreaseLevel = new ArrayList<>();
         ArrayList<Integer> radiusIncrease = new ArrayList<>();
+        Constants.goldIncreaseModifier = new ArrayList<>();
         for (int idx = 0; idx < 6; idx++) {
             damageIncreaseLevel.add(idx);
             radiusIncreaseLevel.add(idx);
@@ -40,6 +43,12 @@ public class Game extends AppCompatActivity {
         for (int count = 250; count <= 750; count += 100) {
             radiusIncrease.add(count);
         }
+        Constants.goldIncreaseModifier.add(1.0);
+        Constants.goldIncreaseModifier.add(1.25);
+        Constants.goldIncreaseModifier.add(1.5);
+        Constants.goldIncreaseModifier.add(2.0);
+        Constants.goldIncreaseModifier.add(2.5);
+        Constants.goldIncreaseModifier.add(3.0);
         damageIncrease.set(0, 1);
 
         if (!PlayerData.continueLevel) {
@@ -150,7 +159,7 @@ public class Game extends AppCompatActivity {
     }
 
     public int getGoldEarnedInLevel() {
-        return ((PlayerData.currentLevel) * 2);
+        return (int) ((PlayerData.currentLevel * 2) * Constants.goldIncreaseModifier.get(PlayerData.goldIncreaseLevel));
     }
 
     public void damageNear(int x, int y) {
