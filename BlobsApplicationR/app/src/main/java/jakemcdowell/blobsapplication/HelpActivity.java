@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class HelpActivity extends AppCompatActivity {
+    boolean howtoplaymusicstart = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +17,12 @@ public class HelpActivity extends AppCompatActivity {
     }
 
     public void onWindowFocusChanged(boolean hasFocus) {
-        playHowToPlayMusic();
+        if (howtoplaymusicstart) {
+            playHowToPlayMusic();
+            howtoplaymusicstart = false;
+        }
+        else {
+        }
     }
 
     public void playHowToPlayMusic() {

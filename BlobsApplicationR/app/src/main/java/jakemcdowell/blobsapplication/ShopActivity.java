@@ -49,7 +49,6 @@ public class ShopActivity extends AppCompatActivity implements Runnable {
         }
         else {
         }
-
     }
 
     @Override

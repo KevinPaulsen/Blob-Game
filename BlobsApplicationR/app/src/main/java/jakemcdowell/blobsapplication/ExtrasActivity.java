@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 public class ExtrasActivity extends AppCompatActivity implements View.OnClickListener {
-
+    Boolean creditsmusicstart = true;
     Button returntomenu;
     AnimationDrawable normalBugDancing;
     AnimationDrawable fireBugDancing;
@@ -62,8 +62,13 @@ public class ExtrasActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     public void onWindowFocusChanged(boolean hasFocus) {
-        MediaPlayer creditstheme = MediaPlayer.create(this,R.raw.creditstheme);
-        MusicPlayer.startSong(creditstheme);
+        if (creditsmusicstart) {
+            playCreditsMusic();
+            creditsmusicstart = false;
+        }
+        else {
+        }
+
         normalBugDancing.start();
         fireBugDancing.start();
         movingBugDancing.start();
@@ -72,6 +77,11 @@ public class ExtrasActivity extends AppCompatActivity implements View.OnClickLis
         kazoo2.start();
         kazoo3.start();
         kazoo4.start();
+    }
+
+    public void playCreditsMusic() {
+        MediaPlayer creditstheme = MediaPlayer.create(this,R.raw.creditstheme);
+        MusicPlayer.startSong(creditstheme);
     }
 
     public void onClick(View v) {

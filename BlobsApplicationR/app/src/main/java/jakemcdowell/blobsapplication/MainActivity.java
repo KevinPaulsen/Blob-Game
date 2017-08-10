@@ -40,12 +40,30 @@ public class MainActivity extends AppCompatActivity {
         if (isMuted && findViewById(R.id.button20).getVisibility() == View.VISIBLE) {
             findViewById(R.id.button20).setBackgroundResource(R.drawable.x);
         }
+        /*if (PlayerData.currentLevel > 1) {
+            Button restartGameButton = (Button) findViewById(R.id.button23);
+            restartGameButton.setVisibility(View.VISIBLE);
+            Button continueGameButton = (Button) findViewById(R.id.button);
+            continueGameButton.setMinimumWidth(0);
+            continueGameButton.setWidth(162);
+        }
+        else {
+            Button restartGameButton = (Button) findViewById(R.id.button23);
+            restartGameButton.setVisibility(View.VISIBLE);
+            Button continueGameButton = (Button) findViewById(R.id.button);
+            continueGameButton.setMinimumWidth(0);
+            continueGameButton.setWidth(355);
+        }*/
     }
 
     public void playMainTheme() {
         MediaPlayer maintheme = MediaPlayer.create(this, R.raw.maintheme);
         MusicPlayer.startSong(maintheme);
     }
+
+    /*public void restartGameButtonClick(View v) {
+        PlayerData.currentLevel = 1;
+    }*/
 
     public void playgamebuttonclick(View v) {
         MediaPlayer maintheme = MediaPlayer.create(this, R.raw.maintheme);

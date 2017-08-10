@@ -10,6 +10,7 @@ import java.util.List;
 public class PlayerData {
 
     public static int currentGold = 9_999_999;
+
     public static int totalEarnedGoldInLevel = 0;
     public static List<List<Integer>> damageIncreasePerLevel = new ArrayList<>();
 

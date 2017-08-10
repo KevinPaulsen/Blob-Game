@@ -470,6 +470,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         if(game.getLevel()%25 == 24) {
             MediaPlayer snowend = MediaPlayer.create(this, R.raw.snowend);
             MusicPlayer.playEndingMusic(snowend);
+        }
             //makes buttons and textViews appear, to make nextLevel screen.
             findViewById(R.id.button2).setVisibility(View.VISIBLE);
             findViewById(R.id.textView2).setVisibility(View.VISIBLE);
@@ -507,7 +508,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 goldAddedPerLevel = goldAddedPerLevel * 3;
             }
         }
-    }
 
     public void returnToMenuClick(View v) {
         onBackPressed();
