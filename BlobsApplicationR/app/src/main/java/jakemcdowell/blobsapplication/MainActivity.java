@@ -75,8 +75,8 @@ public class MainActivity extends AppCompatActivity {
     }*/
 
     public void playgamebuttonclick(View v) {
-        MediaPlayer maintheme = MediaPlayer.create(this, R.raw.maintheme);
-        MusicPlayer.resetMusic(maintheme);
+        MediaPlayer mainTheme = MediaPlayer.create(this, R.raw.maintheme);
+        MusicPlayer.resetMusic(mainTheme);
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
