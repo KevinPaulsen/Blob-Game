@@ -50,10 +50,8 @@ public class Game extends AppCompatActivity {
         Constants.goldIncreaseModifier.add(2.5);
         Constants.goldIncreaseModifier.add(3.0);
         damageIncrease.set(0, 1);
+        setupLevel(PlayerData.currentLevel);
 
-        if (!PlayerData.continueLevel) {
-            setupLevel(PlayerData.currentLevel);
-        }
         PlayerData.damageIncreasePerLevel.add(damageIncreaseLevel);
         PlayerData.damageIncreasePerLevel.add(damageIncrease);
         Constants.radiusPricePerRadiusUpgrade.add(radiusIncreaseLevel);
@@ -100,10 +98,6 @@ public class Game extends AppCompatActivity {
         return bugList;
     }
 
-    public int getLevel() {
-        return PlayerData.currentLevel;
-    }
-
     public boolean isAllDead() {
         return getBugsLeftInLevel() == 0;
     }
@@ -112,16 +106,12 @@ public class Game extends AppCompatActivity {
         for (Bug bug : bugList) {
             bug.addHealth(Constants.HEALTH_ADDED);
         }
-        setupLevel(getLevel() + 1);
+        setupLevel(PlayerData.currentLevel + 1);
     }
 
     public void updateLevelKnockOutProgressBar() {
         levelProgressBar.setProgress((int) ((((double) getBugsKnockedOut()) / totalKnockoutsRequiredInLevel) * 100));
     }
-    public void resetKOBar(){
-        levelProgressBar.setProgress(0);
-    }
-
 
     public int getBugsKnockedOut() {
         int totalDeadBugs = 0;
@@ -168,6 +158,12 @@ public class Game extends AppCompatActivity {
             if (distance <= radiusPricePerRadiusUpgrade.get(1).get(PlayerData.radiusIncreaseLevel)) {
                 bug.damageBug(this);
             }
+        }
+    }
+
+    public void moveAllBugsInLevel() {
+        for (Bug bug : bugsInLevel) {
+            bug.move();
         }
     }
 

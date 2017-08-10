@@ -25,7 +25,6 @@ import static jakemcdowell.blobsapplication.Constants.goldAddedPerLevel;
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
     private int buttonIds[] = new int[10];
-    private Game game;
     private boolean isInitialized = false;
     private ProgressBar timeProgressbar;
     private boolean gameActivityIsPaused = false;
@@ -38,12 +37,16 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     boolean desertFirstRun = true;
     boolean snowFirstRun = true;
     boolean grassyFirstRun = true;
+    boolean goingToNextLevelScreen = false;
+    private Game game;
 
     //Sets up game screen (progress bar)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_activity);
+
+        PlayerData.shouldResumeGame = false;
 
         Button buttons[] = new Button[10];
         ProgressBar progressBar[] = new ProgressBar[10];
@@ -113,7 +116,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         //Creates new Game
         ProgressBar levelProgress = (ProgressBar) this.findViewById(R.id.progressBar2);
         game = new Game(levelProgress, bugList, findViewById(R.id.goldRandomButton), goldButton);
-
         // Sets the upgrade images on sideBar
         for (View view : upgradeImages) {
             view.setVisibility(View.GONE);
@@ -135,107 +137,101 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         if (PlayerData.numberOfPesticide == 0) {
             findViewById(R.id.pesticide).setVisibility(View.GONE);
         }
-        if (PlayerData.continueLevel || PlayerData.beginLevel) {
-            PlayerData.continueLevel = false;
-            PlayerData.continueLevel1 = false;
-            //NEXTLEVELBUTTONCLICKCALLED
-            //checks to see if new bug on screen should be added
+        //Updates level marker
+        startCountDownTimer();
+        ConstraintLayout j = (ConstraintLayout) findViewById(R.id.Constraint);
+        Drawable k = getDrawable(R.drawable.sandy);
+        Drawable l = getDrawable(R.drawable.gravel);
+        Drawable m = getDrawable(R.drawable.leaf);
+        Drawable n = getDrawable(R.drawable.desert);
+        Drawable o = getDrawable(R.drawable.grassy);
+        Drawable p = getDrawable(R.drawable.snow);
 
-            PlayerData.beginLevel = false;
-
-            //Updates level marker
-            game.nextLevel();
-            startCountDownTimer();
-            ConstraintLayout j = (ConstraintLayout) findViewById(R.id.Constraint);
-            Drawable k = getDrawable(R.drawable.sandy);
-            Drawable l = getDrawable(R.drawable.gravel);
-            Drawable m = getDrawable(R.drawable.leaf);
-            Drawable n = getDrawable(R.drawable.desert);
-            Drawable o = getDrawable(R.drawable.grassy);
-            Drawable p = getDrawable(R.drawable.snow);
-
-            //sets up next level and removes nextLevel page.
-            findViewById(R.id.button2).setVisibility(View.GONE);
-            findViewById(R.id.textView2).setVisibility(View.GONE);
-            findViewById(R.id.textView22).setVisibility(View.GONE);
-            findViewById(R.id.textView23).setVisibility(View.GONE);
-            findViewById(R.id.textView24).setVisibility(View.GONE);
-            findViewById(R.id.textView25).setVisibility(View.GONE);
-            findViewById(R.id.imageView25).setVisibility(View.GONE);
-            findViewById(R.id.imageView26).setVisibility(View.GONE);
-            findViewById(R.id.button).setVisibility(View.VISIBLE);
-            findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
-            findViewById(R.id.progressBar2).setVisibility(View.VISIBLE);
-            findViewById(R.id.textView21).setVisibility(View.VISIBLE);
-            findViewById(R.id.textView17).setVisibility(View.VISIBLE);
-            findViewById(R.id.timeProgressBar).setVisibility(View.VISIBLE);
-            if (PlayerData.numberOfPesticide != 0) {
-                findViewById(R.id.pesticide).setVisibility(View.VISIBLE);
+        //sets up next level and removes nextLevel page.
+        findViewById(R.id.button2).setVisibility(View.GONE);
+        findViewById(R.id.textView2).setVisibility(View.GONE);
+        findViewById(R.id.textView22).setVisibility(View.GONE);
+        findViewById(R.id.textView23).setVisibility(View.GONE);
+        findViewById(R.id.textView24).setVisibility(View.GONE);
+        findViewById(R.id.textView25).setVisibility(View.GONE);
+        findViewById(R.id.imageView25).setVisibility(View.GONE);
+        findViewById(R.id.imageView26).setVisibility(View.GONE);
+        findViewById(R.id.button).setVisibility(View.VISIBLE);
+        findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
+        findViewById(R.id.progressBar2).setVisibility(View.VISIBLE);
+        findViewById(R.id.textView21).setVisibility(View.VISIBLE);
+        findViewById(R.id.textView17).setVisibility(View.VISIBLE);
+        findViewById(R.id.timeProgressBar).setVisibility(View.VISIBLE);
+        if (PlayerData.numberOfPesticide != 0) {
+            findViewById(R.id.pesticide).setVisibility(View.VISIBLE);
+        }
+        if (PlayerData.currentLevel % 25 == 0 && PlayerData.currentLevel % 25 < 5) {
+            snowFirstRun = true;
+            j.setBackground(o);
+            MediaPlayer grassymain = MediaPlayer.create(this, R.raw.grassymain);
+            if (grassyFirstRun) {
+                MusicPlayer.startSong(grassymain);
+                grassyFirstRun = false;
             }
-            if (game.getLevel() % 25 == 0 && game.getLevel() % 25 < 5) {
-                snowFirstRun = true;
-                j.setBackground(o);
-                MediaPlayer grassymain = MediaPlayer.create(this, R.raw.grassymain);
-                if (grassyFirstRun) {
-                    MusicPlayer.startSong(grassymain);
-                    grassyFirstRun = false;
-                }
+        }
+        if (PlayerData.currentLevel % 25 > 4 && PlayerData.currentLevel % 25 < 9) {
+            grassyFirstRun = true;
+            j.setBackground(k);
+            MediaPlayer sandymain = MediaPlayer.create(this, R.raw.sandymain);
+            if (sandyFirstRun) {
+                MusicPlayer.startSong(sandymain);
+                sandyFirstRun = false;
             }
-            if (game.getLevel() % 25 > 4 && game.getLevel() % 25 < 9) {
-                grassyFirstRun = true;
-                j.setBackground(k);
-                MediaPlayer sandymain = MediaPlayer.create(this, R.raw.sandymain);
-                if (sandyFirstRun) {
-                    MusicPlayer.startSong(sandymain);
-                    sandyFirstRun = false;
-                }
+        }
+        if (PlayerData.currentLevel % 25 > 8 && PlayerData.currentLevel % 25 < 13) {
+            sandyFirstRun = true;
+            j.setBackground(l);
+            MediaPlayer gravelmain = MediaPlayer.create(this, R.raw.gravelmain);
+            if (gravelFirstRun) {
+                MusicPlayer.startSong(gravelmain);
+                gravelFirstRun = false;
             }
-            if (game.getLevel() % 25 > 8 && game.getLevel() % 25 < 13) {
-                sandyFirstRun = true;
-                j.setBackground(l);
-                MediaPlayer gravelmain = MediaPlayer.create(this, R.raw.gravelmain);
-                if (gravelFirstRun) {
-                    MusicPlayer.startSong(gravelmain);
-                    gravelFirstRun = false;
-                }
+        }
+        if (PlayerData.currentLevel % 25 > 12 && PlayerData.currentLevel % 25 < 17) {
+            gravelFirstRun = true;
+            j.setBackground(m);
+            MediaPlayer leafmain = MediaPlayer.create(this, R.raw.leafmain);
+            if (leafFirstRun) {
+                MusicPlayer.startSong(leafmain);
+                leafFirstRun = false;
             }
-            if (game.getLevel() % 25 > 12 && game.getLevel() % 25 < 17) {
-                gravelFirstRun = true;
-                j.setBackground(m);
-                MediaPlayer leafmain = MediaPlayer.create(this, R.raw.leafmain);
-                if (leafFirstRun) {
-                    MusicPlayer.startSong(leafmain);
-                    leafFirstRun = false;
-                }
+        }
+        if (PlayerData.currentLevel % 25 > 16 && PlayerData.currentLevel % 25 < 21) {
+            leafFirstRun = true;
+            j.setBackground(n);
+            MediaPlayer desertmain = MediaPlayer.create(this, R.raw.desertmain);
+            if (desertFirstRun) {
+                MusicPlayer.startSong(desertmain);
+                desertFirstRun = false;
             }
-            if (game.getLevel() % 25 > 16 && game.getLevel() % 25 < 21) {
-                leafFirstRun = true;
-                j.setBackground(n);
-                MediaPlayer desertmain = MediaPlayer.create(this, R.raw.desertmain);
-                if (desertFirstRun) {
-                    MusicPlayer.startSong(desertmain);
-                    desertFirstRun = false;
-                }
-            }
-            if (game.getLevel() % 25 > 20 && game.getLevel() % 25 < 24) {
-                desertFirstRun = true;
-                j.setBackground(p);
-                MediaPlayer snowmain = MediaPlayer.create(this, R.raw.snowmain);
-                if (snowFirstRun) {
-                    MusicPlayer.startSong(snowmain);
-                    snowFirstRun = false;
-                }
+        }
+        if (PlayerData.currentLevel % 25 > 20 && PlayerData.currentLevel % 25 < 24) {
+            desertFirstRun = true;
+            j.setBackground(p);
+            MediaPlayer snowmain = MediaPlayer.create(this, R.raw.snowmain);
+            if (snowFirstRun) {
+                MusicPlayer.startSong(snowmain);
+                snowFirstRun = false;
             }
         }
         TextView f = (TextView) findViewById(R.id.textView1);
-        f.setText("Level: " + game.getLevel());
+        f.setText("Level: " + PlayerData.currentLevel);
         TextView g = (TextView) findViewById(R.id.textView31);
         g.setText("Remaining: " + PlayerData.numberOfPesticide);
         startCountDownTimer();
     }
 
-
     public void onWindowFocusChanged(boolean hasFocus) {
+
+        if (!PlayerData.shouldResumeGame) {
+            game.moveAllBugsInLevel();
+        }
+
         sandyFirstRun = true;
         gravelFirstRun = true;
         leafFirstRun = true;
@@ -243,20 +239,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         snowFirstRun = true;
         grassyFirstRun = true;
 
-        //makes every button unclickable
-
-        /*
-        for (int idx : buttonIds) {
-            findViewById(idx).setClickable(false);
-        }
-        */
-
         // Starts moving gold
         goldButton.startRandomMove();
 
         //starts every animation, countdown timer,
         if (!isInitialized) {
-            game.getFirstBugInLevel().move();
             for (Bug bug : game.getBugs()) {
                 bug.startAnimation();
             }
@@ -269,7 +256,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             Drawable desert = getDrawable(R.drawable.desert);
             Drawable grassy = getDrawable(R.drawable.grassy);
             Drawable snow = getDrawable(R.drawable.snow);
-            if(game.getLevel() % 25 == 1 || game.getLevel()%25 < 5) {
+            if(PlayerData.currentLevel % 25 == 1 || PlayerData.currentLevel % 25 < 5) {
                 snowFirstRun = true;
                 constraintLayout.setBackground(grassy);
                 MediaPlayer grassymain = MediaPlayer.create(this, R.raw.grassymain);
@@ -278,7 +265,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     grassyFirstRun = false;
                 }
             }
-            if(game.getLevel() % 25 > 4 && game.getLevel()%25 < 9) {
+            if(PlayerData.currentLevel % 25 > 4 && PlayerData.currentLevel % 25 < 9) {
                 grassyFirstRun = true;
                 constraintLayout.setBackground(sandy);
                 MediaPlayer sandymain = MediaPlayer.create(this, R.raw.sandymain);
@@ -287,7 +274,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     sandyFirstRun = false;
                 }
             }
-            if(game.getLevel() % 25 > 8 && game.getLevel()%25 < 13){
+            if(PlayerData.currentLevel % 25 > 8 && PlayerData.currentLevel % 25 < 13){
                 sandyFirstRun = true;
                 constraintLayout.setBackground(gravel);
                 MediaPlayer gravelmain = MediaPlayer.create(this, R.raw.gravelmain);
@@ -296,7 +283,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     gravelFirstRun = false;
                 }
             }
-            if(game.getLevel() % 25 > 12 && game.getLevel()%25 < 17){
+            if(PlayerData.currentLevel % 25 > 12 && PlayerData.currentLevel%25 < 17){
                 gravelFirstRun = true;
                 constraintLayout.setBackground(leaf);
                 MediaPlayer leafmain = MediaPlayer.create(this, R.raw.leafmain);
@@ -305,7 +292,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     leafFirstRun = false;
                 }
             }
-            if(game.getLevel() % 25 > 16 && game.getLevel()%25 < 21){
+            if(PlayerData.currentLevel % 25 > 16 && PlayerData.currentLevel%25 < 21){
                 leafFirstRun = true;
                 constraintLayout.setBackground(desert);
                 MediaPlayer desertmain = MediaPlayer.create(this, R.raw.desertmain);
@@ -314,7 +301,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     desertFirstRun = false;
                 }
             }
-            if(game.getLevel() % 25 > 20 && game.getLevel()%25 < 24){
+            if(PlayerData.currentLevel % 25 > 20 && PlayerData.currentLevel%25 < 24){
                 desertFirstRun = true;
                 constraintLayout.setBackground(snow);
                 MediaPlayer snowmain = MediaPlayer.create(this, R.raw.snowmain);
@@ -323,7 +310,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     snowFirstRun = false;
                 }
             }
+        } else if (!goingToNextLevelScreen) {
+            game.setupLevel(PlayerData.currentLevel);
         }
+        goingToNextLevelScreen = false;
     }
 
     @Override
@@ -347,6 +337,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     public void onResume() {
         super.onResume();
         gameActivityIsPaused = false;
+        game.moveAllBugsInLevel();
     }
     public void startCountDownTimer() {
         new Thread(new Runnable() {
@@ -371,8 +362,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 }
                 if (timeProgressbar.getProgress() == 0) {
-                    if (game.getLevel() > PlayerData.highestLevel) {
-                        PlayerData.highestLevel = game.getLevel();
+                    if (PlayerData.currentLevel > PlayerData.highestLevel) {
+                        PlayerData.highestLevel = PlayerData.currentLevel;
                     }
                     gameOver();
                 }
@@ -429,27 +420,28 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.textView21).setVisibility(View.GONE);
         findViewById(R.id.textView17).setVisibility(View.GONE);
         findViewById(R.id.goldRandomButton).setVisibility(View.GONE);
-        if(game.getLevel()%25 == 4) {
+
+        if(PlayerData.currentLevel%25 == 4) {
             MediaPlayer grassyend = MediaPlayer.create(this, R.raw.grassyend);
             MusicPlayer.playEndingMusic(grassyend);
         }
-        if(game.getLevel()%25 == 8) {
+        if(PlayerData.currentLevel%25 == 8) {
             MediaPlayer sandyend = MediaPlayer.create(this, R.raw.sandyend);
             MusicPlayer.playEndingMusic(sandyend);
         }
-        if(game.getLevel()%25 == 12) {
+        if(PlayerData.currentLevel%25 == 12) {
             MediaPlayer gravelend = MediaPlayer.create(this, R.raw.gravelend);
             MusicPlayer.playEndingMusic(gravelend);
         }
-        if(game.getLevel()%25 == 16) {
+        if(PlayerData.currentLevel%25 == 16) {
             MediaPlayer leafend = MediaPlayer.create(this, R.raw.leafend);
             MusicPlayer.playEndingMusic(leafend);
         }
-        if(game.getLevel()%25 == 20) {
+        if(PlayerData.currentLevel%25 == 20) {
             MediaPlayer desertend = MediaPlayer.create(this, R.raw.desertend);
             MusicPlayer.playEndingMusic(desertend);
         }
-        if(game.getLevel()%25 == 24) {
+        if(PlayerData.currentLevel%25 == 24) {
             MediaPlayer snowend = MediaPlayer.create(this, R.raw.snowend);
             MusicPlayer.playEndingMusic(snowend);
         }
@@ -479,23 +471,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onBackPressed() {
-        if (game.getLevel() > PlayerData.highestLevel) {
-            PlayerData.highestLevel = game.getLevel();
+        PlayerData.shouldResumeGame = true;
+        if (PlayerData.currentLevel > PlayerData.highestLevel) {
+            PlayerData.highestLevel = PlayerData.currentLevel;
         }
         if (game.isAllDead()) {
-            PlayerData.currentLevel = game.getLevel();
-            PlayerData.beginLevel = true;
-        } else if(game.getLevel() != 1) {
-            PlayerData.currentLevel = game.getLevel() - 1;
-            PlayerData.continueLevel = true;
-            game.resetBugsToInitialState();
-            game.resetKOBar();
-        } else {
-            PlayerData.continueLevel1 = true;
-            game.resetKOBar();
+            PlayerData.currentLevel++;
         }
+        goingToNextLevelScreen = true;
         Intent intent = new Intent(this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
@@ -511,7 +495,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         //Updates level marker
         TextView f = (TextView) findViewById(R.id.textView1);
-        f.setText("Level: " + game.getLevel());
+        f.setText("Level: " + PlayerData.currentLevel);
         ConstraintLayout j = (ConstraintLayout) findViewById(R.id.Constraint);
         Drawable k = getDrawable(R.drawable.sandy);
         Drawable l = getDrawable(R.drawable.gravel);
@@ -539,7 +523,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             if (PlayerData.numberOfPesticide != 0) {
                 findViewById(R.id.pesticide).setVisibility(View.VISIBLE);
             }
-            if (game.getLevel() % 25 == 0 && game.getLevel() % 25 < 5) {
+            if (PlayerData.currentLevel % 25 == 0 && PlayerData.currentLevel % 25 < 5) {
                 snowFirstRun = true;
                 j.setBackground(o);
                 MediaPlayer grassymain = MediaPlayer.create(this, R.raw.grassymain);
@@ -548,7 +532,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     grassyFirstRun = false;
                 }
             }
-            if (game.getLevel() % 25 > 4 && game.getLevel() % 25 < 9) {
+            if (PlayerData.currentLevel % 25 > 4 && PlayerData.currentLevel % 25 < 9) {
                 grassyFirstRun = true;
                 j.setBackground(k);
                 MediaPlayer sandymain = MediaPlayer.create(this, R.raw.sandymain);
@@ -557,7 +541,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     sandyFirstRun = false;
                 }
             }
-            if (game.getLevel() % 25 > 8 && game.getLevel() % 25 < 13) {
+            if (PlayerData.currentLevel % 25 > 8 && PlayerData.currentLevel % 25 < 13) {
                 sandyFirstRun = true;
                 j.setBackground(l);
                 MediaPlayer gravelmain = MediaPlayer.create(this, R.raw.gravelmain);
@@ -566,7 +550,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     gravelFirstRun = false;
                 }
             }
-            if (game.getLevel() % 25 > 12 && game.getLevel() % 25 < 17) {
+            if (PlayerData.currentLevel % 25 > 12 && PlayerData.currentLevel % 25 < 17) {
                 gravelFirstRun = true;
                 j.setBackground(m);
                 MediaPlayer leafmain = MediaPlayer.create(this, R.raw.leafmain);
@@ -575,7 +559,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     leafFirstRun = false;
                 }
             }
-            if (game.getLevel() % 25 > 16 && game.getLevel() % 25 < 21) {
+            if (PlayerData.currentLevel % 25 > 16 && PlayerData.currentLevel % 25 < 21) {
                 leafFirstRun = true;
                 j.setBackground(n);
                 MediaPlayer desertmain = MediaPlayer.create(this, R.raw.desertmain);
@@ -584,7 +568,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     desertFirstRun = false;
                 }
             }
-            if (game.getLevel() % 25 > 20 && game.getLevel() % 25 < 24) {
+            if (PlayerData.currentLevel % 25 > 20 && PlayerData.currentLevel % 25 < 24) {
                 desertFirstRun = true;
                 j.setBackground(p);
                 MediaPlayer snowmain = MediaPlayer.create(this, R.raw.snowmain);
@@ -611,6 +595,43 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         g.setText("Remaining: " + PlayerData.numberOfPesticide);
         if (PlayerData.numberOfPesticide == 0) {
             findViewById(R.id.pesticide).setVisibility(View.GONE);
+        }
+
+        if (game.isAllDead()) {
+            //makes buttons and textViews appear, to make nextLevel screen.
+            findViewById(R.id.button2).setVisibility(View.VISIBLE);
+            findViewById(R.id.textView2).setVisibility(View.VISIBLE);
+            findViewById(R.id.textView22).setVisibility(View.VISIBLE);
+            findViewById(R.id.textView23).setVisibility(View.VISIBLE);
+            findViewById(R.id.textView24).setVisibility(View.VISIBLE);
+            findViewById(R.id.textView25).setVisibility(View.VISIBLE);
+            findViewById(R.id.imageView25).setVisibility(View.VISIBLE);
+            findViewById(R.id.imageView26).setVisibility(View.VISIBLE);
+            findViewById(R.id.button).setVisibility(View.GONE);
+            findViewById(R.id.progressBar).setVisibility(View.GONE);
+            findViewById(R.id.progressBar2).setVisibility(View.GONE);
+            findViewById(R.id.timeProgressBar).setVisibility(View.GONE);
+            findViewById(R.id.textView21).setVisibility(View.GONE);
+            findViewById(R.id.textView17).setVisibility(View.GONE);
+            findViewById(R.id.pesticide).setVisibility(View.GONE);
+            if (PlayerData.goldIncreaseLevel == 0) {
+
+            }
+            if (PlayerData.goldIncreaseLevel == 1) {
+                goldAddedPerLevel = (int) (goldAddedPerLevel * 1.25);
+            }
+            if (PlayerData.goldIncreaseLevel == 2) {
+                goldAddedPerLevel = (int) (goldAddedPerLevel * 1.5);
+            }
+            if (PlayerData.goldIncreaseLevel == 3) {
+                goldAddedPerLevel = goldAddedPerLevel * 2;
+            }
+            if (PlayerData.goldIncreaseLevel == 4) {
+                goldAddedPerLevel = (int) (goldAddedPerLevel * 2.5);
+            }
+            if (PlayerData.goldIncreaseLevel == 5) {
+                goldAddedPerLevel = goldAddedPerLevel * 3;
+            }
         }
         final View button = v;
         putOffScreen(button);

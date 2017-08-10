@@ -8,11 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
 
-import jakemcdowell.blobsapplication.GameActivity;
-import jakemcdowell.blobsapplication.HelpActivity;
-import jakemcdowell.blobsapplication.R;
-import jakemcdowell.blobsapplication.ShopActivity;
-
 import static android.R.color.transparent;
 
 
@@ -29,12 +24,8 @@ public class MainActivity extends AppCompatActivity {
         a.setText("Version: " + Constants.version);
         TextView b = (TextView) findViewById(R.id.textView32);
         b.setText("High Score: Level " + PlayerData.highestLevel);
-        if (PlayerData.continueLevel) {
-            ((Button) (findViewById(R.id.button))).setText("Continue Level " + (PlayerData.currentLevel+1));
-        } else if (PlayerData.continueLevel1) {
+        if (PlayerData.shouldResumeGame) {
             ((Button) (findViewById(R.id.button))).setText("Continue Level " + (PlayerData.currentLevel));
-        } else if (PlayerData.beginLevel) {
-            ((Button) (findViewById(R.id.button))).setText("Begin Level " + (PlayerData.currentLevel+1));
         }
     }
 
