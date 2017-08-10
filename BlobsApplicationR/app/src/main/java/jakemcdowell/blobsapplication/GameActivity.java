@@ -29,9 +29,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private boolean isInitialized = false;
     private ProgressBar timeProgressbar;
     private boolean gameActivityIsPaused = false;
-    GoldButton goldButton;
+    private GoldButton goldButton;
+    private View upgradeImages[] = new View[10];
     boolean nextLevelScreen = false;
-
     boolean sandyFirstRun = true;
     boolean gravelFirstRun = true;
     boolean leafFirstRun = true;
@@ -45,21 +45,28 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_activity);
 
-        goldButton = new GoldButton(findViewById(R.id.goldRandomButton));
-        goldButton.getButton().setOnClickListener(this);
-
-        sandyFirstRun = true;
-        gravelFirstRun = true;
-        leafFirstRun = true;
-        desertFirstRun = true;
-        snowFirstRun = true;
-        grassyFirstRun = true;
-
         Button buttons[] = new Button[10];
         ProgressBar progressBar[] = new ProgressBar[10];
         int progressBarIds[] = new int[10];
         int health = Constants.INITIAL_HEALTH;
         int kOsPerDeath = Constants.KOSPERDEATH;
+
+        goldButton = new GoldButton(findViewById(R.id.goldRandomButton));
+        goldButton.getButton().setOnClickListener(this);
+
+        //0-2 damage upgrade
+        //3-6 radius upgrade
+        //7-9 gold upgrade
+        upgradeImages[0] = findViewById(R.id.imageView29);
+        upgradeImages[1] = findViewById(R.id.imageView30);
+        upgradeImages[2] = findViewById(R.id.textView27);
+        upgradeImages[3] = findViewById(R.id.imageView31);
+        upgradeImages[4] = findViewById(R.id.imageView32);
+        upgradeImages[5] = findViewById(R.id.imageView33);
+        upgradeImages[6] = findViewById(R.id.textView28);
+        upgradeImages[7] = findViewById(R.id.imageView34);
+        upgradeImages[8] = findViewById(R.id.imageView35);
+        upgradeImages[9] = findViewById(R.id.textView29);
 
         buttonIds[0] = R.id.button;
         buttonIds[1] = R.id.button5;
@@ -102,89 +109,29 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         bugList.add(new FireBug(buttons[8], health, progressBar[8], kOsPerDeath));
         bugList.add(new FireBug(buttons[9], health, progressBar[9], kOsPerDeath));
 
+
+
         //Creates new Game
         ProgressBar levelProgress = (ProgressBar) this.findViewById(R.id.progressBar2);
-        game = new Game(levelProgress, bugList, findViewById(R.id.goldRandomButton));
+        game = new Game(levelProgress, bugList, findViewById(R.id.goldRandomButton), goldButton);
 
-        if (PlayerData.damageIncreaseLevel == 0) {
-            findViewById(R.id.imageView29).setVisibility(View.GONE);
-            findViewById(R.id.imageView30).setVisibility(View.GONE);
-            findViewById(R.id.textView27).setVisibility(View.GONE);
-        }
-        if (PlayerData.radiusIncreaseLevel == 0) {
-            findViewById(R.id.imageView31).setVisibility(View.GONE);
-            findViewById(R.id.imageView32).setVisibility(View.GONE);
-            findViewById(R.id.imageView33).setVisibility(View.GONE);
-            findViewById(R.id.textView28).setVisibility(View.GONE);
-        }
-        if (PlayerData.goldIncreaseLevel == 0) {
-            findViewById(R.id.imageView34).setVisibility(View.GONE);
-            findViewById(R.id.imageView35).setVisibility(View.GONE);
-            findViewById(R.id.textView29).setVisibility(View.GONE);
+        // Sets the upgrade images on sideBar
+        for(View view : upgradeImages) {
+            view.setVisibility(View.GONE);
         }
         if (PlayerData.damageIncreaseLevel == 0 && PlayerData.radiusIncreaseLevel == 0 && PlayerData.goldIncreaseLevel == 0) {
             TextView upgradetitle = (TextView) findViewById(R.id.textView26);
             upgradetitle.setText("You don't have any Upgrades! Go buy some in the Shop!");
-        }
-        if (PlayerData.damageIncreaseLevel == 1) {
-            TextView damageleveldisplay = (TextView) findViewById(R.id.textView27);
-            damageleveldisplay.setText("Level 1");
-        }
-        if (PlayerData.damageIncreaseLevel == 2) {
-            TextView damageleveldisplay = (TextView) findViewById(R.id.textView27);
-            damageleveldisplay.setText("Level 2");
-        }
-        if (PlayerData.damageIncreaseLevel == 3) {
-            TextView damageleveldisplay = (TextView) findViewById(R.id.textView27);
-            damageleveldisplay.setText("Level 3");
-        }
-        if (PlayerData.damageIncreaseLevel == 4) {
-            TextView damageleveldisplay = (TextView) findViewById(R.id.textView27);
-            damageleveldisplay.setText("Level 4");
-        }
-        if (PlayerData.damageIncreaseLevel == 5) {
-            TextView damageleveldisplay = (TextView) findViewById(R.id.textView27);
-            damageleveldisplay.setText("Level 5");
-        }
-        if (PlayerData.radiusIncreaseLevel == 1) {
-            TextView radiusleveldisplay = (TextView) findViewById(R.id.textView28);
-            radiusleveldisplay.setText("Level 1");
-        }
-        if (PlayerData.radiusIncreaseLevel == 2) {
-            TextView radiusleveldisplay = (TextView) findViewById(R.id.textView28);
-            radiusleveldisplay.setText("Level 2");
-        }
-        if (PlayerData.radiusIncreaseLevel == 3) {
-            TextView radiusleveldisplay = (TextView) findViewById(R.id.textView28);
-            radiusleveldisplay.setText("Level 3");
-        }
-        if (PlayerData.radiusIncreaseLevel == 4) {
-            TextView radiusleveldisplay = (TextView) findViewById(R.id.textView28);
-            radiusleveldisplay.setText("Level 4");
-        }
-        if (PlayerData.radiusIncreaseLevel == 5) {
-            TextView radiusleveldisplay = (TextView) findViewById(R.id.textView28);
-            radiusleveldisplay.setText("Level 5");
-        }
-        if (PlayerData.goldIncreaseLevel == 1) {
-            TextView goldleveldisplay = (TextView) findViewById(R.id.textView29);
-            goldleveldisplay.setText("Level 1");
-        }
-        if (PlayerData.goldIncreaseLevel == 2) {
-            TextView goldleveldisplay = (TextView) findViewById(R.id.textView29);
-            goldleveldisplay.setText("Level 2");
-        }
-        if (PlayerData.goldIncreaseLevel == 3) {
-            TextView goldleveldisplay = (TextView) findViewById(R.id.textView29);
-            goldleveldisplay.setText("Level 3");
-        }
-        if (PlayerData.goldIncreaseLevel == 4) {
-            TextView goldleveldisplay = (TextView) findViewById(R.id.textView29);
-            goldleveldisplay.setText("Level 4");
-        }
-        if (PlayerData.goldIncreaseLevel == 5) {
-            TextView goldleveldisplay = (TextView) findViewById(R.id.textView29);
-            goldleveldisplay.setText("Level 5");
+        } else {
+            if (PlayerData.damageIncreaseLevel != 0) {
+                setDamageImage("Level " + PlayerData.damageIncreaseLevel);
+            }
+            if (PlayerData.radiusIncreaseLevel != 0) {
+                setRadiusImage("Level " + PlayerData.radiusIncreaseLevel);
+            }
+            if (PlayerData.goldIncreaseLevel != 0) {
+                setGoldImage("Level " + PlayerData.goldIncreaseLevel);
+            }
         }
         if (PlayerData.numberOfPesticide == 0) {
             findViewById(R.id.pesticide).setVisibility(View.GONE);
@@ -463,13 +410,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void setGoldButtonText() {
-
-    }
-
     public void allBugsDead() {
 
-        PlayerData.currentGold += game.getGoldEarnedInLevel() + goldButton.getGoldEarnedInLevel();
+        if (PlayerData.currentGold + game.getGoldEarnedInLevel() + goldButton.getGoldEarnedInLevel()
+                <= 9_999_999) {
+            PlayerData.currentGold += game.getGoldEarnedInLevel() + goldButton.getGoldEarnedInLevel();
+        }
         TextView goldEarnedDisplay = (TextView) findViewById(R.id.textView23);
         TextView currentGoldDisplay = (TextView) findViewById(R.id.textView25);findViewById(R.id.button2).setVisibility(View.VISIBLE);
         goldEarnedDisplay.setText("" + game.getGoldEarnedInLevel() + goldButton.getGoldEarnedInLevelString());
@@ -790,5 +736,27 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         return result;
+    }
+
+    private void setDamageImage(String str) {
+        upgradeImages[0].setVisibility(View.VISIBLE);
+        upgradeImages[1].setVisibility(View.VISIBLE);
+        upgradeImages[2].setVisibility(View.VISIBLE);
+        ((TextView) upgradeImages[2]).setText(str);
+    }
+
+    private void setRadiusImage(String str) {
+        upgradeImages[3].setVisibility(View.VISIBLE);
+        upgradeImages[4].setVisibility(View.VISIBLE);
+        upgradeImages[5].setVisibility(View.VISIBLE);
+        upgradeImages[6].setVisibility(View.VISIBLE);
+        ((TextView) upgradeImages[6]).setText(str);
+    }
+
+    private void setGoldImage(String str) {
+        upgradeImages[7].setVisibility(View.VISIBLE);
+        upgradeImages[8].setVisibility(View.VISIBLE);
+        upgradeImages[9].setVisibility(View.VISIBLE);
+        ((TextView) upgradeImages[9]).setText(str);
     }
 }

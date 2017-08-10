@@ -20,9 +20,10 @@ public class Game extends AppCompatActivity {
     private List<Bug> availableBugsInLevel = new ArrayList<>();
     private int bugsKilledInLevel = 0;
     private int totalKnockoutsRequiredInLevel;
+    private GoldButton goldButton;
 
-    public Game(ProgressBar progressBar, List<Bug> bugList, View view) {
-
+    public Game(ProgressBar progressBar, List<Bug> bugList, View view, GoldButton goldButton) {
+        this.goldButton = goldButton;
         levelProgressBar = progressBar;
         this.bugList = bugList;
         ArrayList<Integer> damageIncreaseLevel = new ArrayList<>();
