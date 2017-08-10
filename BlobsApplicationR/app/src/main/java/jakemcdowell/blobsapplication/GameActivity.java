@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.view.View;
 import android.widget.ProgressBar;
 import java.util.ArrayList;
+import java.util.List;
 
 import jakemcdowell.blobsapplication.bugs.Bug;
 import jakemcdowell.blobsapplication.bugs.FireBug;
@@ -21,11 +22,10 @@ import jakemcdowell.blobsapplication.bugs.TeleportingBug;
 import static jakemcdowell.blobsapplication.Constants.goldAddedPerLevel;
 
 
-public class GameActivity extends AppCompatActivity implements View.OnClickListener{
+public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
     private int buttonIds[] = new int[10];
     private Game game;
-    private ArrayList<Bug> bugList = new ArrayList<>();
     private boolean isInitialized = false;
     private ProgressBar timeProgressbar;
     private boolean gameActivityIsPaused = false;
@@ -49,7 +49,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         ProgressBar progressBar[] = new ProgressBar[10];
         int progressBarIds[] = new int[10];
         int health = Constants.INITIAL_HEALTH;
-        int kOsPerDeath = Constants.KOSPERDEATH;
+        int kOsPerDeath = Constants.KOS_PER_DEATH;
 
         goldButton = new GoldButton(findViewById(R.id.goldRandomButton));
         goldButton.getButton().setOnClickListener(this);
@@ -98,6 +98,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         timeProgressbar = (ProgressBar) this.findViewById(R.id.timeProgressBar);
 
         //instantiantes every bug that will appear.
+        List<Bug> bugList = new ArrayList<>();
         bugList.add(new Bug(buttons[0], health, progressBar[0], kOsPerDeath));
         bugList.add(new Bug(buttons[1], health, progressBar[1], kOsPerDeath));
         bugList.add(new SmallBug(buttons[2], health, progressBar[2], kOsPerDeath));
@@ -109,14 +110,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         bugList.add(new FireBug(buttons[8], health, progressBar[8], kOsPerDeath));
         bugList.add(new FireBug(buttons[9], health, progressBar[9], kOsPerDeath));
 
-
-
         //Creates new Game
         ProgressBar levelProgress = (ProgressBar) this.findViewById(R.id.progressBar2);
         game = new Game(levelProgress, bugList, findViewById(R.id.goldRandomButton), goldButton);
 
         // Sets the upgrade images on sideBar
-        for(View view : upgradeImages) {
+        for (View view : upgradeImages) {
             view.setVisibility(View.GONE);
         }
         if (PlayerData.damageIncreaseLevel == 0 && PlayerData.radiusIncreaseLevel == 0 && PlayerData.goldIncreaseLevel == 0) {
@@ -136,7 +135,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         if (PlayerData.numberOfPesticide == 0) {
             findViewById(R.id.pesticide).setVisibility(View.GONE);
         }
-        if (PlayerData.continueLevel == true || PlayerData.beginLevel == true) {
+        if (PlayerData.continueLevel || PlayerData.beginLevel) {
             PlayerData.continueLevel = false;
             PlayerData.continueLevel1 = false;
             //NEXTLEVELBUTTONCLICKCALLED
@@ -145,8 +144,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             PlayerData.beginLevel = false;
 
             //Updates level marker
-
-            Game.nextLevel(game);
+            game.nextLevel();
             startCountDownTimer();
             ConstraintLayout j = (ConstraintLayout) findViewById(R.id.Constraint);
             Drawable k = getDrawable(R.drawable.sandy);
@@ -259,7 +257,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         //starts every animation, countdown timer,
         if (!isInitialized) {
             game.getFirstBugInLevel().move();
-            for (Bug bug : bugList) {
+            for (Bug bug : game.getBugs()) {
                 bug.startAnimation();
             }
             isInitialized = true;
@@ -510,23 +508,25 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
+
     public void returnToMenuClick(View v) {
-            if (game.getLevel() > PlayerData.highestLevel) {
-                PlayerData.highestLevel = game.getLevel();
-            }
-        if(game.isAllDead()){
+        onBackPressed();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (game.getLevel() > PlayerData.highestLevel) {
+            PlayerData.highestLevel = game.getLevel();
+        }
+        if (game.isAllDead()) {
             PlayerData.currentLevel = game.getLevel();
             PlayerData.beginLevel = true;
-        }
-        else if(game.getLevel() != 1) {
+        } else if(game.getLevel() != 1) {
             PlayerData.currentLevel = game.getLevel() - 1;
             PlayerData.continueLevel = true;
-            for (Bug bug : game.bugsInLevel) {
-                bug.setBugToInitialState();
-            }
+            game.resetBugsToInitialState();
             game.resetKOBar();
-        }
-        else{
+        } else {
             PlayerData.continueLevel1 = true;
             game.resetKOBar();
         }
@@ -535,40 +535,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
-    @Override
-    public void onBackPressed() {
-        if (game.getLevel() > PlayerData.highestLevel) {
-            PlayerData.highestLevel = game.getLevel();
-        }
-        if(game.isAllDead()){
-            PlayerData.currentLevel = game.getLevel();
-            PlayerData.beginLevel = true;
-        }
-        else if(game.getLevel() != 1) {
-            PlayerData.currentLevel = game.getLevel() - 1;
-            PlayerData.continueLevel = true;
-            for (Bug bug : game.bugsInLevel) {
-                bug.setBugToInitialState();
-            }
-            game.resetKOBar();
-        }
-        else{
-            PlayerData.continueLevel1 = true;
-            game.resetKOBar();
-        }
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-}
+
     //code rand for nextLevelButtonClick
     public void nextLevelButtonClick(View v) {
-
-
-
         //checks to see if new bug on screen should be added
 
-        Game.nextLevel(game);
+        game.nextLevel();
         goldButton.resetButton();
 
         startCountDownTimer();
@@ -657,6 +629,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     snowFirstRun = false;
                 }
             }
+            nextLevelScreen = false;
         }
     public void pesticideUse(View v) {
         game.pesticide();
@@ -730,8 +703,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     private Bug findBug(View view) {
         Bug result = null;
-        for (Bug bug : bugList) {
-            if (bug.getButton() == view) {
+        for (Bug bug : game.getBugs()) {
+            if (bug.hasButton(view)) {
                 result = bug;
             }
         }

@@ -51,7 +51,7 @@ public class FireBug extends Bug {
         if (beeperHandle == null) {
             super.move();
             final Runnable beeper = new Beeper();
-            this.beeperHandle = scheduler.scheduleAtFixedRate(beeper, 0, Constants.MOVINGBUGSPEED, MILLISECONDS);
+            this.beeperHandle = scheduler.scheduleAtFixedRate(beeper, 0, Constants.MOVING_BUG_SPEED, MILLISECONDS);
         }
     }
 
@@ -66,23 +66,23 @@ public class FireBug extends Bug {
 
     private class Beeper implements Runnable {
         public void run() {
-            if (getButton().getX() <= 30) {
+            if (getX() <= 30) {
                 isAtLowEdgeX = true;
                 isAtHighEdgeX = false;
 
                 directionX = possibleDirections.get(1);
-            } else if (getButton().getX() >= 600) {
+            } else if (getX() >= 600) {
                 isAtLowEdgeX = false;
                 isAtHighEdgeX = true;
 
                 directionX = possibleDirections.get(2);
             }
-            if (getButton().getY() <= 220) {
+            if (getY() <= 220) {
                 isAtLowEdgeY = true;
                 isAtHighEdgeY = false;
 
                 directionY = possibleDirections.get(1);
-            } else if (getButton().getY() >= 1420) {
+            } else if (getY() >= 1420) {
                 isAtLowEdgeY = false;
                 isAtHighEdgeY = true;
 
@@ -99,28 +99,26 @@ public class FireBug extends Bug {
                 setIsAtEdge(false);
             }
 
-            getButton().setX(getButton().getX() + directionX);
-            getButton().setY(getButton().getY() + directionY);
-            getHp().setX(getButton().getX() + 40);
-            getHp().setY(getButton().getY() - 40);
+            setX(getX() + directionX);
+            setY(getY() + directionY);
             steps++;
 
             if (steps % randomDelay == 0) {
                 randomDelay = (int) ((Math.random() * 100) + 10);
                 isClickable = !isClickable;
-                ((Activity) getButton().getContext()).runOnUiThread(
+                getGameActivity().runOnUiThread(
                     new Runnable() {
                         @Override
                         public void run() {
                             try {
-                                AnimationDrawable oldBackground = (AnimationDrawable) getButton().getBackground();
+                                AnimationDrawable oldBackground = (AnimationDrawable) getBackground();
                                 oldBackground.stop();
                                 if (!isClickable) {
-                                    getButton().setBackgroundResource(R.drawable.armedfirebuganimation);
+                                    setBackgroundResource(R.drawable.armedfirebuganimation);
                                 } else {
-                                    getButton().setBackgroundResource(R.drawable.unarmedfirebuganimation);
+                                    setBackgroundResource(R.drawable.unarmedfirebuganimation);
                                 }
-                                ((AnimationDrawable) getButton().getBackground()).start();
+                                ((AnimationDrawable) getBackground()).start();
                             } catch (Exception ex) {
                                 System.out.println("ERROR: " + ex.getMessage());
                                 ex.printStackTrace();
@@ -135,7 +133,7 @@ public class FireBug extends Bug {
     @Override
     public void damageBug(Game game) {
         if (!isClickable) {
-            ((GameActivity) getButton().getContext()).gameOver();
+            getGameActivity().gameOver();
         } else {
             super.damageBug(game);
         }

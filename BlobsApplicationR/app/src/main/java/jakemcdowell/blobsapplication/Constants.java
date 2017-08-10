@@ -70,12 +70,12 @@ public class Constants {
     public static int goldMovementTiming = (int) (1.5 * 1000);
 
 //BUG MECHANICS
-    //This is the MOVINGBUGSPEED(milliseconds) per 20 pixels a bug moves
-    public static final int MOVINGBUGSPEED = 100;
+    //This is the movingSpeed (milliseconds) per 20 pixels a bug moves
+    public static final int MOVING_BUG_SPEED = 100;
 // Initial Health
     public static final int INITIAL_HEALTH = 1;
 //Times knocked out per death
-    public static final int KOSPERDEATH = 2;
+    public static final int KOS_PER_DEATH = 2;
 //Health added per next level
     public static final int HEALTH_ADDED = 0;
 }

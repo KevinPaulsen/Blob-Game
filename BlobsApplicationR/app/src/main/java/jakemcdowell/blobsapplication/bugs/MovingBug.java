@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.concurrent.ScheduledFuture;
 
 import jakemcdowell.blobsapplication.Constants;
-import jakemcdowell.blobsapplication.Game;
 import jakemcdowell.blobsapplication.R;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
@@ -46,7 +45,7 @@ public class MovingBug extends Bug {
         if (beeperHandle == null) {
             super.move();
             final Runnable beeper = new Beeper();
-            this.beeperHandle = scheduler.scheduleAtFixedRate(beeper, 0, Constants.MOVINGBUGSPEED, MILLISECONDS);
+            this.beeperHandle = scheduler.scheduleAtFixedRate(beeper, 0, Constants.MOVING_BUG_SPEED, MILLISECONDS);
         }
     }
 
@@ -59,25 +58,35 @@ public class MovingBug extends Bug {
         }
     }
 
+    @Override
+    public int getHealthBarXOffset() {
+        return -5;
+    }
+
+    @Override
+    public int getHealthBarYOffset() {
+        return -30;
+    }
+
     private class Beeper implements Runnable {
         public void run() {
-            if (getButton().getX() <= 30) {
+            if (getX() <= 30) {
                 isAtLowEdgeX = true;
                 isAtHighEdgeX = false;
 
                 directionX = possibleDirections.get(1);
-            } else if (getButton().getX() >= 600) {
+            } else if (getX() >= 600) {
                 isAtLowEdgeX = false;
                 isAtHighEdgeX = true;
 
                 directionX = possibleDirections.get(2);
             }
-            if (getButton().getY() <= 220) {
+            if (getY() <= 220) {
                 isAtLowEdgeY = true;
                 isAtHighEdgeY = false;
 
                 directionY = possibleDirections.get(1);
-            } else if (getButton().getY() >= 1420) {
+            } else if (getY() >= 1420) {
                 isAtLowEdgeY = false;
                 isAtHighEdgeY = true;
 
@@ -94,10 +103,8 @@ public class MovingBug extends Bug {
                 setIsAtEdge(false);
             }
 
-            getButton().setX(getButton().getX() + directionX);
-            getButton().setY(getButton().getY() + directionY);
-            getHp().setX(getButton().getX() - 5);
-            getHp().setY(getButton().getY() - 30);
+            setX(getX() + directionX);
+            setY(getY() + directionY);
             steps++;
         }
     }

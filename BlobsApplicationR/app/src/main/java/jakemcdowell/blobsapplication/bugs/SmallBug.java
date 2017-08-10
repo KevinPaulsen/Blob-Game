@@ -16,11 +16,19 @@ public class SmallBug extends Bug {
         view.setBackgroundResource(R.drawable.smallbuganimation);
     }
 
+    @Override
+    public int getHealthBarXOffset() {
+        return -5;
+    }
+
+    @Override
+    public int getHealthBarYOffset() {
+        return -30;
+    }
+
     public void move() {
-        getButton().setX((float) ((Math.random() * 575) + 50));
-        getButton().setY((float) ((Math.random() * 1200) + 220));
-        getHp().setX(getButton().getX() - 5);
-        getHp().setY(getButton().getY() - 30);
+        setX((float) ((Math.random() * 575) + 50));
+        setY((float) ((Math.random() * 1200) + 220));
     }
 
 }

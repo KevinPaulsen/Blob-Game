@@ -26,13 +26,11 @@ public class MainActivity extends AppCompatActivity {
         a.setText("Version: " + Constants.version);
         TextView b = (TextView) findViewById(R.id.textView32);
         b.setText("High Score: Level " + PlayerData.highestLevel);
-        if(PlayerData.continueLevel == true) {
+        if (PlayerData.continueLevel) {
             ((Button) (findViewById(R.id.button))).setText("Continue Level " + (PlayerData.currentLevel+1));
-        }
-        else if(PlayerData.continueLevel1 == true) {
+        } else if (PlayerData.continueLevel1) {
             ((Button) (findViewById(R.id.button))).setText("Continue Level " + (PlayerData.currentLevel));
-        }
-        else if(PlayerData.beginLevel == true){
+        } else if (PlayerData.beginLevel) {
             ((Button) (findViewById(R.id.button))).setText("Begin Level " + (PlayerData.currentLevel+1));
         }
     }

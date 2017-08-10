@@ -42,7 +42,9 @@ public class Game extends AppCompatActivity {
         }
         damageIncrease.set(0, 1);
 
-        setupLevel(PlayerData.currentLevel);
+        if (!PlayerData.continueLevel) {
+            setupLevel(PlayerData.currentLevel);
+        }
         PlayerData.damageIncreasePerLevel.add(damageIncreaseLevel);
         PlayerData.damageIncreasePerLevel.add(damageIncrease);
         Constants.radiusPricePerRadiusUpgrade.add(radiusIncreaseLevel);
@@ -50,9 +52,7 @@ public class Game extends AppCompatActivity {
     }
 
     public void removeAllAvailableBugs() {
-        while (availableBugsInLevel.size() != 0) {
-            availableBugsInLevel.remove(0);
-        }
+        availableBugsInLevel.clear();
     }
 
     public void setupLevel(int level) {
@@ -68,7 +68,7 @@ public class Game extends AppCompatActivity {
             availableBugsInLevel.add(bugList.get(idx + 1));
         }
         while (bugsInLevel.size() < getTotalBugsInLevel()) {
-            bugsInLevel.add(getNewBug((int)(Math.random() * availableBugsInLevel.size())));
+            bugsInLevel.add(getNewBug((int) (Math.random() * availableBugsInLevel.size())));
         }
         this.totalKnockoutsRequiredInLevel = levelBugCount * bugsInLevel.get(0).getTotalKnockOuts();
     }
@@ -87,6 +87,10 @@ public class Game extends AppCompatActivity {
         return bug;
     }
 
+    public List<Bug> getBugs() {
+        return bugList;
+    }
+
     public int getLevel() {
         return PlayerData.currentLevel;
     }
@@ -95,11 +99,11 @@ public class Game extends AppCompatActivity {
         return getBugsLeftInLevel() == 0;
     }
 
-    public static void nextLevel(Game game) {
-        for (Bug bug : game.bugList) {
+    public void nextLevel() {
+        for (Bug bug : bugList) {
             bug.addHealth(Constants.HEALTH_ADDED);
         }
-        game.setupLevel(game.getLevel() + 1);
+        setupLevel(getLevel() + 1);
     }
 
     public void updateLevelKnockOutProgressBar() {
@@ -151,7 +155,7 @@ public class Game extends AppCompatActivity {
 
     public void damageNear(int x, int y) {
         for (Bug bug : bugsInLevel) {
-            int distance = getDistance(x, y, (int) bug.getButton().getX(), (int) bug.getButton().getY());
+            int distance = getDistance(x, y, (int) bug.getX(), (int) bug.getY());
             if (distance <= radiusPricePerRadiusUpgrade.get(1).get(PlayerData.radiusIncreaseLevel)) {
                 bug.damageBug(this);
             }

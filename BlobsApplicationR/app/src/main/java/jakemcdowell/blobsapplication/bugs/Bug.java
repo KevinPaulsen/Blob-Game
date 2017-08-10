@@ -10,6 +10,7 @@ import java.util.concurrent.ScheduledExecutorService;
 
 import jakemcdowell.blobsapplication.Constants;
 import jakemcdowell.blobsapplication.Game;
+import jakemcdowell.blobsapplication.GameActivity;
 import jakemcdowell.blobsapplication.PlayerData;
 import jakemcdowell.blobsapplication.R;
 
@@ -50,24 +51,12 @@ public class Bug {
     }
 
     public void move() {
-        button.setX((float) ((Math.random() * 575) + 50));
-        button.setY((float) ((Math.random() * 1200) + 220));
-        hp.setX(button.getX() + 40);
-        hp.setY(button.getY() - 40);
-    }
-
-    private int getDiff(float val1, float val2) {
-        return (int) (val1 - val2);
-    }
-
-    public int getDistance(Bug bug) {
-        return (int) Math.sqrt(Math.pow(getDiff(getButton().getX(), bug.getButton().getX()), 2) +
-                Math.pow(getDiff(getButton().getY(), bug.getButton().getY()), 2));
+        setX((float) ((Math.random() * 575) + 50));
+        setY((float) ((Math.random() * 1200) + 220));
     }
 
     public void moveOffScreen() {
-        button.setY(70000);
-        hp.setY(10000);
+       setY(70000);
     }
 
     public void decreaseHpProgressBar() {
@@ -86,14 +75,50 @@ public class Bug {
         hp.setProgress(100);
     }
 
-    public View getButton() {
-        return button;
+    public float getX() {
+        return button.getX();
+    }
+
+    public float getY() {
+        return button.getY();
+    }
+
+    public void setX(float x) {
+        button.setX(x);
+        hp.setX(x + getHealthBarXOffset());
+    }
+
+    public void setY(float y) {
+        button.setY(y);
+        hp.setY(y + getHealthBarYOffset());
+    }
+
+    public int getHealthBarXOffset() {
+        return 40;
+    }
+
+    public int getHealthBarYOffset() {
+        return -40;
+    }
+
+    public GameActivity getGameActivity() {
+        return (GameActivity) button.getContext();
+    }
+
+    public AnimationDrawable getBackground() {
+        return (AnimationDrawable) button.getBackground();
+    }
+
+    public boolean hasButton(View view) {
+        return button.equals(view);
+    }
+
+    public void setBackgroundResource(int id) {
+        button.setBackgroundResource(id);
     }
 
     public void startAnimation() {
-
         Drawable draw = button.getBackground();
-        System.out.println("DRAW: " + draw);
         if (draw instanceof AnimationDrawable) {
             AnimationDrawable ani = (AnimationDrawable) draw;
             if (ani != null) {
@@ -139,8 +164,8 @@ public class Bug {
     public void pauseDeath() {
         moveOffScreen();
 
-        if (getKnockOuts() != Constants.KOSPERDEATH) {
-            getButton().postDelayed(new Runnable() {
+        if (getKnockOuts() != Constants.KOS_PER_DEATH) {
+            button.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     move();
