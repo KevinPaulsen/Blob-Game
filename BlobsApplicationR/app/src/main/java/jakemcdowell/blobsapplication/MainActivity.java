@@ -1,5 +1,6 @@
 package jakemcdowell.blobsapplication;
 
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

@@ -13,6 +13,8 @@ import java.util.concurrent.ScheduledFuture;
 import jakemcdowell.blobsapplication.Constants;
 import jakemcdowell.blobsapplication.Game;
 import jakemcdowell.blobsapplication.GameActivity;
+import jakemcdowell.blobsapplication.GameOverActivity;
+import jakemcdowell.blobsapplication.PlayerData;
 import jakemcdowell.blobsapplication.R;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
@@ -142,6 +144,10 @@ public class FireBug extends Bug {
     public void damageBug(Game game) {
         if (!isClickable && !bugAlreadyExploded) {
             bugAlreadyExploded = true;
+            GameOverActivity.fireBugDeath = true;
+            if (PlayerData.currentLevel > PlayerData.highestLevel) {
+                PlayerData.highestLevel = PlayerData.currentLevel;
+            }
             getGameActivity().gameOver();
         } else {
             super.damageBug(game);

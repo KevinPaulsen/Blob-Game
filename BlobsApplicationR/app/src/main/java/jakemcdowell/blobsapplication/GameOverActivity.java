@@ -11,6 +11,7 @@ public class GameOverActivity extends AppCompatActivity implements View.OnClickL
 
     Button playgameagain;
     Button returntomenu;
+    public static Boolean fireBugDeath = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,12 @@ public class GameOverActivity extends AppCompatActivity implements View.OnClickL
         returntomenu.setOnClickListener(this);
         MediaPlayer gameovertheme = MediaPlayer.create(this, R.raw.gameovertheme);
         MusicPlayer.startSongOnce(gameovertheme);
+        if (fireBugDeath) {
+            findViewById(R.id.textView47).setVisibility(View.VISIBLE);
+        }
+        else {
+            findViewById(R.id.textView47).setVisibility(View.GONE);
+        }
     }
 
     public void onClick(View v) {

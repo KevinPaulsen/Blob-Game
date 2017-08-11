@@ -16,8 +16,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.067"
-        app:layout_constraintHorizontal_bias="0.512"
-        tools:layout_editor_absoluteX="-46dp" />
+        app:layout_constraintHorizontal_bias="0.512" />
 
     <Button
         android:id="@+id/button15"
@@ -68,8 +67,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/playgame"
         app:layout_constraintVertical_bias="0.557"
-        app:layout_constraintHorizontal_bias="0.438"
-        tools:layout_editor_absoluteY="382dp" />
+        app:layout_constraintHorizontal_bias="0.438" />
 
     <TextView
         android:id="@+id/textView15"
@@ -93,8 +91,20 @@
         app:srcCompat="@drawable/home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.853"
-        tools:layout_editor_absoluteY="619dp"
-        tools:layout_editor_absoluteX="170dp" />
+        app:layout_constraintVertical_bias="0.853" />
+
+    <TextView
+        android:id="@+id/textView47"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Be careful of that red fire bug!"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintVertical_bias="0.041" />
 
 </android.support.constraint.ConstraintLayout>

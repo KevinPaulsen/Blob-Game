@@ -1,5 +1,7 @@
 package jakemcdowell.blobsapplication;
 
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,12 +11,12 @@ import java.util.List;
 
 public class Constants {
 
-    public static String version = "1.0.0 Beta";
+    public static String version = "1.0.0";
 
 //BASIC CONSTANTS
 
 //This is the amount of time in the level measured in seconds times 1000(milliseconds)
-    public static long timeInLevel = 10  * 1000;
+    public static long timeInLevel = 30  * 1000;
 
 //UPGRADES
     //This is the price of the damage increase upgrade by level
@@ -80,4 +82,6 @@ public class Constants {
     public static final int KOS_PER_DEATH = 2;
 //Health added per next level
     public static final int HEALTH_ADDED = 0;
+
+
 }
