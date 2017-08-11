@@ -41,7 +41,7 @@
     <Button
         android:id="@+id/button4"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="352dp"
+        android:layout_width="355dp"
         android:layout_height="140dp"
         android:onClick="howtoplaybuttonclick"
         android:text="How-To-Play"

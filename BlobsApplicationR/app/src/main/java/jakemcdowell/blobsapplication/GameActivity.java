@@ -592,7 +592,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 if (game.isAllDead()) {
                     break;
                 }
-                bug.damageBug(game);
+                if (!(bug instanceof FireBug)) {
+                    bug.damageBug(game);
+                }
             }
             if (PlayerData.numberOfPesticide > 0) {
                 PlayerData.numberOfPesticide = PlayerData.numberOfPesticide - 1;
@@ -603,7 +605,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             TextView g = (TextView) findViewById(R.id.textView31);
             g.setText("Remaining: " + PlayerData.numberOfPesticide);
             if (game.isAllDead()) {
-                allBugsDead();
                 final View button = v;
                 putOffScreen(button);
                 v.postDelayed(new Runnable() {

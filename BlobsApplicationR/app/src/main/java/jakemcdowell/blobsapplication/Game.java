@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.lang.Math;
 import jakemcdowell.blobsapplication.bugs.Bug;
+import jakemcdowell.blobsapplication.bugs.FireBug;
+
 import static jakemcdowell.blobsapplication.Constants.radiusPricePerRadiusUpgrade;
 
 
@@ -157,7 +159,7 @@ public class Game extends AppCompatActivity {
     public void damageNear(int x, int y) {
         for (Bug bug : bugsInLevel) {
             int distance = getDistance(x, y, (int) bug.getX(), (int) bug.getY());
-            if (distance <= radiusPricePerRadiusUpgrade.get(1).get(PlayerData.radiusIncreaseLevel)) {
+            if (distance <= radiusPricePerRadiusUpgrade.get(1).get(PlayerData.radiusIncreaseLevel) && !(bug instanceof FireBug)) {
                 bug.damageBug(this);
             }
         }

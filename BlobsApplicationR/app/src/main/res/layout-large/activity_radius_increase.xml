@@ -253,14 +253,14 @@
         android:id="@+id/textView19"
         android:layout_width="494dp"
         android:layout_height="206dp"
-        android:text="This upgrade increases the radius of your taps, affecting more bugs than just one, enabling the faster killing of bugs!"
+        android:text="This upgrade increases the radius of your taps, affecting more bugs than just one, enabling the faster killing of bugs! Tap directly on the bug to have no radius."
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.626"
+        app:layout_constraintHorizontal_bias="0.632"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.852" />
+        app:layout_constraintVertical_bias="0.848" />
 
     <ImageView
         android:id="@+id/imageView22"
