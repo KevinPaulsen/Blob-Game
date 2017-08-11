@@ -111,7 +111,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         bugList.add(new MovingBug(buttons[5], health, progressBar[5], kOsPerDeath));
         bugList.add(new TeleportingBug(buttons[6], health, progressBar[6], kOsPerDeath));
         bugList.add(new TeleportingBug(buttons[7], health, progressBar[7], kOsPerDeath));
-        bugList.add(new FireBug(buttons[8], health, progressBar[8], kOsPerDeath));
+        bugList.add(new Bug(buttons[8], health, progressBar[8], kOsPerDeath));
         bugList.add(new FireBug(buttons[9], health, progressBar[9], kOsPerDeath));
 
         //Creates new Game

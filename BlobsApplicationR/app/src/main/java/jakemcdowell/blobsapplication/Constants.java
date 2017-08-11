@@ -69,7 +69,7 @@ public class Constants {
 
 //RANDOM GOLD
     //This is the chance of seeing random gold (out of 100) everytime it moves
-    public static int chanceOfSeeingGold = 15;
+    public static int chanceOfSeeingGold = 100;
     //This is how often random gold moves around in seconds x times 1000(milliseconds)
     public static int goldMovementTiming = (int) (1.5 * 1000);
 

@@ -5,9 +5,12 @@ import android.widget.Button;
 
 import java.util.concurrent.ScheduledFuture;
 
+import jakemcdowell.blobsapplication.bugs.TeleportingBug;
+
 import static jakemcdowell.blobsapplication.bugs.Bug.scheduler;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.MINUTES;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
  * Created by kevin on 8/9/17.
@@ -36,12 +39,12 @@ public class GoldButton {
                 }
             }
         };
-        final ScheduledFuture<?> beeperHandle = scheduler.scheduleAtFixedRate(beeper, 0, Constants.goldMovementTiming, MILLISECONDS);
+        final ScheduledFuture<?> beeperHandle = scheduler.scheduleAtFixedRate(beeper, 0, 1000, MILLISECONDS);
         scheduler.schedule(new Runnable() {
             public void run() {
                 beeperHandle.cancel(true);
             }
-        }, 3000, MINUTES);
+        }, 30, SECONDS);
     }
 
     public int getMinNum() {
