@@ -107,4 +107,18 @@
         app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintVertical_bias="0.041" />
 
+    <TextView
+        android:id="@+id/textView48"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Be sure to watch that time progress bar!"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.598"
+        app:layout_constraintVertical_bias="0.041" />
+
 </android.support.constraint.ConstraintLayout>

@@ -24,10 +24,14 @@ public class GameOverActivity extends AppCompatActivity implements View.OnClickL
         MediaPlayer gameovertheme = MediaPlayer.create(this, R.raw.gameovertheme);
         MusicPlayer.startSongOnce(gameovertheme);
         if (fireBugDeath) {
+            fireBugDeath = false;
             findViewById(R.id.textView47).setVisibility(View.VISIBLE);
+            findViewById(R.id.textView48).setVisibility(View.GONE);
         }
         else {
+            fireBugDeath = false;
             findViewById(R.id.textView47).setVisibility(View.GONE);
+            findViewById(R.id.textView48).setVisibility(View.VISIBLE);
         }
     }
 

@@ -25,5 +25,5 @@ public class PlayerData {
     public static int damageIncreaseLevel = 5;
     public static int radiusIncreaseLevel = 5;
     public static int goldIncreaseLevel = 0;
-    public static int numberOfPesticide = 0;
+    public static int numberOfPesticide = 1;
 }

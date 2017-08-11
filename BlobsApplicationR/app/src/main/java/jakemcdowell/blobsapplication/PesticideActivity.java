@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ImageView;
 
-public class PesticideActivity extends AppCompatActivity {
+public class PesticideActivity extends AppCompatActivity{
     public int currentprice;
     boolean isClicked = false;
     @Override
@@ -67,6 +67,7 @@ public class PesticideActivity extends AppCompatActivity {
             ViewCompat.setTranslationZ(e, 10);
         }
     }
+
 
     @Override
     public void onBackPressed() {
