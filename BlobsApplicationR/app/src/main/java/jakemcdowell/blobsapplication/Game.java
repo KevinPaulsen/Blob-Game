@@ -1,8 +1,10 @@
 package jakemcdowell.blobsapplication;
 
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -40,7 +42,7 @@ public class Game extends AppCompatActivity {
         for (int idx = 0; idx < 6; idx++) {
             damageIncrease.add(idx * 3);
         }
-        for (int count = 250; count <= 750; count += 100) {
+        for (int count = 50; count <= 475; count += 75) {
             radiusIncrease.add(count);
         }
         Constants.goldIncreaseModifier.add(1.0);

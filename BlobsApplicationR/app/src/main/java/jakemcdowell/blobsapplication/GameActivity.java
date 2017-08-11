@@ -323,7 +323,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             game.damageNear((int) event.getX(), (int) event.getY());
 
             if (game.isAllDead()) {
-                allBugsDead();
                 nextLevelScreen = true;
             }
         }
@@ -392,10 +391,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     public void buttonTestClick(View v) {
         //sets +1 tap on the bug
         findBug(v).damageBug(game);
-
-        if (game.isAllDead()) {
-            allBugsDead();
-        }
     }
 
     public void allBugsDead() {
@@ -403,10 +398,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 <= 9_999_999) {
             PlayerData.currentGold += game.getGoldEarnedInLevel() + goldButton.getGoldEarnedInLevel();
         }
-        TextView goldEarnedDisplay = (TextView) findViewById(R.id.textView23);
-        TextView currentGoldDisplay = (TextView) findViewById(R.id.textView25);findViewById(R.id.button2).setVisibility(View.VISIBLE);
-        goldEarnedDisplay.setText("" + game.getGoldEarnedInLevel() + goldButton.getGoldEarnedInLevelString());
-        currentGoldDisplay.setText("" + PlayerData.currentGold);
+        PlayerData.highestLevel = PlayerData.currentLevel;
+
+        game.resetBugsToInitialState();
+
+        findViewById(R.id.button2).setVisibility(View.VISIBLE);
+        ((TextView) findViewById(R.id.textView23)).setText("" + game.getGoldEarnedInLevel() + goldButton.getGoldEarnedInLevelString());
+        ((TextView) findViewById(R.id.textView25)).setText("" + PlayerData.currentGold);
         findViewById(R.id.textView22).setVisibility(View.VISIBLE);
         findViewById(R.id.textView23).setVisibility(View.VISIBLE);
         findViewById(R.id.textView24).setVisibility(View.VISIBLE);
@@ -445,25 +443,25 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             MediaPlayer snowend = MediaPlayer.create(this, R.raw.snowend);
             MusicPlayer.playEndingMusic(snowend);
         }
-            //makes buttons and textViews appear, to make nextLevel screen.
-            findViewById(R.id.button2).setVisibility(View.VISIBLE);
-            findViewById(R.id.textView2).setVisibility(View.VISIBLE);
-            findViewById(R.id.textView22).setVisibility(View.VISIBLE);
-            findViewById(R.id.textView23).setVisibility(View.VISIBLE);
-            findViewById(R.id.textView24).setVisibility(View.VISIBLE);
-            findViewById(R.id.textView25).setVisibility(View.VISIBLE);
-            findViewById(R.id.imageView25).setVisibility(View.VISIBLE);
-            findViewById(R.id.imageView26).setVisibility(View.VISIBLE);
-            findViewById(R.id.button).setVisibility(View.GONE);
-            findViewById(R.id.progressBar).setVisibility(View.GONE);
-            findViewById(R.id.progressBar2).setVisibility(View.GONE);
-            findViewById(R.id.timeProgressBar).setVisibility(View.GONE);
-            findViewById(R.id.textView21).setVisibility(View.GONE);
-            findViewById(R.id.textView17).setVisibility(View.GONE);
-            if(PlayerData.numberOfPesticide != 0){
-                findViewById(R.id.pesticide).setVisibility(View.VISIBLE);
-            }
+        //makes buttons and textViews appear, to make nextLevel screen.
+        findViewById(R.id.button2).setVisibility(View.VISIBLE);
+        findViewById(R.id.textView2).setVisibility(View.VISIBLE);
+        findViewById(R.id.textView22).setVisibility(View.VISIBLE);
+        findViewById(R.id.textView23).setVisibility(View.VISIBLE);
+        findViewById(R.id.textView24).setVisibility(View.VISIBLE);
+        findViewById(R.id.textView25).setVisibility(View.VISIBLE);
+        findViewById(R.id.imageView25).setVisibility(View.VISIBLE);
+        findViewById(R.id.imageView26).setVisibility(View.VISIBLE);
+        findViewById(R.id.button).setVisibility(View.GONE);
+        findViewById(R.id.progressBar).setVisibility(View.GONE);
+        findViewById(R.id.progressBar2).setVisibility(View.GONE);
+        findViewById(R.id.timeProgressBar).setVisibility(View.GONE);
+        findViewById(R.id.textView21).setVisibility(View.GONE);
+        findViewById(R.id.textView17).setVisibility(View.GONE);
+        if(PlayerData.numberOfPesticide != 0){
+            findViewById(R.id.pesticide).setVisibility(View.VISIBLE);
         }
+    }
 
     public void returnToMenuClick(View v) {
         onBackPressed();
@@ -477,6 +475,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (game.isAllDead()) {
             PlayerData.currentLevel++;
+            PlayerData.shouldBeginGame = true;
         }
         goingToNextLevelScreen = true;
         Intent intent = new Intent(this, MainActivity.class);
@@ -588,22 +587,57 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 bug.damageBug(game);
             }
-            if (game.isAllDead()) {
-                allBugsDead();
-            }
             PlayerData.numberOfPesticide = PlayerData.numberOfPesticide - 1;
-            TextView g = (TextView) findViewById(R.id.textView31);
-            g.setText("Remaining: " + PlayerData.numberOfPesticide);
             if (PlayerData.numberOfPesticide == 0) {
                 findViewById(R.id.pesticide).setVisibility(View.GONE);
             }
-            final View button = v;
-            putOffScreen(button);
-            v.postDelayed(new Runnable() {
-                public void run() {
-                    moveBack(button);
+
+            if (game.isAllDead()) {
+                //makes buttons and textViews appear, to make nextLevel screen.
+                findViewById(R.id.button2).setVisibility(View.VISIBLE);
+                findViewById(R.id.textView2).setVisibility(View.VISIBLE);
+                findViewById(R.id.textView22).setVisibility(View.VISIBLE);
+                findViewById(R.id.textView23).setVisibility(View.VISIBLE);
+                findViewById(R.id.textView24).setVisibility(View.VISIBLE);
+                findViewById(R.id.textView25).setVisibility(View.VISIBLE);
+                findViewById(R.id.imageView25).setVisibility(View.VISIBLE);
+                findViewById(R.id.imageView26).setVisibility(View.VISIBLE);
+                findViewById(R.id.button).setVisibility(View.GONE);
+                findViewById(R.id.progressBar).setVisibility(View.GONE);
+                findViewById(R.id.progressBar2).setVisibility(View.GONE);
+                findViewById(R.id.timeProgressBar).setVisibility(View.GONE);
+                findViewById(R.id.textView21).setVisibility(View.GONE);
+                findViewById(R.id.textView17).setVisibility(View.GONE);
+                findViewById(R.id.pesticide).setVisibility(View.GONE);
+                if (PlayerData.goldIncreaseLevel == 0) {
+
                 }
-            }, 510);
+                if (PlayerData.goldIncreaseLevel == 1) {
+                    goldAddedPerLevel = (int) (goldAddedPerLevel * 1.25);
+                }
+                if (PlayerData.goldIncreaseLevel == 2) {
+                    goldAddedPerLevel = (int) (goldAddedPerLevel * 1.5);
+                }
+                if (PlayerData.goldIncreaseLevel == 3) {
+                    goldAddedPerLevel = goldAddedPerLevel * 2;
+                }
+                if (game.isAllDead()) {
+                    allBugsDead();
+                }
+                PlayerData.numberOfPesticide = PlayerData.numberOfPesticide - 1;
+                TextView g = (TextView) findViewById(R.id.textView31);
+                g.setText("Remaining: " + PlayerData.numberOfPesticide);
+                if (PlayerData.numberOfPesticide == 0) {
+                    findViewById(R.id.pesticide).setVisibility(View.GONE);
+                }
+                final View button = v;
+                putOffScreen(button);
+                v.postDelayed(new Runnable() {
+                    public void run() {
+                        moveBack(button);
+                    }
+                }, 510);
+            }
         }
     }
     private static void moveBack(View v){

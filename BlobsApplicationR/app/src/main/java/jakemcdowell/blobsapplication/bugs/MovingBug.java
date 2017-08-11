@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.concurrent.ScheduledFuture;
 
 import jakemcdowell.blobsapplication.Constants;
+import jakemcdowell.blobsapplication.Game;
 import jakemcdowell.blobsapplication.R;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
@@ -116,6 +117,45 @@ public class MovingBug extends Bug {
             setY(getY() + directionY);
             steps++;
         }
+    }
+
+    public void pauseKnockout() {
+        setBackgroundResource(R.drawable.deadbug);
+        clickable = false;
+        beeperHandle.cancel(true);
+
+        if (getKnockOuts() != Constants.KOS_PER_DEATH) {
+            button.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    beeperHandle = null;
+                    move();
+                    setBackgroundResource(R.drawable.movingbuganimation);
+                    startAnimation();
+                    clickable = true;
+                }
+            }, 500);
+        }
+    }
+
+    public void pauseDeath(final Game g) {
+        button.setBackgroundResource(R.drawable.deadbug);
+        clickable = false;
+
+        button.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setBackgroundResource(R.drawable.movingbuganimation);
+                startAnimation();
+                clickable = true;
+                if (g.isAllDead()) {
+                    getGameActivity().allBugsDead();
+                    g.resetBugsToInitialState();
+                }
+                moveOffScreen();
+            }
+        }, 500);
+
     }
 
     public void changeDirectionRandomX() {

@@ -4,6 +4,8 @@ import android.content.res.Resources;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import jakemcdowell.blobsapplication.Constants;
+import jakemcdowell.blobsapplication.Game;
 import jakemcdowell.blobsapplication.R;
 
 /**
@@ -15,6 +17,43 @@ public class SmallBug extends Bug {
     public SmallBug(View view, int health, ProgressBar hp, int totalKnockOuts) {
         super(view, health, hp, totalKnockOuts);
         view.setBackgroundResource(R.drawable.smallbuganimation);
+    }
+
+    public void pauseKnockout() {
+        setBackgroundResource(R.drawable.deadbug);
+        clickable = false;
+
+        if (getKnockOuts() != Constants.KOS_PER_DEATH) {
+            button.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    move();
+                    setBackgroundResource(R.drawable.smallbuganimation);
+                    startAnimation();
+                    clickable = true;
+                }
+            }, 500);
+        }
+    }
+
+    public void pauseDeath(final Game g) {
+        button.setBackgroundResource(R.drawable.deadbug);
+        clickable = false;
+
+        button.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setBackgroundResource(R.drawable.smallbuganimation);
+                startAnimation();
+                clickable = true;
+                if (g.isAllDead()) {
+                    getGameActivity().allBugsDead();
+                    g.resetBugsToInitialState();
+                }
+                moveOffScreen();
+            }
+        }, 500);
+
     }
 
     @Override

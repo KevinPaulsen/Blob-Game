@@ -36,6 +36,7 @@ public class FireBug extends Bug {
     private int directionX = 20;
     private int directionY = 20;
     private int randomDelay = (int) ((Math.random() * 100) + 10);
+    private boolean canBeClicked = true;
 
     // 0th element = 0
     // 1st element = 20
@@ -114,7 +115,7 @@ public class FireBug extends Bug {
             steps++;
 
             if (steps % randomDelay == 0) {
-                randomDelay = (int) ((Math.random() * 100) + 10);
+                randomDelay = (int) ((Math.random() * 50) + 20);
                 isClickable = !isClickable;
                 getGameActivity().runOnUiThread(
                     new Runnable() {
@@ -151,7 +152,59 @@ public class FireBug extends Bug {
             getGameActivity().gameOver();
         } else {
             super.damageBug(game);
+            if (canBeClicked) {
+                if (!isClickable && !bugAlreadyExploded) {
+                    bugAlreadyExploded = true;
+                    getGameActivity().gameOver();
+                } else {
+                    super.damageBug(game);
+                }
+            }
         }
+    }
+
+    public void pauseKnockout() {
+        setBackgroundResource(R.drawable.deadbug);
+        canBeClicked = false;
+
+        if (getKnockOuts() != Constants.KOS_PER_DEATH) {
+            button.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    move();
+                    if (isClickable) {
+                        setBackgroundResource(R.drawable.unarmedfirebuganimation);
+                    } else {
+                        setBackgroundResource(R.drawable.armedfirebuganimation);
+                    }
+                    startAnimation();
+                    canBeClicked = true;
+                }
+            }, 500);
+        }
+    }
+
+    public void pauseDeath(final Game g) {
+        button.setBackgroundResource(R.drawable.deadbug);
+        canBeClicked = false;
+
+        button.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (isClickable) {
+                    setBackgroundResource(R.drawable.unarmedfirebuganimation);
+                } else {
+                    setBackgroundResource(R.drawable.armedfirebuganimation);
+                }                startAnimation();
+                canBeClicked = true;
+                if (g.isAllDead()) {
+                    getGameActivity().allBugsDead();
+                    g.resetBugsToInitialState();
+                }
+                moveOffScreen();
+            }
+        }, 500);
+
     }
 
     public void changeDirectionRandomX() {

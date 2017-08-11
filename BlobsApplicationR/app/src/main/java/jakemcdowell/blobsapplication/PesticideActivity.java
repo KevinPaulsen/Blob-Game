@@ -75,7 +75,7 @@ public class PesticideActivity extends AppCompatActivity {
     }
 
     public void purchaseupgradebutton(View v) {
-        if (PlayerData.currentGold >= currentprice && PlayerData.radiusIncreaseLevel < 5 && isClicked == false) {
+        if (PlayerData.currentGold >= currentprice && PlayerData.numberOfPesticide < 5 && isClicked == false) {
             PlayerData.numberOfPesticide = PlayerData.numberOfPesticide + 1;
             PlayerData.currentGold = PlayerData.currentGold - currentprice;
             finish();

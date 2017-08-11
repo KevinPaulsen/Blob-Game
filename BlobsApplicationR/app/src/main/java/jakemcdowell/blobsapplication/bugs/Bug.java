@@ -22,8 +22,9 @@ import jakemcdowell.blobsapplication.R;
 public class Bug {
 
     public static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(10);
-    private final View button;
+    public final View button;
     private final ProgressBar hp;
+    public boolean clickable = true;
 
     private int timesKnockedOut;
     public int damage;             // number of clicks
@@ -32,7 +33,6 @@ public class Bug {
 
 
     public Bug(View view, int health, ProgressBar hp, int kOsPerDeath) {
-        view.setBackgroundResource(R.drawable.normalbuganimation);
         this.button = view;
         this.health = health;
         this.hp = hp;
@@ -136,24 +136,23 @@ public class Bug {
     }
 
     public void damageBug(Game game) {
-        move();
-        damage += PlayerData.damageIncreasePerLevel.get(1).get(PlayerData.damageIncreaseLevel);
-        decreaseHpProgressBar();
-        if (isKnockedOut()) {
-            resetAfterKnockedOut();
-            game.updateLevelKnockOutProgressBar();
+        if (clickable) {
+            damage += PlayerData.damageIncreasePerLevel.get(1).get(PlayerData.damageIncreaseLevel);
+            decreaseHpProgressBar();
+            if (isKnockedOut()) {
+                resetAfterKnockedOut();
+                game.updateLevelKnockOutProgressBar();
 
-            // Check and sets bugsLeftToKill to how many bugs should die in this level
-            if (isDead()) {
-                moveOffScreen();
-                game.addBugKilledInLevel();
+                // Check and sets bugsLeftToKill to how many bugs should die in this level
+                if (isDead()) {
+                    game.addBugKilledInLevel();
+                    pauseDeath(game);
+                } else {
+                    pauseKnockout();
+                }
             } else {
-                pauseDeath();
+                move();
             }
-        }
-
-        if (game.isAllDead()) {
-            game.resetBugsToInitialState();
         }
     }
 
@@ -169,17 +168,40 @@ public class Bug {
         return false;
     }
 
-    public void pauseDeath() {
-        moveOffScreen();
+    public void pauseKnockout() {
+        button.setBackgroundResource(R.drawable.deadbug);
+        clickable = false;
 
         if (getKnockOuts() != Constants.KOS_PER_DEATH) {
             button.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     move();
+                    button.setBackgroundResource(R.drawable.normalbuganimation);
+                    startAnimation();
+                    clickable = true;
                 }
             }, 500);
         }
+    }
+
+    public void pauseDeath(final Game g) {
+        button.setBackgroundResource(R.drawable.deadbug);
+        clickable = false;
+
+        button.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                button.setBackgroundResource(R.drawable.normalbuganimation);
+                startAnimation();
+                clickable = true;
+                if (g.isAllDead()) {
+                    getGameActivity().allBugsDead();
+                    g.resetBugsToInitialState();
+                }
+                moveOffScreen();
+            }
+        }, 500);
     }
 
     public boolean isDead() {

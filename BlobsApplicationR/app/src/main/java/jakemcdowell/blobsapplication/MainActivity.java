@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
         if (PlayerData.shouldResumeGame) {
             ((Button) (findViewById(R.id.button))).setText("Continue Level " + (PlayerData.currentLevel));
         }
+        if (PlayerData.shouldBeginGame) {
+            ((Button) (findViewById(R.id.button))).setText("Begin Level " + (PlayerData.currentLevel));
+        }
     }
 
     public void onWindowFocusChanged(boolean hasFocus) {
