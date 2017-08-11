@@ -39,6 +39,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     boolean grassyFirstRun = true;
     boolean goingToNextLevelScreen = false;
     private Game game;
+    private boolean isOnNextLevelPage = false;
 
     //Sets up game screen (progress bar)
     @Override
@@ -227,9 +228,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void onWindowFocusChanged(boolean hasFocus) {
-
         if (!PlayerData.shouldResumeGame) {
             game.moveAllBugsInLevel();
+        }
+
+        if (isOnNextLevelPage) {
+            game.resetBugsToInitialState();
+            isOnNextLevelPage = false;
         }
 
         sandyFirstRun = true;
@@ -401,6 +406,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         PlayerData.highestLevel = PlayerData.currentLevel;
 
         game.resetBugsToInitialState();
+
+        isOnNextLevelPage = true;
 
         findViewById(R.id.button2).setVisibility(View.VISIBLE);
         ((TextView) findViewById(R.id.textView23)).setText("" + game.getGoldEarnedInLevel() + goldButton.getGoldEarnedInLevelString());

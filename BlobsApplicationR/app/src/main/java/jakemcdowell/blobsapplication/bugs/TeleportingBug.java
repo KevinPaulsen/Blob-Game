@@ -91,8 +91,7 @@ public class TeleportingBug extends Bug {
 
     @Override
     public void damageBug(Game game) {
-        damage += PlayerData.damageIncreasePerLevel.get(1).get(PlayerData.damageIncreaseLevel);
-        addDamage(1);
+        addDamage(PlayerData.damageIncreasePerLevel.get(1).get(PlayerData.damageIncreaseLevel));
         decreaseHpProgressBar();
         if (isKnockedOut()) {
             resetAfterKnockedOut();
@@ -110,5 +109,13 @@ public class TeleportingBug extends Bug {
         } else {
             move();
         }
+    }
+
+    @Override
+    public void setBugToInitialState() {
+        if (beeperHandle != null) {
+            beeperHandle.cancel(true);
+        }
+        super.setBugToInitialState();
     }
 }

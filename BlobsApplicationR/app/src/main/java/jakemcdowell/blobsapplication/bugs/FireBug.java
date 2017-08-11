@@ -35,7 +35,7 @@ public class FireBug extends Bug {
     private int steps = 0;
     private int directionX = 20;
     private int directionY = 20;
-    private int randomDelay = (int) ((Math.random() * 100) + 10);
+    private int randomDelay = (int) ((Math.random() * 50) + 20);
     private boolean canBeClicked = true;
 
     // 0th element = 0

@@ -141,6 +141,7 @@ public class MovingBug extends Bug {
     public void pauseDeath(final Game g) {
         button.setBackgroundResource(R.drawable.deadbug);
         clickable = false;
+        beeperHandle.cancel(true);
 
         button.postDelayed(new Runnable() {
             @Override

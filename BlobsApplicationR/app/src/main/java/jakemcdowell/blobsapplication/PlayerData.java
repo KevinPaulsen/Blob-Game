@@ -22,8 +22,8 @@ public class PlayerData {
     public static boolean shouldResumeGame = false;
     public static boolean shouldBeginGame = false;
 
-    public static int damageIncreaseLevel = 0;
-    public static int radiusIncreaseLevel = 0;
+    public static int damageIncreaseLevel = 5;
+    public static int radiusIncreaseLevel = 5;
     public static int goldIncreaseLevel = 0;
     public static int numberOfPesticide = 0;
 }
