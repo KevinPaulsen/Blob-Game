@@ -146,9 +146,6 @@ public class FireBug extends Bug {
         if (!isClickable && !bugAlreadyExploded) {
             bugAlreadyExploded = true;
             GameOverActivity.fireBugDeath = true;
-            if (PlayerData.currentLevel > PlayerData.highestLevel) {
-                PlayerData.highestLevel = PlayerData.currentLevel;
-            }
             getGameActivity().gameOver();
         } else {
             super.damageBug(game);

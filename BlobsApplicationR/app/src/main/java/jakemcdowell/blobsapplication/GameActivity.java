@@ -594,49 +594,16 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 bug.damageBug(game);
             }
-            PlayerData.numberOfPesticide = PlayerData.numberOfPesticide - 1;
+            if (PlayerData.numberOfPesticide > 0) {
+                PlayerData.numberOfPesticide = PlayerData.numberOfPesticide - 1;
+            }
             if (PlayerData.numberOfPesticide == 0) {
                 findViewById(R.id.pesticide).setVisibility(View.GONE);
             }
-
+            TextView g = (TextView) findViewById(R.id.textView31);
+            g.setText("Remaining: " + PlayerData.numberOfPesticide);
             if (game.isAllDead()) {
-                //makes buttons and textViews appear, to make nextLevel screen.
-                findViewById(R.id.button2).setVisibility(View.VISIBLE);
-                findViewById(R.id.textView2).setVisibility(View.VISIBLE);
-                findViewById(R.id.textView22).setVisibility(View.VISIBLE);
-                findViewById(R.id.textView23).setVisibility(View.VISIBLE);
-                findViewById(R.id.textView24).setVisibility(View.VISIBLE);
-                findViewById(R.id.textView25).setVisibility(View.VISIBLE);
-                findViewById(R.id.imageView25).setVisibility(View.VISIBLE);
-                findViewById(R.id.imageView26).setVisibility(View.VISIBLE);
-                findViewById(R.id.button).setVisibility(View.GONE);
-                findViewById(R.id.progressBar).setVisibility(View.GONE);
-                findViewById(R.id.progressBar2).setVisibility(View.GONE);
-                findViewById(R.id.timeProgressBar).setVisibility(View.GONE);
-                findViewById(R.id.textView21).setVisibility(View.GONE);
-                findViewById(R.id.textView17).setVisibility(View.GONE);
-                findViewById(R.id.pesticide).setVisibility(View.GONE);
-                if (PlayerData.goldIncreaseLevel == 0) {
-
-                }
-                if (PlayerData.goldIncreaseLevel == 1) {
-                    goldAddedPerLevel = (int) (goldAddedPerLevel * 1.25);
-                }
-                if (PlayerData.goldIncreaseLevel == 2) {
-                    goldAddedPerLevel = (int) (goldAddedPerLevel * 1.5);
-                }
-                if (PlayerData.goldIncreaseLevel == 3) {
-                    goldAddedPerLevel = goldAddedPerLevel * 2;
-                }
-                if (game.isAllDead()) {
-                    allBugsDead();
-                }
-                PlayerData.numberOfPesticide = PlayerData.numberOfPesticide - 1;
-                TextView g = (TextView) findViewById(R.id.textView31);
-                g.setText("Remaining: " + PlayerData.numberOfPesticide);
-                if (PlayerData.numberOfPesticide == 0) {
-                    findViewById(R.id.pesticide).setVisibility(View.GONE);
-                }
+                allBugsDead();
                 final View button = v;
                 putOffScreen(button);
                 v.postDelayed(new Runnable() {
@@ -645,6 +612,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 }, 510);
             }
+
         }
     }
     private static void moveBack(View v){
