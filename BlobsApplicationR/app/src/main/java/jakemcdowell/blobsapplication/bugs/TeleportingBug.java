@@ -91,23 +91,25 @@ public class TeleportingBug extends Bug {
 
     @Override
     public void damageBug(Game game) {
-        addDamage(PlayerData.damageIncreasePerLevel.get(1).get(PlayerData.damageIncreaseLevel));
-        decreaseHpProgressBar();
-        if (isKnockedOut()) {
-            resetAfterKnockedOut();
-            game.updateLevelKnockOutProgressBar();
-            beeperHandle.cancel(true);
-            beenThrough = false;
+        if (clickable) {
+            addDamage(PlayerData.damageIncreasePerLevel.get(1).get(PlayerData.damageIncreaseLevel));
+            decreaseHpProgressBar();
+            if (isKnockedOut()) {
+                resetAfterKnockedOut();
+                game.updateLevelKnockOutProgressBar();
+                beeperHandle.cancel(true);
+                beenThrough = false;
 
-            // Check and sets bugsLeftToKill to how many bugs should die in this level
-            if (isDead()) {
-                pauseDeath(game);
-                game.addBugKilledInLevel();
+                // Check and sets bugsLeftToKill to how many bugs should die in this level
+                if (isDead()) {
+                    pauseDeath(game);
+                    game.addBugKilledInLevel();
+                } else {
+                    pauseKnockout();
+                }
             } else {
-                pauseKnockout();
+                move();
             }
-        } else {
-            move();
         }
     }
 

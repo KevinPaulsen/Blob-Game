@@ -16,7 +16,7 @@ public class Constants {
 //BASIC CONSTANTS
 
 //This is the amount of time in the level measured in seconds times 1000(milliseconds)
-    public static long timeInLevel = 90  * 1000;
+    public static long timeInLevel = 45 * 1000;
 
 //UPGRADES
     //This is the price of the damage increase upgrade by level
@@ -69,7 +69,7 @@ public class Constants {
 
 //RANDOM GOLD
     //This is the chance of seeing random gold (out of 100) everytime it moves
-    public static int chanceOfSeeingGold = 100;
+    public static int chanceOfSeeingGold = 20;
     //This is how often random gold moves around in seconds x times 1000(milliseconds)
     public static int goldMovementTiming = (int) (1.5 * 1000);
 

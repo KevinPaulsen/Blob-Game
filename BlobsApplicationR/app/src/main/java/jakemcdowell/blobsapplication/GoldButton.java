@@ -1,10 +1,12 @@
 package jakemcdowell.blobsapplication;
 
+import android.content.res.Resources;
 import android.view.View;
 import android.widget.Button;
 
 import java.util.concurrent.ScheduledFuture;
 
+import jakemcdowell.blobsapplication.bugs.MovingBug;
 import jakemcdowell.blobsapplication.bugs.TeleportingBug;
 
 import static jakemcdowell.blobsapplication.bugs.Bug.scheduler;
@@ -21,30 +23,41 @@ public class GoldButton {
     private View button;
     private int goldValue;
     private int goldEarnedInLevel;
+    private ScheduledFuture beeperHandle = null;
+
 
     public GoldButton(View view) {
         button = view;
         setNewGoldValueForButton();
+        getButton().setText("" + goldValue);
     }
 
-    public void startRandomMove() {
-        final Runnable beeper = new Runnable() {
-            public void run() {
-                if (Math.random() * 100 + 1 <= Constants.chanceOfSeeingGold) {
-                    moveOnScreen();
-                    setNewGoldValueForButton();
-                    getButton().setText("" + goldValue);
-                } else {
-                    moveOffScreen();
-                }
+    public void startRandomGoldMove() {
+        if (beeperHandle == null) {
+            final Runnable beeper = new Beeper();
+            this.beeperHandle = scheduler.scheduleAtFixedRate(beeper, 0, Constants.MOVING_BUG_SPEED, MILLISECONDS);
+        }
+    }
+
+    private class Beeper implements Runnable {
+        public void run() {
+            if (Math.random() * 100 + 1 <= Constants.chanceOfSeeingGold) {
+                setNewGoldValueForButton();
+                moveOnScreen();
+            } else {
+                moveOffScreen();
             }
-        };
-        final ScheduledFuture<?> beeperHandle = scheduler.scheduleAtFixedRate(beeper, 0, 1000, MILLISECONDS);
-        scheduler.schedule(new Runnable() {
-            public void run() {
-                beeperHandle.cancel(true);
+            try {
+                Thread.sleep(3000);
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
-        }, 30, SECONDS);
+        }
+    }
+
+    public void stopRandomGoldMove() {
+        beeperHandle.cancel(true);
+        beeperHandle = null;
     }
 
     public int getMinNum() {
@@ -72,6 +85,7 @@ public class GoldButton {
         moveOffScreen();
         goldEarnedInLevel += goldValue;
         setNewGoldValueForButton();
+        getButton().setText("" + goldValue);
     }
 
     public Button getButton() {

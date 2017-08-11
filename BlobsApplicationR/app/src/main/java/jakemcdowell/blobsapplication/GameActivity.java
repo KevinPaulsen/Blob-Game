@@ -245,7 +245,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         grassyFirstRun = true;
 
         // Starts moving gold
-        goldButton.startRandomMove();
+        goldButton.startRandomGoldMove();
 
         //starts every animation, countdown timer,
         if (!isInitialized) {
