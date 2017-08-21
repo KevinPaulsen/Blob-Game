@@ -44,7 +44,7 @@ public class Game extends AppCompatActivity {
         for (int idx = 0; idx < 6; idx++) {
             damageIncrease.add(idx * 3);
         }
-        for (int count = 50; count <= 475; count += 75) {
+        for (int count = 150; count <= 525; count += 75) {
             radiusIncrease.add(count);
         }
         Constants.goldIncreaseModifier.add(1.0);

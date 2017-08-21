@@ -8,15 +8,15 @@
 
     <Button
         android:id="@+id/button22"
-        android:layout_width="88dp"
-        android:layout_height="121dp"
+        android:layout_width="176dp"
+        android:layout_height="242dp"
         android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintHorizontal_bias="0.974"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.025" />
+        app:layout_constraintVertical_bias="0.016" />
 
     <TextView
         android:id="@+id/textView34"
@@ -24,25 +24,25 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-condensed"
         android:text="Return"
-        android:textSize="18sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.918"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.91"
-        app:layout_constraintVertical_bias="0.16000003" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.171" />
 
     <ImageView
         android:id="@+id/imageView40"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintHorizontal_bias="0.96"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.027"
+        app:layout_constraintVertical_bias="0.015"
         app:srcCompat="@drawable/home" />
 
     <TextView
@@ -51,14 +51,13 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-condensed"
         android:text="Credits"
-        android:textSize="50sp"
+        android:textSize="100sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.138"
-        app:layout_constraintHorizontal_bias="0.362" />
+        app:layout_constraintVertical_bias="0.115" />
 
     <TextView
         android:id="@+id/textView36"
@@ -67,14 +66,13 @@
         android:fontFamily="serif-monospace"
         android:text="Lead Programmer: Kevin P."
         android:textAlignment="viewStart"
-        android:textSize="18sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.288"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.242" />
+        app:layout_constraintVertical_bias="0.239" />
 
     <TextView
         android:id="@+id/textView37"
@@ -83,10 +81,9 @@
         android:fontFamily="serif-monospace"
         android:text="Assistant Producer: Kevin P."
         android:textAlignment="viewStart"
-        android:textSize="18sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.395"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -99,14 +96,13 @@
         android:fontFamily="serif-monospace"
         android:text="Programmers: Jake M, Ryan B."
         android:textAlignment="viewStart"
-        android:textSize="18sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.395"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.374" />
+        app:layout_constraintVertical_bias="0.373" />
 
     <TextView
         android:id="@+id/textView40"
@@ -115,10 +111,9 @@
         android:fontFamily="serif-monospace"
         android:text="Project Manager: Jake M."
         android:textAlignment="textStart"
-        android:textSize="18sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.255"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -131,10 +126,9 @@
         android:fontFamily="serif-monospace"
         android:text="Lead Animator: Jake M."
         android:textAlignment="textStart"
-        android:textSize="18sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.225"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -147,30 +141,31 @@
         android:fontFamily="serif-monospace"
         android:text="Music: Jake M."
         android:textAlignment="textStart"
-        android:textSize="18sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.143"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.58" />
+        app:layout_constraintVertical_bias="0.578" />
 
     <TextView
         android:id="@+id/textView43"
-        android:layout_width="320dp"
-        android:layout_height="47dp"
+        android:layout_width="713dp"
+        android:layout_height="93dp"
         android:fontFamily="serif-monospace"
         android:text="Game Design: Jake M, Ryan B, Kevin P."
-        android:textAlignment="viewStart"
-        android:textSize="18sp"
+        android:textAlignment="center"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.395"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.679" />
+        app:layout_constraintVertical_bias="0.815"
+        app:layout_constraintHorizontal_bias="0.51"
+        tools:layout_editor_absoluteY="907dp"
+        tools:layout_editor_absoluteX="63dp" />
 
     <TextView
         android:id="@+id/textView44"
@@ -179,14 +174,13 @@
         android:fontFamily="serif-monospace"
         android:text="Lead Artist: Ryan B."
         android:textAlignment="viewStart"
-        android:textSize="18sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.197"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.744" />
+        app:layout_constraintVertical_bias="0.65" />
 
     <TextView
         android:id="@+id/textView45"
@@ -195,19 +189,18 @@
         android:fontFamily="serif-monospace"
         android:text="Product Producer: Ryan B."
         android:textAlignment="viewStart"
-        android:textSize="18sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.288"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.812" />
+        app:layout_constraintVertical_bias="0.719" />
 
     <ImageView
         android:id="@+id/imageView41"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -218,8 +211,8 @@
 
     <ImageView
         android:id="@+id/imageView42"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.369"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -230,8 +223,8 @@
 
     <ImageView
         android:id="@+id/imageView43"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.636"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -242,8 +235,8 @@
 
     <ImageView
         android:id="@+id/imageView44"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.906"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -254,8 +247,8 @@
 
     <ImageView
         android:id="@+id/imageView45"
-        android:layout_width="70dp"
-        android:layout_height="60dp"
+        android:layout_width="140dp"
+        android:layout_height="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.104"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -266,8 +259,8 @@
 
     <ImageView
         android:id="@+id/imageView46"
-        android:layout_width="70dp"
-        android:layout_height="60dp"
+        android:layout_width="140dp"
+        android:layout_height="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.364"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -278,8 +271,8 @@
 
     <ImageView
         android:id="@+id/imageView47"
-        android:layout_width="70dp"
-        android:layout_height="60dp"
+        android:layout_width="140dp"
+        android:layout_height="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.636"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -290,8 +283,8 @@
 
     <ImageView
         android:id="@+id/imageView48"
-        android:layout_width="70dp"
-        android:layout_height="60dp"
+        android:layout_width="140dp"
+        android:layout_height="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.906"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -302,8 +295,8 @@
 
     <ImageView
         android:id="@+id/imageView49"
-        android:layout_width="38dp"
-        android:layout_height="37dp"
+        android:layout_width="76dp"
+        android:layout_height="74dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.096"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -314,8 +307,8 @@
 
     <ImageView
         android:id="@+id/imageView50"
-        android:layout_width="38dp"
-        android:layout_height="37dp"
+        android:layout_width="76dp"
+        android:layout_height="74dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.332"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -326,8 +319,8 @@
 
     <ImageView
         android:id="@+id/imageView51"
-        android:layout_width="38dp"
-        android:layout_height="37dp"
+        android:layout_width="76dp"
+        android:layout_height="74dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.581"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -338,8 +331,8 @@
 
     <ImageView
         android:id="@+id/imageView52"
-        android:layout_width="38dp"
-        android:layout_height="37dp"
+        android:layout_width="76dp"
+        android:layout_height="74dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.828"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -350,18 +343,18 @@
 
     <TextView
         android:id="@+id/textView46"
-        android:layout_width="285dp"
-        android:layout_height="43dp"
+        android:layout_width="557dp"
+        android:layout_height="92dp"
         android:fontFamily="sans-serif-condensed"
         android:text="This game was made during the          NW Advanced Programming Workshop"
         android:textAlignment="textStart"
-        android:textSize="18sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintHorizontal_bias="0.127"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.048" />
+        app:layout_constraintVertical_bias="0.023" />
 
 </android.support.constraint.ConstraintLayout>

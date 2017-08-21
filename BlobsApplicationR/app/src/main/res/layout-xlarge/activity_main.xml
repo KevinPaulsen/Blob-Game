@@ -11,7 +11,7 @@
     <Button
         android:id="@+id/button"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="444dp"
+        android:layout_width="200dp"
         android:layout_height="178dp"
         android:onClick="playgamebuttonclick"
         android:text="Play Game"
@@ -114,17 +114,17 @@
 
     <TextView
         android:id="@+id/textView20"
-        android:layout_width="232dp"
-        android:layout_height="91dp"
+        android:layout_width="390dp"
+        android:layout_height="56dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Version:"
         android:textSize="47sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.654"
+        app:layout_constraintHorizontal_bias="0.82"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.212" />
+        app:layout_constraintVertical_bias="0.195" />
 
     <TextView
         android:id="@+id/textView32"
@@ -141,12 +141,27 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.284" />
 
+    <ImageView
+        android:id="@+id/imageView38"
+        android:layout_width="117dp"
+        android:layout_height="128dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/mute"
+        tools:layout_editor_absoluteY="1079dp"
+        tools:layout_editor_absoluteX="683dp" />
+
     <Button
         android:id="@+id/button20"
-        android:layout_width="62dp"
-        android:layout_height="61dp"
+        android:layout_width="117dp"
+        android:layout_height="128dp"
         android:background="@android:color/transparent"
         android:onClick="mutebuttonclick"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -172,8 +187,8 @@
 
     <TextView
         android:id="@+id/textView33"
-        android:layout_width="109dp"
-        android:layout_height="57dp"
+        android:layout_width="99dp"
+        android:layout_height="49dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Music:"
         android:textSize="30sp"
@@ -183,21 +198,37 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.896" />
+        app:layout_constraintVertical_bias="0.89"
+        tools:layout_editor_absoluteY="1031dp"
+        tools:layout_editor_absoluteX="701dp" />
 
-    <ImageView
-        android:id="@+id/imageView38"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
+    <Button
+        android:id="@+id/button24"
+        android:layout_width="200dp"
+        android:layout_height="178dp"
+        android:onClick="restartGameClick"
+        android:text="Restart Game"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.593"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.384" />
+
+    <Button
+        android:id="@+id/button25"
+        android:layout_width="444dp"
+        android:layout_height="178dp"
+        android:onClick="playgamebuttonclick"
+        android:text="Play Game"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/mute"
-        tools:layout_editor_absoluteX="655dp"
-        tools:layout_editor_absoluteY="1084dp" />
+        app:layout_constraintVertical_bias="0.384" />
 
 </android.support.constraint.ConstraintLayout>
 

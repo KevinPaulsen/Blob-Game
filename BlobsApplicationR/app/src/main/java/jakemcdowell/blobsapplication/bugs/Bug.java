@@ -1,5 +1,7 @@
 package jakemcdowell.blobsapplication.bugs;
 
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.res.Resources;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
@@ -110,8 +112,16 @@ public class Bug {
     }
 
     public GameActivity getGameActivity() {
-        return (GameActivity) button.getContext();
+        Context context = button.getContext();
+        while (context instanceof ContextWrapper) {
+            if (context instanceof GameActivity) {
+                return (GameActivity)context;
+            }
+            context = ((ContextWrapper)context).getBaseContext();
+        }
+        return null;
     }
+
 
     public AnimationDrawable getBackground() {
         return (AnimationDrawable) button.getBackground();

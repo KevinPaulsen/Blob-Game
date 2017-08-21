@@ -11,16 +11,17 @@
 
     <ImageView
         android:id="@+id/imageView27"
-        android:layout_width="90dp"
-        android:layout_height="106dp"
+        android:layout_width="158dp"
+        android:layout_height="169dp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.014"
-        app:srcCompat="?attr/colorButtonNormal" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="?attr/colorButtonNormal"
+        tools:layout_editor_absoluteX="647dp" />
 
     <Button
         android:id="@+id/button"
@@ -50,54 +51,55 @@
     <ProgressBar
         android:id="@+id/progressBar2"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="171dp"
-        android:layout_height="43dp"
+        android:layout_width="383dp"
+        android:layout_height="52dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintHorizontal_bias="0.539"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.024" />
+        app:layout_constraintVertical_bias="0.024"
+        tools:layout_editor_absoluteY="22dp" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="234dp"
-        android:layout_height="108dp"
+        android:layout_width="604dp"
+        android:layout_height="163dp"
         android:onClick="nextLevelButtonClick"
         android:text="Continue"
+        android:textSize="28sp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintHorizontal_bias="0.081"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.459"
-        tools:layout_editor_absoluteY="252dp" />
+        app:layout_constraintVertical_bias="0.429" />
 
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="138dp"
-        android:layout_height="58dp"
+        android:layout_width="179dp"
+        android:layout_height="75dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Level: 1"
         android:textColor="@android:color/black"
-        android:textSize="30sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintHorizontal_bias="0.033"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.009" />
+        app:layout_constraintVertical_bias="0.014" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="249dp"
-        android:layout_height="44dp"
+        android:layout_width="592dp"
+        android:layout_height="107dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Level Complete!"
         android:textColor="@android:color/black"
-        android:textSize="36sp"
+        android:textSize="80sp"
         android:textStyle="bold"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -105,7 +107,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.145" />
+        app:layout_constraintVertical_bias="0.145"
+        tools:layout_editor_absoluteY="106dp" />
 
     <ProgressBar
         android:id="@+id/progressBar3"
@@ -272,14 +275,14 @@
     <ProgressBar
         android:id="@+id/timeProgressBar"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="239dp"
-        android:layout_height="20dp"
+        android:layout_width="483dp"
+        android:layout_height="31dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.906"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.993" />
+        app:layout_constraintVertical_bias="0.986"
+        app:layout_constraintHorizontal_bias="0.839" />
 
     <TextView
         android:id="@+id/textView17"
@@ -288,18 +291,18 @@
         android:fontFamily="sans-serif-condensed"
         android:text="Time Remaining: "
         android:textColor="@android:color/black"
-        android:textSize="20sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
-        app:layout_constraintVertical_bias="0.995" />
+        app:layout_constraintVertical_bias="0.986" />
 
     <Button
         android:id="@+id/button18"
-        android:layout_width="93dp"
-        android:layout_height="111dp"
+        android:layout_width="153dp"
+        android:layout_height="166dp"
         android:background="@android:color/transparent"
         android:onClick="returnToMenuClick"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -307,35 +310,37 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="647dp" />
 
     <TextView
         android:id="@+id/textView18"
-        android:layout_width="76dp"
-        android:layout_height="28dp"
+        android:layout_width="71dp"
+        android:layout_height="29dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Return"
         android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.953"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.127" />
+        app:layout_constraintVertical_bias="0.106"
+        tools:layout_editor_absoluteY="124dp" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="63dp"
-        android:layout_height="58dp"
+        android:layout_width="110dp"
+        android:layout_height="116dp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.965"
+        app:layout_constraintHorizontal_bias="0.976"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.026"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/home" />
 
     <TextView
@@ -345,7 +350,7 @@
         android:fontFamily="sans-serif-condensed"
         android:text="Level Progress"
         android:textColor="@android:color/black"
-        android:textSize="20sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -355,12 +360,12 @@
 
     <TextView
         android:id="@+id/textView22"
-        android:layout_width="100dp"
-        android:layout_height="20dp"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Gold Earned:"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -372,29 +377,29 @@
 
     <TextView
         android:id="@+id/textView23"
-        android:layout_width="79dp"
-        android:layout_height="28dp"
+        android:layout_width="158dp"
+        android:layout_height="56dp"
         android:fontFamily="sans-serif-condensed"
         android:text="0"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.261" />
+        app:layout_constraintVertical_bias="0.262" />
 
     <TextView
         android:id="@+id/textView24"
-        android:layout_width="100dp"
-        android:layout_height="20dp"
+        android:layout_width="198dp"
+        android:layout_height="46dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Current Gold:"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -406,16 +411,16 @@
 
     <TextView
         android:id="@+id/textView25"
-        android:layout_width="80dp"
-        android:layout_height="30dp"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
         android:fontFamily="sans-serif-condensed"
         android:text="0"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -423,11 +428,11 @@
 
     <ImageView
         android:id="@+id/imageView25"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.312"
+        app:layout_constraintHorizontal_bias="0.34"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -436,15 +441,15 @@
 
     <ImageView
         android:id="@+id/imageView26"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.312"
+        app:layout_constraintHorizontal_bias="0.34"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.316"
+        app:layout_constraintVertical_bias="0.315"
         app:srcCompat="@drawable/goldcoin" />
 
     <android.support.constraint.Guideline
@@ -467,182 +472,189 @@
 
     <ImageView
         android:id="@+id/imageView28"
-        android:layout_width="90dp"
-        android:layout_height="327dp"
+        android:layout_width="158dp"
+        android:layout_height="633dp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.466"
-        app:srcCompat="?attr/colorButtonNormal" />
+        app:layout_constraintVertical_bias="0.453"
+        app:srcCompat="?attr/colorButtonNormal"
+        tools:layout_editor_absoluteX="644dp" />
 
     <TextView
         android:id="@+id/textView26"
-        android:layout_width="84dp"
-        android:layout_height="190dp"
+        android:layout_width="123dp"
+        android:layout_height="300dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Upgrades"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.976"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.345" />
+        app:layout_constraintVertical_bias="0.298" />
 
     <ImageView
         android:id="@+id/imageView29"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/sword"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.976"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.955"
-        app:layout_constraintVertical_bias="0.336" />
+        app:layout_constraintVertical_bias="0.292"
+        app:srcCompat="@drawable/sword" />
 
     <ImageView
         android:id="@+id/imageView30"
-        android:layout_width="23dp"
-        android:layout_height="21dp"
-        app:srcCompat="@drawable/plus"
+        android:layout_width="46dp"
+        android:layout_height="42dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.978"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.97"
-        app:layout_constraintVertical_bias="0.36" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.325"
+        app:srcCompat="@drawable/plus" />
 
     <TextView
         android:id="@+id/textView27"
-        android:layout_width="50dp"
-        android:layout_height="31dp"
+        android:layout_width="91dp"
+        android:layout_height="42dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Level 1"
         android:textColor="@android:color/holo_green_light"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.972"
+        app:layout_constraintHorizontal_bias="0.96"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.42000002" />
+        app:layout_constraintVertical_bias="0.38" />
 
     <ImageView
         android:id="@+id/imageView31"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/radiusincrease"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.976"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.955"
-        app:layout_constraintVertical_bias="0.481" />
+        app:layout_constraintVertical_bias="0.473"
+        app:srcCompat="@drawable/radiusincrease" />
 
     <ImageView
         android:id="@+id/imageView32"
-        android:layout_width="33dp"
-        android:layout_height="31dp"
-        app:srcCompat="@drawable/sword"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="66dp"
+        android:layout_height="62dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.495"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.916"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.9" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.495"
+        app:srcCompat="@drawable/sword" />
 
     <ImageView
         android:id="@+id/imageView33"
-        android:layout_width="23dp"
-        android:layout_height="21dp"
-        app:srcCompat="@drawable/plus"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="46dp"
+        android:layout_height="42dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.978"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.97" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/plus"
+        app:layout_constraintVertical_bias="0.499" />
 
     <TextView
         android:id="@+id/textView28"
-        android:layout_width="50dp"
-        android:layout_height="31dp"
+        android:layout_width="91dp"
+        android:layout_height="42dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Level 1"
         android:textColor="@android:color/holo_green_light"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.96"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.972"
-        app:layout_constraintVertical_bias="0.56" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.554" />
 
     <ImageView
         android:id="@+id/imageView34"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/goldcoin"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.976"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.955"
-        app:layout_constraintVertical_bias="0.627" />
+        app:layout_constraintVertical_bias="0.649"
+        app:srcCompat="@drawable/goldcoin" />
 
     <ImageView
         android:id="@+id/imageView35"
-        android:layout_width="23dp"
-        android:layout_height="21dp"
-        app:srcCompat="@drawable/plus"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="46dp"
+        android:layout_height="42dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.978"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.969"
-        app:layout_constraintVertical_bias="0.647" />
+        app:layout_constraintVertical_bias="0.669"
+        app:srcCompat="@drawable/plus" />
 
     <TextView
         android:id="@+id/textView29"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="91dp"
+        android:layout_height="42dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Level 1"
         android:textColor="@android:color/holo_green_light"
+        android:textSize="28sp"
         android:textStyle="bold"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.96"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.946"
-        app:layout_constraintVertical_bias="0.691" />
+        app:layout_constraintVertical_bias="0.719" />
 
     <ImageView
         android:id="@+id/imageView36"
-        android:layout_width="90dp"
-        android:layout_height="121dp"
+        android:layout_width="158dp"
+        android:layout_height="191dp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.946"
-        app:srcCompat="?attr/colorButtonNormal" />
+        app:layout_constraintVertical_bias="0.945"
+        app:srcCompat="?attr/colorButtonNormal"
+        tools:layout_editor_absoluteX="644dp"
+        tools:layout_editor_absoluteY="957dp" />
 
     <TextView
         android:id="@+id/textView30"
-        android:layout_width="84dp"
-        android:layout_height="26dp"
+        android:layout_width="147dp"
+        android:layout_height="45dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Power Ups"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="32sp"
         android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -650,19 +662,19 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.813" />
+        app:layout_constraintVertical_bias="0.837" />
 
     <ImageView
         android:id="@+id/imageView37"
-        android:layout_width="55dp"
-        android:layout_height="64dp"
+        android:layout_width="70dp"
+        android:layout_height="95dp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintHorizontal_bias="0.942"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.904"
+        app:layout_constraintVertical_bias="0.906"
         app:srcCompat="@drawable/spraycan" />
 
     <TextView
@@ -672,14 +684,15 @@
         android:fontFamily="sans-serif-condensed"
         android:text="Remaining: 0"
         android:textColor="@android:color/holo_green_light"
+        android:textSize="24sp"
         android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.98"
+        app:layout_constraintHorizontal_bias="0.976"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.94" />
+        app:layout_constraintVertical_bias="0.943" />
 
     <Button
         android:id="@+id/goldRandomButton"
@@ -697,14 +710,16 @@
     <Button
         android:id="@+id/pesticide"
         style="@android:style/Widget.DeviceDefault.Button.Borderless"
-        android:layout_width="92dp"
-        android:layout_height="120dp"
+        android:layout_width="156dp"
+        android:layout_height="190dp"
         android:onClick="pesticideUse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.944" />
+        app:layout_constraintVertical_bias="0.944"
+        tools:layout_editor_absoluteY="960dp"
+        tools:layout_editor_absoluteX="644dp" />
 
 </android.support.constraint.ConstraintLayout>

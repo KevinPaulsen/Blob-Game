@@ -16,7 +16,7 @@ public class Constants {
 //BASIC CONSTANTS
 
 //This is the amount of time in the level measured in seconds times 1000(milliseconds)
-    public static long timeInLevel = 45 * 1000;
+    public static long timeInLevel = 6000 * 15 * 10000;
 
 //UPGRADES
     //This is the price of the damage increase upgrade by level
@@ -42,12 +42,12 @@ public class Constants {
     public static int radiusIncreasePriceLevel4 = 872;
     public static int radiusIncreasePriceLevel5 = 3378;
     //This is the radius in pixels per level of this upgrade
-    public static int radiusIncreaseLevel0 = 50;
-    public static int radiusIncreaseLevel1 = 125;
-    public static int radiusIncreaseLevel2 = 200;
-    public static int radiusIncreaseLevel3 = 275;
-    public static int radiusIncreaseLevel4 = 350;
-    public static int radiusIncreaseLevel5 = 475;
+    public static int radiusIncreaseLevel0 = 150;
+    public static int radiusIncreaseLevel1 = 225;
+    public static int radiusIncreaseLevel2 = 300;
+    public static int radiusIncreaseLevel3 = 375;
+    public static int radiusIncreaseLevel4 = 450;
+    public static int radiusIncreaseLevel5 = 525;
 
     //This is the price of pesticide powerUp based on level
     public static int pesticidePriceLevel1 = 100;

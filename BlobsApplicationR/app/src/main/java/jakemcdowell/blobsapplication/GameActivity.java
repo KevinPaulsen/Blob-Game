@@ -111,7 +111,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         bugList.add(new MovingBug(buttons[5], health, progressBar[5], kOsPerDeath));
         bugList.add(new TeleportingBug(buttons[6], health, progressBar[6], kOsPerDeath));
         bugList.add(new TeleportingBug(buttons[7], health, progressBar[7], kOsPerDeath));
-        bugList.add(new Bug(buttons[8], health, progressBar[8], kOsPerDeath));
+        bugList.add(new FireBug(buttons[8], health, progressBar[8], kOsPerDeath));
         bugList.add(new FireBug(buttons[9], health, progressBar[9], kOsPerDeath));
 
         //Creates new Game
@@ -141,12 +141,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         //Updates level marker
         startCountDownTimer();
         ConstraintLayout j = (ConstraintLayout) findViewById(R.id.Constraint);
-        Drawable k = getDrawable(R.drawable.sandy);
-        Drawable l = getDrawable(R.drawable.gravel);
-        Drawable m = getDrawable(R.drawable.leaf);
-        Drawable n = getDrawable(R.drawable.desert);
-        Drawable o = getDrawable(R.drawable.grassy);
-        Drawable p = getDrawable(R.drawable.snow);
+        Drawable k = getResources().getDrawable(R.drawable.sandy);
+        Drawable l = getResources().getDrawable(R.drawable.gravel);
+        Drawable m = getResources().getDrawable(R.drawable.leaf);
+        Drawable n = getResources().getDrawable(R.drawable.desert);
+        Drawable o = getResources().getDrawable(R.drawable.grassy);
+        Drawable p = getResources().getDrawable(R.drawable.snow);
 
         //sets up next level and removes nextLevel page.
         findViewById(R.id.button2).setVisibility(View.GONE);
@@ -255,12 +255,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             isInitialized = true;
             startCountDownTimer();
             ConstraintLayout constraintLayout = (ConstraintLayout)findViewById(R.id.Constraint);
-            Drawable sandy = getDrawable(R.drawable.sandy);
-            Drawable gravel = getDrawable(R.drawable.gravel);
-            Drawable leaf = getDrawable(R.drawable.leaf);
-            Drawable desert = getDrawable(R.drawable.desert);
-            Drawable grassy = getDrawable(R.drawable.grassy);
-            Drawable snow = getDrawable(R.drawable.snow);
+            Drawable sandy = getResources().getDrawable(R.drawable.sandy);
+            Drawable gravel = getResources().getDrawable(R.drawable.gravel);
+            Drawable leaf = getResources().getDrawable(R.drawable.leaf);
+            Drawable desert = getResources().getDrawable(R.drawable.desert);
+            Drawable grassy = getResources().getDrawable(R.drawable.grassy);
+            Drawable snow = getResources().getDrawable(R.drawable.snow);
             if(PlayerData.currentLevel % 25 == 1 || PlayerData.currentLevel % 25 < 5) {
                 snowFirstRun = true;
                 constraintLayout.setBackground(grassy);
@@ -503,12 +503,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         TextView f = (TextView) findViewById(R.id.textView1);
         f.setText("Level: " + PlayerData.currentLevel);
         ConstraintLayout j = (ConstraintLayout) findViewById(R.id.Constraint);
-        Drawable k = getDrawable(R.drawable.sandy);
-        Drawable l = getDrawable(R.drawable.gravel);
-        Drawable m = getDrawable(R.drawable.leaf);
-        Drawable n = getDrawable(R.drawable.desert);
-        Drawable o = getDrawable(R.drawable.grassy);
-        Drawable p = getDrawable(R.drawable.snow);
+        Drawable k = getResources().getDrawable(R.drawable.sandy);
+        Drawable l = getResources().getDrawable(R.drawable.gravel);
+        Drawable m = getResources().getDrawable(R.drawable.leaf);
+        Drawable n = getResources().getDrawable(R.drawable.desert);
+        Drawable o = getResources().getDrawable(R.drawable.grassy);
+        Drawable p = getResources().getDrawable(R.drawable.snow);
 
         //sets up next level and removes nextLevel page.
         findViewById(R.id.button2).setVisibility(View.GONE);

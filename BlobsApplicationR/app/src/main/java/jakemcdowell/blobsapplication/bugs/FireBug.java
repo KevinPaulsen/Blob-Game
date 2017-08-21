@@ -3,6 +3,7 @@ package jakemcdowell.blobsapplication.bugs;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.drawable.AnimationDrawable;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -56,7 +57,7 @@ public class FireBug extends Bug {
         if (beeperHandle == null) {
             super.move();
             final Runnable beeper = new Beeper();
-            this.beeperHandle = scheduler.scheduleAtFixedRate(beeper, 0, Constants.MOVING_BUG_SPEED, MILLISECONDS);
+            this.beeperHandle = scheduler.scheduleAtFixedRate(beeper, 1, Constants.MOVING_BUG_SPEED, MILLISECONDS);
         }
     }
 
@@ -71,12 +72,15 @@ public class FireBug extends Bug {
 
     private class Beeper implements Runnable {
 
+        int numberOfRuns = 0;
         float smallX = (float) (Resources.getSystem().getDisplayMetrics().widthPixels * 0.0277);
         float largeX = (float) (Resources.getSystem().getDisplayMetrics().widthPixels * 0.5555);
         float smallY = (float) (Resources.getSystem().getDisplayMetrics().heightPixels * 0.11458);
         float largeY = (float) (Resources.getSystem().getDisplayMetrics().widthPixels * 0.73958);
 
         public void run() {
+            numberOfRuns ++;
+            Log.d("CREATION", "Fire-Bug Beeper Run Number:" + numberOfRuns + " ");
             if (getX() <= smallX) {
                 isAtLowEdgeX = true;
                 isAtHighEdgeX = false;

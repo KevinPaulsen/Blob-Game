@@ -1,6 +1,7 @@
 package jakemcdowell.blobsapplication.bugs;
 
 import android.content.res.Resources;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -74,12 +75,15 @@ public class MovingBug extends Bug {
 
     private class Beeper implements Runnable {
 
+        int numberOfRuns = 0;
         float smallX = (float) (Resources.getSystem().getDisplayMetrics().widthPixels * 0.0277);
         float largeX = (float) (Resources.getSystem().getDisplayMetrics().widthPixels * 0.5555);
         float smallY = (float) (Resources.getSystem().getDisplayMetrics().heightPixels * 0.11458);
         float largeY = (float) (Resources.getSystem().getDisplayMetrics().widthPixels * 0.73958);
 
         public void run() {
+            numberOfRuns ++;
+            Log.d("CREATION", "Moving-Bug Beeper Run Number:" + numberOfRuns + " ");
             if (getX() <= smallX) {
                 isAtLowEdgeX = true;
                 isAtHighEdgeX = false;
